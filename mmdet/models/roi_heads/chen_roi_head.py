@@ -15,6 +15,7 @@ from mmdet.models.roi_heads import StandardRoIHead
 from mmdet.structures import DetDataSample, SampleList
 from mmdet.structures.bbox import bbox_overlaps
 from mmdet.utils import InstanceList
+from os import path
 
 
 @MODELS.register_module()
@@ -144,14 +145,6 @@ class DentalFasterRCNNRoIHead(StandardRoIHead):
 
         """
         self.logger.info("---------开始执行后处理算法--------------------")
-        self.logger.info(x)
-        self.logger.info("-------------rpn_results_list-----------------------")
-        self.logger.info(rpn_results_list)
-        self.logger.info("----------batch_data_samples-------------------")
-        self.logger.info(batch_data_samples)
-        self.logger.info("-----------rescale----------------------")
-        self.logger.info(rescale)
-        self.logger.info("--------------------------------------------")
         # 进行预测
         assert self.with_bbox, 'Bbox head must be implemented.'
         batch_img_metas = [
@@ -169,33 +162,80 @@ class DentalFasterRCNNRoIHead(StandardRoIHead):
             rcnn_test_cfg=self.test_cfg,
             rescale=bbox_rescale)
 
-        self.logger.info("------------------results_list-------------------")
-        self.logger.info(results_list)
         for data_sample,results in zip(batch_data_samples,results_list):
 
             data_sample.pred_instances = results
 
 
-        results = []
+        result_list = []
 
         # 遍历处理图像
         for i,data_sample in enumerate(batch_data_samples):
-
+            self.logger.info(f"--------开始处理图片:{data_sample.metainfo.get('img_path','').split(path.sep)}")
             # 跨类别NMS处理
             result = self._cross_category_nms_processing(data_sample)
             # 模版匹配
             result = self._template_matching(data_sample)
 
-            results.append(result)
+            result_list.append(result)
 
 
         self.logger.info("---------后处理算法执行完成----------------")
 
-        return results_list
+        return result_list
 
 
     def _cross_category_nms_processing(self,data_sample:DetDataSample) -> DetDataSample :
-        pass
+        """
+        跨类别NMS
+        计算任意一对框的IOU，若两框的IOU > 阈值，则删除分数较低的那个
+        Args:
+            data_sample:
+
+        Returns:
+        """
+        self.logger.info(f"------ post cross_category_nms 开始进行NMS处理，数据元信息是:{data_sample.metainfo}")
+        pred_instances = data_sample.pred_instances
+        if len(pred_instances) == 0:
+            return data_sample
+
+        bboxes = pred_instances.bboxes
+        scores = pred_instances.scores
+        labels = pred_instances.labels
+
+        n = len(bboxes)
+        self.logger.info(f"------ 跨类别NMS前，共有:{n}个预测框")
+
+        keep_mask = torch.tensor(n,dtype=torch.bool,device=bboxes.device)
+
+        # 计算所有框间的IOU 形状为（n,n）
+        ious = bbox_overlaps(bboxes,bboxes)
+
+        for i in range(n):
+            if not keep_mask[i]:# 若该框已被移除，则不进行循环
+                continue
+            for j in range(i+1,n): # 遍历上三角，跳过对角线
+                if not keep_mask[j]:# 该框已被移除，不进行循环
+                    continue
+
+                # 检查是否超过阈值
+                if ious[i,j] > self.class_nms_thresh:
+                    # 超过阈值，删除更小的那个
+                    if scores[i] < scores[j]:
+                        self.logger.info(f"-----post cross_category_nms label:{labels[i]} 为重叠框，与:{labels[j]} 重叠，删除")
+                        keep_mask[i] = False
+                        break
+                    else:
+                        keep_mask[j] = False
+                        self.logger.info(f"-----post cross_category_nms label:{labels[j]} 为重叠框，与:{labels[i]} 重叠，删除")
+
+        # 只保存需要保存的
+        data_sample.pred_instances = pred_instances[keep_mask]
+        self.logger.info(f"跨类别NMS后，共有:{len(data_sample.pred_instances)}个检测框")
+
+        return data_sample
+
+
 
 
     def _template_matching(self,data_sample:DetDataSample) -> DetDataSample:
