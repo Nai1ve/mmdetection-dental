@@ -4,11 +4,14 @@ dataset_type = 'CocoDataset'
 # 我们还需要更改 head 中的 num_classes 以匹配数据集中的类别数
 model = dict(
     roi_head=dict(
-        type='StandardRoIHead',
+        type='DentalFasterRCNNRoIHead',
         bbox_head=dict(num_classes=48)))
 
+train_cfg = dict(type='EpochBasedTrainLoop', max_epochs=1, val_interval=1)
+
 # 修改数据集相关配置
-data_root = '../dataset/coco/crop_child/'
+data_root = r"C:\Users\Administrator\PycharmProjects\mmdetection-dental\dataset\coco\crop_child\\"
+
 metainfo = {
     'classes': ('11','12','13','14','15','16','17',
                 '21','22','23','24','25','26','27',
@@ -67,8 +70,8 @@ test_pipeline = [
 ]
 
 train_dataloader = dict(
-    batch_size=1,
-    num_workers=1,
+    batch_size=4,
+    num_workers=2,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=True),
     batch_sampler=dict(type='AspectRatioBatchSampler'),
@@ -83,7 +86,7 @@ train_dataloader = dict(
         backend_args=backend_args))
 val_dataloader = dict(
     batch_size=1,
-    num_workers=2,
+    num_workers=1,
     persistent_workers=True,
     drop_last=False,
     sampler=dict(type='DefaultSampler', shuffle=False),

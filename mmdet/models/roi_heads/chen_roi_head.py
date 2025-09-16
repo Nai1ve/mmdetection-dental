@@ -122,8 +122,8 @@ class DentalFasterRCNNRoIHead(StandardRoIHead):
         self.class_nms_thresh = class_nms_thresh
 
         self.logger.info(f"Dental RoI Head 初始化成功。")
-        self.logger.info(f" - Stage 2 (Inter-Class NMS) 阈值: {self.inter_class_nms_thresh}")
-        self.logger.info(f" - Stage 3 Template (len={len(self.templatee)}): {self.template[:5]}...")
+        self.logger.info(f" - Stage 2 (Inter-Class NMS) 阈值: {self.class_nms_thresh}")
+        self.logger.info(f" - Stage 3 Template (len={len(self.template)}): {self.template}...")
 
 
 
@@ -135,15 +135,23 @@ class DentalFasterRCNNRoIHead(StandardRoIHead):
         """
         NMS进行增强
         Args:
-            x:
-            rpn_results_list:
-            batch_data_samples:
+            x: 主干网络和特征网络传入的特征图
+            rpn_results_list: RPN阶段的输出结果，META INFORMATION labels:tensor , bboxes:tensor,scores:tensor
+            batch_data_samples: 包含数据图像的原信息，META INFORMATION
             rescale:
 
         Returns:
 
         """
         self.logger.info("---------开始执行后处理算法--------------------")
+        self.logger.info(x)
+        self.logger.info("-------------rpn_results_list-----------------------")
+        self.logger.info(rpn_results_list)
+        self.logger.info("----------batch_data_samples-------------------")
+        self.logger.info(batch_data_samples)
+        self.logger.info("-----------rescale----------------------")
+        self.logger.info(rescale)
+        self.logger.info("--------------------------------------------")
         # 进行预测
         assert self.with_bbox, 'Bbox head must be implemented.'
         batch_img_metas = [
@@ -161,6 +169,8 @@ class DentalFasterRCNNRoIHead(StandardRoIHead):
             rcnn_test_cfg=self.test_cfg,
             rescale=bbox_rescale)
 
+        self.logger.info("------------------results_list-------------------")
+        self.logger.info(results_list)
         for data_sample,results in zip(batch_data_samples,results_list):
 
             data_sample.pred_instances = results
