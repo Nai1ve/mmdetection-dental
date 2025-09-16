@@ -8,10 +8,12 @@ from typing import List,Tuple
 
 from mmengine.registry import MODELS
 from mmengine.structures import InstanceData
+from torch import Tensor
 
 from mmdet.models.roi_heads import StandardRoIHead
-from mmdet.structures import DetDataSample
+from mmdet.structures import DetDataSample, SampleList
 from mmdet.structures.bbox import bbox_overlaps
+from mmdet.utils import InstanceList
 
 
 @MODELS.register_module()
@@ -25,7 +27,7 @@ class DentalFasterRCNNRoIHead(StandardRoIHead):
     """
 
     def __init__(self,
-                 similarity_matrix_path = None,
+                 similarity_matrix_dic = None,
                  template=None,
                  class_nms_thresh: float = 0.7,
                  **kwargs
@@ -58,7 +60,7 @@ class DentalFasterRCNNRoIHead(StandardRoIHead):
         print("调用初始化")
 
         # 定义映射关系
-        FDI_code_name_dic = {
+        self.FDI_code_name_dic = {
             '18':'W', '28':'W','38':'W','48':'W',
             '17':'M','16':'M','27':'M','26':'M','37':'M','36':'M','47':'M','46':'M',
             '15':'P','14':'P','25':'P','24':'P','35':'P','34':'P','45':'P','44':'P',
@@ -72,21 +74,68 @@ class DentalFasterRCNNRoIHead(StandardRoIHead):
 
         }
 
+
+        self.permanent_upper_code_name_idx_dic = {'W':0,'M':1,'P':2,'Ca':3,'La':4,'Ce':5}
+        self.permanent_lower_code_name_idx_dic ={'W':0,'M':1,'P':2,'Ca':3,'I':4}
+        self.primary_upper_code_name_idx_dic = {'pM':0,'pCa':1,'pI':2}
+        self.primary_lower_code_name_idx_dic = {'pM':0,'pCa':1,'pI':2}
+
         if template is None:
-            template = [
+            self.template = [
                 [18, 17, 16, 15, 14, 13, 12, 11], [21, 22, 23, 24, 25, 26, 27, 28],
                 [48, 47, 46, 45, 44, 43, 42, 41], [31, 32, 33, 34, 35, 36, 37, 38],
                 [55, 54, 53, 52, 51], [61, 62, 63, 64, 65],
                 [85, 84, 83, 82, 81], [71, 72, 73, 74, 75]
             ]
-        if similarity_matrix_path is None:
-            similarity_matrix_path
+
+
+        if similarity_matrix_dic is None:
+            self.similarity_matrix_dic = {
+                'permanent_upper' : [[0.9,0.8,0,0,0,0],
+                                     [0.8,0.9,0,0,0,0],
+                                     [0,0,0.9,0.6,0.4,0.4],
+                                     [0,0,0.6,0.9,0.6,0.8],
+                                     [0,0,0.4,0.6,0.9,0.8],
+                                     [0,0,0.4,0.8,0.8,0.9]
+                                     ],
+                'permanent_lower' : [[0.9,0.7,0,0,0],
+                                     [0.7,0.9,0,0,0],
+                                     [0,0,0.9,0.5,0.3],
+                                     [0,0,0.5,0.9,0.5],
+                                     [0,0,0.3,0.5,0.9]
+                                     ],
+                'primary_upper' : [[0.9,0.6,0],
+                                   [0.6,0.9,0.8],
+                                   [0,0.8,0.9]
+                                   ],
+                'primary_lower' : [[0.9,0.5,0],
+                                   [0.5,0.9,0.8],
+                                   [0,0.8,0.9]
+                                   ]
+            }
 
 
         self.class_nms_thresh = class_nms_thresh
 
-        self.templates = [torch.tensor(t,dtype=torch.int64) for t in template]
         print(f"Dental RoI Head 初始化成功。")
         print(f" - Stage 2 (Inter-Class NMS) 阈值: {self.inter_class_nms_thresh}")
-        print(f" - Stage 3 Template (len={len(self.templates)}): {self.template[:5]}...")
-        print(f" - Stage 3 Sim Matrix loaded from: {similarity_matrix_path} with shape {self.similarity_matrix.shape}")
+        print(f" - Stage 3 Template (len={len(self.templatee)}): {self.template[:5]}...")
+
+
+
+    def predict(self,
+                x: Tuple[Tensor],
+                rpn_results_list: InstanceList,
+                batch_data_samples: SampleList,
+                rescale: bool = False) -> InstanceList:
+        """
+        NMS进行增强
+        Args:
+            x:
+            rpn_results_list:
+            batch_data_samples:
+            rescale:
+
+        Returns:
+
+        """
