@@ -6,6 +6,7 @@ import torch
 import numpy as np
 from typing import List,Tuple
 
+from mmengine import MMLogger
 from mmengine.registry import MODELS
 from mmengine.structures import InstanceData
 from torch import Tensor
@@ -57,6 +58,9 @@ class DentalFasterRCNNRoIHead(StandardRoIHead):
         """
         super().__init__(**kwargs)
 
+        # 获取Logger
+        self.logger = MMLogger.get_current_instance()
+
         print("调用初始化")
 
         # 定义映射关系
@@ -105,21 +109,21 @@ class DentalFasterRCNNRoIHead(StandardRoIHead):
                                      [0,0,0.3,0.5,0.9]
                                      ],
                 'primary_upper' : [[0.9,0.6,0],
-                                   [0.6,0.9,0.8],
-                                   [0,0.8,0.9]
+                                   [0.6,0.9,0.5],
+                                   [0,0.5,0.9]
                                    ],
                 'primary_lower' : [[0.9,0.5,0],
-                                   [0.5,0.9,0.8],
-                                   [0,0.8,0.9]
+                                   [0.5,0.9,0.4],
+                                   [0,0.4,0.9]
                                    ]
             }
 
 
         self.class_nms_thresh = class_nms_thresh
 
-        print(f"Dental RoI Head 初始化成功。")
-        print(f" - Stage 2 (Inter-Class NMS) 阈值: {self.inter_class_nms_thresh}")
-        print(f" - Stage 3 Template (len={len(self.templatee)}): {self.template[:5]}...")
+        self.logger.info(f"Dental RoI Head 初始化成功。")
+        self.logger.info(f" - Stage 2 (Inter-Class NMS) 阈值: {self.inter_class_nms_thresh}")
+        self.logger.info(f" - Stage 3 Template (len={len(self.templatee)}): {self.template[:5]}...")
 
 
 
@@ -139,3 +143,50 @@ class DentalFasterRCNNRoIHead(StandardRoIHead):
         Returns:
 
         """
+        self.logger.info("---------开始执行后处理算法--------------------")
+        # 进行预测
+        assert self.with_bbox, 'Bbox head must be implemented.'
+        batch_img_metas = [
+            data_samples.metainfo for data_samples in batch_data_samples
+        ]
+
+        # If it has the mask branch, the bbox branch does not need
+        # to be scaled to the original image scale, because the mask
+        # branch will scale both bbox and mask at the same time.
+        bbox_rescale = rescale if not self.with_mask else False
+        results_list = self.predict_bbox(
+            x,
+            batch_img_metas,
+            rpn_results_list,
+            rcnn_test_cfg=self.test_cfg,
+            rescale=bbox_rescale)
+
+        for data_sample,results in zip(batch_data_samples,results_list):
+
+            data_sample.pred_instances = results
+
+
+        results = []
+
+        # 遍历处理图像
+        for i,data_sample in enumerate(batch_data_samples):
+
+            # 跨类别NMS处理
+            result = self._cross_category_nms_processing(data_sample)
+            # 模版匹配
+            result = self._template_matching(data_sample)
+
+            results.append(result)
+
+
+        self.logger.info("---------后处理算法执行完成----------------")
+
+        return results_list
+
+
+    def _cross_category_nms_processing(self,data_sample:DetDataSample) -> DetDataSample :
+        pass
+
+
+    def _template_matching(self,data_sample:DetDataSample) -> DetDataSample:
+        pass
