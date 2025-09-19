@@ -239,4 +239,20 @@ class DentalFasterRCNNRoIHead(StandardRoIHead):
 
 
     def _template_matching(self,data_sample:DetDataSample) -> DetDataSample:
+        """
+        模版匹配，乳牙会和恒牙混淆，需要用y的信息进行区分？
+        1. 根据空间位置排序分别构建四个牙弓
+            - 上恒牙弓
+            - 下恒牙弓
+            - 上乳牙弓
+            - 下乳牙弓
+        2. 用模版在上面进行滑动，计算得到一个匹配分数并记录
+        3. 选取最高的分的模版，将其数据调整为与模版一致
+        4. 返回
+        Args:
+            data_sample:
+
+        Returns:
+
+        """
         pass
