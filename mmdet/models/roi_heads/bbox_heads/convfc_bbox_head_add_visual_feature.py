@@ -1,3 +1,5 @@
+from mmengine import MMLogger
+
 from .convfc_bbox_head import Shared2FCBBoxHead
 from torch import Tensor
 from typing import List, Optional, Tuple, Union
@@ -52,7 +54,7 @@ class ConvFCBBoxHeadAddVisualFeature(Shared2FCBBoxHead):
                 - bboxes (Tensor): Has a shape (num_instances, 4),
                   the last dimension 4 arrange as (x1, y1, x2, y2).
         """
-        self.logger.debug("进入添加视觉特征的ConvFCBBoxHeadAddVisualFeature.predict_by_feat方法")
+        MMLogger.debug(MMLogger.get_current_instance(),"进入添加视觉特征的ConvFCBBoxHeadAddVisualFeature.predict_by_feat方法")
         assert len(cls_scores) == len(bbox_preds)
         result_list = []
         for img_id in range(len(batch_img_metas)):
@@ -65,9 +67,9 @@ class ConvFCBBoxHeadAddVisualFeature(Shared2FCBBoxHead):
                 rescale=rescale,
                 rcnn_test_cfg=rcnn_test_cfg,
                 bbox_feat = bbox_feats[img_id])
-            self.logger.debug("-----------------results_info_begin------------------------")
-            self.logger.debug(results)
-            self.logger.debug("-----------------results_info_end--------------------------")
+            MMLogger.debug(MMLogger.get_current_instance(),"-----------------results_info_begin------------------------")
+            MMLogger.debug(MMLogger.get_current_instance(),results)
+            MMLogger.debug(MMLogger.get_current_instance(),"-----------------results_info_end--------------------------")
             result_list.append(results)
 
         return result_list
@@ -170,5 +172,11 @@ class ConvFCBBoxHeadAddVisualFeature(Shared2FCBBoxHead):
             results.labels = det_labels
 
         # 添加视觉特征
-        results.visual_features = bbox_feat
+
+        results.set_field(
+            value=bbox_feat,
+            name='visual_features',
+            dtype=Tensor,
+        )
+
         return results

@@ -1,5 +1,6 @@
 from typing import Tuple, List
 import torch
+from mmengine import MMLogger
 from torch import Tensor
 
 from mmdet.models.utils import empty_instances
@@ -14,7 +15,6 @@ class GenerateGNNDatasetStandardRoIHead(StandardRoIHead):
     """
     生成GNN训练数据
     """
-
 
 
     #业务处理逻辑，生成数据并保存到文件中，TODO：添加生成逻辑
@@ -73,7 +73,7 @@ class GenerateGNNDatasetStandardRoIHead(StandardRoIHead):
                 x, batch_img_metas, results_list, rescale=rescale)
 
 
-        self.logger.debug(results_list)
+        MMLogger.debug(MMLogger.get_current_instance(),results_list)
 
         return results_list
 
