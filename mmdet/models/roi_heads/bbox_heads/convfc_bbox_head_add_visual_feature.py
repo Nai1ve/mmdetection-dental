@@ -1,11 +1,9 @@
-from mmengine import MMLogger
-
-from mmdet.models import Shared2FCBBoxHead
+from .convfc_bbox_head import Shared2FCBBoxHead
 from torch import Tensor
 from typing import List, Optional, Tuple, Union
 from mmengine.config import ConfigDict
 from mmdet.models.layers import multiclass_nms
-
+from mmdet.registry import MODELS
 from mmdet.models.utils import empty_instances
 from mmdet.utils import  InstanceList
 from mmengine.structures import InstanceData
@@ -13,13 +11,8 @@ import torch.nn.functional as F
 from mmdet.structures.bbox import get_box_tensor, scale_boxes
 
 
-
+@MODELS.register_module()
 class ConvFCBBoxHeadAddVisualFeature(Shared2FCBBoxHead):
-
-    def __init__(self,*args,**kwargs):
-        super().__init__(args,kwargs)
-        self.logger = MMLogger.get_current_instance()
-
 
 
     def predict_by_feat(self,

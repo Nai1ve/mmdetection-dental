@@ -7,7 +7,7 @@ from .double_bbox_head import DoubleConvFCBBoxHead
 from .multi_instance_bbox_head import MultiInstanceBBoxHead
 from .sabl_head import SABLHead
 from .scnet_bbox_head import SCNetBBoxHead
-from .ConvFCBBoxHeadAddVisualFeature import ConvFCBBoxHeadAddVisualFeature
+from .convfc_bbox_head_add_visual_feature import ConvFCBBoxHeadAddVisualFeature
 
 __all__ = [
     'BBoxHead', 'ConvFCBBoxHead', 'Shared2FCBBoxHead',

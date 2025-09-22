@@ -5,20 +5,16 @@ from torch import Tensor
 from mmdet.models.utils import empty_instances
 from mmdet.structures.bbox import bbox2roi
 from mmdet.utils import InstanceList, ConfigType
-from standard_roi_head import StandardRoIHead
-from mmengine import MMLogger
+from .standard_roi_head import StandardRoIHead
 from mmdet.structures import SampleList
+from mmdet.registry import MODELS
 
-from torch_geometric.data import Data
-
+@MODELS.register_module()
 class GenerateGNNDatasetStandardRoIHead(StandardRoIHead):
     """
     生成GNN训练数据
     """
 
-    def __init__(self,*args,**kwargs):
-        super().__init__(args,kwargs)
-        self.logger = MMLogger.get_current_instance()
 
 
     #业务处理逻辑，生成数据并保存到文件中，TODO：添加生成逻辑

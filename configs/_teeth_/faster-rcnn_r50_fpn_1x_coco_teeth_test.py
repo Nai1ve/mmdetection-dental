@@ -4,11 +4,14 @@ dataset_type = 'CocoDataset'
 # 我们还需要更改 head 中的 num_classes 以匹配数据集中的类别数
 model = dict(
     roi_head=dict(
-        type='StandardRoIHead',
-        bbox_head=dict(num_classes=48)))
+        type='GenerateGNNDatasetStandardRoIHead',
+        bbox_head=dict(
+            type='ConvFCBBoxHeadAddVisualFeature',
+            num_classes=48)))
 
 train_cfg = dict(type='EpochBasedTrainLoop', max_epochs=1, val_interval=1)
-
+# 日志等级
+log_level = 'DEBUG'
 # 修改数据集相关配置
 data_root = r"C:\Users\Administrator\PycharmProjects\mmdetection-dental\dataset\coco\crop_child\\"
 
