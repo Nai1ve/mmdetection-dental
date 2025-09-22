@@ -1,6 +1,7 @@
 # Copyright (c) OpenMMLab. All rights reserved.
 import datetime
 import itertools
+import logging
 import os.path as osp
 import tempfile
 from collections import OrderedDict
@@ -355,6 +356,7 @@ class CocoMetric(BaseMetric):
         """
         for data_sample in data_samples:
             result = dict()
+            logging.info(data_sample)
             pred = data_sample['pred_instances']
             result['img_id'] = data_sample['img_id']
             result['bboxes'] = pred['bboxes'].cpu().numpy()
