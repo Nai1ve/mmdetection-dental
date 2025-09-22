@@ -130,7 +130,7 @@ class GenerateGNNDatasetStandardRoIHead(StandardRoIHead):
         num_proposals_per_img = tuple(len(p) for p in proposals)
         rois = rois.split(num_proposals_per_img, 0)
         cls_scores = cls_scores.split(num_proposals_per_img, 0)
-
+        bbox_feats = bbox_feats.split(num_proposals_per_img, 0)
         # some detector with_reg is False, bbox_preds will be None
         if bbox_preds is not None:
             # TODO move this to a sabl_roi_head

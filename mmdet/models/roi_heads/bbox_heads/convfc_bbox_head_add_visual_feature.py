@@ -160,23 +160,36 @@ class ConvFCBBoxHeadAddVisualFeature(Shared2FCBBoxHead):
             results.bboxes = bboxes
             results.scores = scores
         else:
-            det_bboxes, det_labels = multiclass_nms(
+            # 获取到保留的掩码
+            det_bboxes, det_labels,keep_idx = multiclass_nms(
                 bboxes,
                 scores,
                 rcnn_test_cfg.score_thr,
                 rcnn_test_cfg.nms,
                 rcnn_test_cfg.max_per_img,
-                box_dim=box_dim)
+                box_dim=box_dim,
+                return_inds=True
+            )
             results.bboxes = det_bboxes[:, :-1]
             results.scores = det_bboxes[:, -1]
             results.labels = det_labels
+            # 转换
+            proposal_inds = keep_idx // self.num_classes
 
-        # 添加视觉特征
+            # 使用keep_idx 筛选出匹配的视觉特征和完整概率
+            final_all_class_probs = scores[proposal_inds]
+            final_visual_features = bbox_feat[proposal_inds]
 
-        results.set_field(
-            value=bbox_feat,
-            name='visual_features',
-            dtype=Tensor,
-        )
+            results.set_field(
+                value=final_visual_features,
+                name='visual_features',
+                dtype=Tensor,
+            )
+
+            results.set_field(
+                value=final_all_class_probs,
+                name='all_class_probs',
+                dtype=Tensor,
+            )
 
         return results

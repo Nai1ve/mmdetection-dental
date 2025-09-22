@@ -1,4 +1,4 @@
-from mmdet.evaluation import CocoMetric
+from mmdet.evaluation.metrics import CocoMetric
 from mmdet.registry import METRICS
 from mmdet.structures.mask import encode_mask_results
 import torch
@@ -71,6 +71,7 @@ class GenerateGNNData(CocoMetric):
         Returns:
 
         """
+        bboxes = result['bboxes']
         # 1.获取坐标
 
         # 2.获取宽高比

@@ -105,7 +105,7 @@ val_dataloader = dict(
 test_dataloader = val_dataloader
 
 val_evaluator = dict(
-    type='CocoMetric',
+    type='GenerateGNNData',
     ann_file=data_root + 'annotations/val.json',
     metric=['bbox'],
     format_only=False,
