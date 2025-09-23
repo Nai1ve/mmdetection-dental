@@ -1,26 +1,25 @@
-from mmengine import MMLogger
 from torch import Tensor
-import tempfile
+
+from torch_geometric.transforms import KNNGraph
+from torch_geometric.utils import to_undirected
+
 from mmdet.evaluation.metrics import CocoMetric
 from mmdet.registry import METRICS
 from mmdet.structures.mask import encode_mask_results
 import torch
 from torch_geometric.data import Data
-import os.path as osp
-from typing import Dict, List, Optional, Sequence, Union
-from mmdet.datasets.api_wrappers import COCO, COCOeval, COCOevalMP
-from collections import OrderedDict
-from mmengine.fileio import dump, get_local_path, load
+
+from typing import Sequence
+
 import numpy as np
-import itertools
-from terminaltables import AsciiTable
 
 SCORE_THRESHOLD = 0.3  # 置信度阈值
-
+IOU_THRESHOLD = 0.5 # IOU阈值
+BACKGROUND = 49
+epsilon = 1e-6  # 防止除零
+K_NEIGHBORS = 9
 @METRICS.register_module()
 class GenerateGNNData(CocoMetric):
-
-
 
     def process(self, data_batch: dict, data_samples: Sequence[dict]) -> None:
         """Process one batch of data samples and predictions. The processed
@@ -42,8 +41,6 @@ class GenerateGNNData(CocoMetric):
             result['bboxes'] = pred['bboxes'].cpu().numpy()
             result['scores'] = pred['scores'].cpu().numpy()
             result['labels'] = pred['labels'].cpu().numpy()
-            result['visual_features'] = pred['visual_features'].cpu().numpy()
-            result['all_class_probs'] = pred['all_class_probs'].cpu().numpy()
             # encode mask to RLE
             if 'masks' in pred:
                 result['masks'] = encode_mask_results(
@@ -68,284 +65,182 @@ class GenerateGNNData(CocoMetric):
             self.results.append((gt, result))
 
             # 生成图对象并保存
-            gnn_data,gnn_data_with_visual = self.__generate_gnn_data_and_save(result,gt)
+            gnn_data,gnn_data_with_visual = self.__generate_gnn_data_and_save(data_sample)
             gnn_list.append(gnn_data)
             gnn_with_visual_list.append(gnn_data_with_visual)
 
-        #torch.save(gnn_list,'./gnn_data/gnn_train_data.pt')
-        #torch.save(gnn_with_visual_list,'./gnn_data/gnn_train_data_with_visual.pt')
+        torch.save(gnn_list,'./gnn_data/gnn_train_data.pt')
+        torch.save(gnn_with_visual_list,'./gnn_data/gnn_train_data_with_visual.pt')
 
 
-
-    def compute_metrics(self, results: list) -> Dict[str, float]:
-        """Compute the metrics from processed results.
-
-        Args:
-            results (list): The processed results of each batch.
-
-        Returns:
-            Dict[str, float]: The computed metrics. The keys are the names of
-            the metrics, and the values are corresponding results.
-        """
-        logger: MMLogger = MMLogger.get_current_instance()
-
-        # split gt and prediction list
-        gts, preds = zip(*results)
-
-        tmp_dir = None
-        if self.outfile_prefix is None:
-            tmp_dir = tempfile.TemporaryDirectory()
-            outfile_prefix = osp.join(tmp_dir.name, 'results')
-        else:
-            outfile_prefix = self.outfile_prefix
-
-        if self._coco_api is None:
-            # use converted gt json file to initialize coco api
-            logger.info('Converting ground truth to coco format...')
-            coco_json_path = self.gt_to_coco_json(
-                gt_dicts=gts, outfile_prefix=outfile_prefix)
-            self._coco_api = COCO(coco_json_path)
-
-        # handle lazy init
-        if self.cat_ids is None:
-            self.cat_ids = self._coco_api.get_cat_ids(
-                cat_names=self.dataset_meta['classes'])
-        if self.img_ids is None:
-            self.img_ids = self._coco_api.get_img_ids()
-
-        # convert predictions to coco format and dump to json file
-        result_files = self.results2json(preds, outfile_prefix)
-
-        eval_results = OrderedDict()
-        if self.format_only:
-            logger.info('results are saved in '
-                        f'{osp.dirname(outfile_prefix)}')
-            return eval_results
-
-        for metric in self.metrics:
-            logger.info(f'Evaluating {metric}...')
-
-            # TODO: May refactor fast_eval_recall to an independent metric?
-            # fast eval recall
-            if metric == 'proposal_fast':
-                ar = self.fast_eval_recall(
-                    preds, self.proposal_nums, self.iou_thrs, logger=logger)
-                log_msg = []
-                for i, num in enumerate(self.proposal_nums):
-                    eval_results[f'AR@{num}'] = ar[i]
-                    log_msg.append(f'\nAR@{num}\t{ar[i]:.4f}')
-                log_msg = ''.join(log_msg)
-                logger.info(log_msg)
-                continue
-
-            # evaluate proposal, bbox and segm
-            iou_type = 'bbox' if metric == 'proposal' else metric
-            if metric not in result_files:
-                raise KeyError(f'{metric} is not in results')
-            try:
-                predictions = load(result_files[metric])
-                if iou_type == 'segm':
-                    # Refer to https://github.com/cocodataset/cocoapi/blob/master/PythonAPI/pycocotools/coco.py#L331  # noqa
-                    # When evaluating mask AP, if the results contain bbox,
-                    # cocoapi will use the box area instead of the mask area
-                    # for calculating the instance area. Though the overall AP
-                    # is not affected, this leads to different
-                    # small/medium/large mask AP results.
-                    for x in predictions:
-                        x.pop('bbox')
-                coco_dt = self._coco_api.loadRes(predictions)
-
-            except IndexError:
-                logger.error(
-                    'The testing results of the whole dataset is empty.')
-                break
-
-            if self.use_mp_eval:
-                coco_eval = COCOevalMP(self._coco_api, coco_dt, iou_type)
-            else:
-                coco_eval = COCOeval(self._coco_api, coco_dt, iou_type)
-
-            coco_eval.params.catIds = self.cat_ids
-            coco_eval.params.imgIds = self.img_ids
-            coco_eval.params.maxDets = list(self.proposal_nums)
-            coco_eval.params.iouThrs = self.iou_thrs
-
-            # mapping of cocoEval.stats
-            coco_metric_names = {
-                'mAP': 0,
-                'mAP_50': 1,
-                'mAP_75': 2,
-                'mAP_s': 3,
-                'mAP_m': 4,
-                'mAP_l': 5,
-                'AR@100': 6,
-                'AR@300': 7,
-                'AR@1000': 8,
-                'AR_s@1000': 9,
-                'AR_m@1000': 10,
-                'AR_l@1000': 11
-            }
-            metric_items = self.metric_items
-            if metric_items is not None:
-                for metric_item in metric_items:
-                    if metric_item not in coco_metric_names:
-                        raise KeyError(
-                            f'metric item "{metric_item}" is not supported')
-
-            if metric == 'proposal':
-                coco_eval.params.useCats = 0
-                coco_eval.evaluate()
-                coco_eval.accumulate()
-                coco_eval.summarize()
-                if metric_items is None:
-                    metric_items = [
-                        'AR@100', 'AR@300', 'AR@1000', 'AR_s@1000',
-                        'AR_m@1000', 'AR_l@1000'
-                    ]
-
-                for item in metric_items:
-                    val = float(
-                        f'{coco_eval.stats[coco_metric_names[item]]:.3f}')
-                    eval_results[item] = val
-            else:
-                coco_eval.evaluate()
-                coco_eval.accumulate()
-                coco_eval.summarize()
-                if self.classwise:  # Compute per-category AP
-                    # Compute per-category AP
-                    # from https://github.com/facebookresearch/detectron2/
-                    precisions = coco_eval.eval['precision']
-                    # precision: (iou, recall, cls, area range, max dets)
-                    assert len(self.cat_ids) == precisions.shape[2]
-
-                    results_per_category = []
-                    for idx, cat_id in enumerate(self.cat_ids):
-                        t = []
-                        # area range index 0: all area ranges
-                        # max dets index -1: typically 100 per image
-                        nm = self._coco_api.loadCats(cat_id)[0]
-                        precision = precisions[:, :, idx, 0, -1]
-                        precision = precision[precision > -1]
-                        if precision.size:
-                            ap = np.mean(precision)
-                        else:
-                            ap = float('nan')
-                        t.append(f'{nm["name"]}')
-                        t.append(f'{round(ap, 3)}')
-                        eval_results[f'{nm["name"]}_precision'] = round(ap, 3)
-
-                        # indexes of IoU  @50 and @75
-                        for iou in [0, 5]:
-                            precision = precisions[iou, :, idx, 0, -1]
-                            precision = precision[precision > -1]
-                            if precision.size:
-                                ap = np.mean(precision)
-                            else:
-                                ap = float('nan')
-                            t.append(f'{round(ap, 3)}')
-
-                        # indexes of area of small, median and large
-                        for area in [1, 2, 3]:
-                            precision = precisions[:, :, idx, area, -1]
-                            precision = precision[precision > -1]
-                            if precision.size:
-                                ap = np.mean(precision)
-                            else:
-                                ap = float('nan')
-                            t.append(f'{round(ap, 3)}')
-                        results_per_category.append(tuple(t))
-
-                    num_columns = len(results_per_category[0])
-                    results_flatten = list(
-                        itertools.chain(*results_per_category))
-                    headers = [
-                        'category', 'mAP', 'mAP_50', 'mAP_75', 'mAP_s',
-                        'mAP_m', 'mAP_l'
-                    ]
-                    results_2d = itertools.zip_longest(*[
-                        results_flatten[i::num_columns]
-                        for i in range(num_columns)
-                    ])
-                    table_data = [headers]
-                    table_data += [result for result in results_2d]
-                    table = AsciiTable(table_data)
-                    logger.info('\n' + table.table)
-
-                if metric_items is None:
-                    metric_items = [
-                        'mAP', 'mAP_50', 'mAP_75', 'mAP_s', 'mAP_m', 'mAP_l'
-                    ]
-
-                for metric_item in metric_items:
-                    key = f'{metric}_{metric_item}'
-                    val = coco_eval.stats[coco_metric_names[metric_item]]
-                    eval_results[key] = float(f'{round(val, 3)}')
-
-                ap = coco_eval.stats[:6]
-                logger.info(f'{metric}_mAP_copypaste: {ap[0]:.3f} '
-                            f'{ap[1]:.3f} {ap[2]:.3f} {ap[3]:.3f} '
-                            f'{ap[4]:.3f} {ap[5]:.3f}')
-
-        if tmp_dir is not None:
-            tmp_dir.cleanup()
-        return eval_results
-
-
-    def __generate_gnn_data_and_save(self,result :dict,gt : dict)-> (Data,Data):
+    def __generate_gnn_data_and_save(self,data :dict)-> (Data,Data):
         """
         根据数据创建两种
         Args:
-            result:
-            gt:
+            data:
 
         Returns:
 
         """
-        bboxes = result['bboxes']
-        # 1.获取坐标
+        pred_instances = data['pred_instances']
 
-        # 2.计算宽高比
-        # w = bboxes[2] - bboxes[0]
-        # h = bboxes[3] - bboxes[1]
-        # 3.获取语义特征
-        all_class_probs = result['all_class_probs']
+        if 'scores' not in pred_instances or len(pred_instances['scores']) == 0:
+            return None, None
 
-        # 4.置信度
-        scores = result['scores']
+        score_mask = pred_instances['scores'] >= SCORE_THRESHOLD
+        if not torch.any(score_mask):
+            return None, None # 如果过滤后没有框了，也返回空值
 
+        # --- 获取所有需要的数据 ---
+        bboxes = pred_instances['bboxes'][score_mask]
+        all_class_probs = pred_instances['all_class_probs'][score_mask]
+        scores = pred_instances['scores'][score_mask]
+        visual_features = pred_instances['visual_features'][score_mask]
 
-        # 设置中心点
+        pred_num = bboxes.shape[0]
+
+        # --- 使用Python列表进行高效累积 ---
+        feature_list_v1 = []
+        feature_list_v2 = []
+        pos_list = []
+
+        for i in range(pred_num):
+            bbox = bboxes[i]  # 格式应为 [xmin, ymin, xmax, ymax]
+
+            # 1. 提取几何与形状特征
+            w = bbox[2] - bbox[0]
+            h = bbox[3] - bbox[1]
+            x_center = bbox[0] + w / 2
+            y_center = bbox[1] + h / 2
+            aspect_ratio = w / (h + 1e-6)  # 防止除零
+
+            # 2. 准备各类特征
+            geom_shape_features = torch.tensor([x_center, y_center, w, h, aspect_ratio])
+            semantic_features = all_class_probs[i]  # 52维
+            confidence_score = scores[i].unsqueeze(0)  # 1维
+            visual = visual_features[i]  # 假设是1024或2048维
+
+            # 3. 拼接成最终的特征向量并添加到列表中
+            # V1.0 特征
+            features_v1 = torch.cat([
+                geom_shape_features,
+                semantic_features,
+                confidence_score
+            ])
+            feature_list_v1.append(features_v1)
+
+            # V2.0 特征
+            features_v2 = torch.cat([
+                geom_shape_features,
+                semantic_features,
+                confidence_score,
+                visual  # 直接拼接视觉特征
+            ])
+            feature_list_v2.append(features_v2)
+
+            # 累积位置信息
+            pos_list.append(torch.tensor([x_center, y_center]))
+
+        # --- [修正点] 在循环外一次性将列表转换为张量 ---
+        x_v1 = torch.stack(feature_list_v1)
+        x_v2 = torch.stack(feature_list_v2)
+        pos = torch.stack(pos_list)
 
         # 找到邻居节点
+        temp_data = Data(pos=pos)
+        knn_transform = KNNGraph(k=K_NEIGHBORS)
+        graph_data = knn_transform(temp_data)
+        edge_index = to_undirected(graph_data.edge_index)
+
+        y = self.__ground_truth_y(data)
+
+        # 安全检查: 确保标签数量和节点数量一致
+        if y is None or len(y) != pred_num:
+            # 如果y的生成逻辑有问题或数量不匹配，则此样本无效
+            # print(f"警告: 标签数量 ({len(y) if y is not None else 'None'}) 与预测框数量 ({pred_num}) 不匹配。跳过此样本。")
+            return None, None
+
+        # --- [新增逻辑] 6. 组装并返回最终的Data对象 ---
+        data_v1 = Data(x=x_v1, edge_index=edge_index, pos=pos, y=y)
+        data_v2 = Data(x=x_v2, edge_index=edge_index, pos=pos, y=y)
+
+        return data_v1,data_v2
 
 
-        y = self.__ground_truth_y(result,gt)
-
-        # 真实标签，语义特征的标签
-
-        data = Data()
-        data_with_visual = Data()
-        return data,data_with_visual
-
-
-    def __ground_truth_y(self,pred_instance:dict,gt:dict)->Tensor:
+    def __ground_truth_y(self,data:dict)->Tensor:
         """
 
         Args:
-            result:
-            gt:
+            data:
 
         Returns:
 
         """
+
         # 获取预测结果
-        score_mask = pred_instance['scores'] >= SCORE_THRESHOLD
-        pred_bboxes = pred_instance['bboxes'][score_mask]
-        pred_labels_model_idx = pred_instance['labels'][score_mask]
-        pred_scores = pred_instance['scores'][score_mask]
+        pred_instances = data['pred_instances']
+        gt_instances = data['gt_instances']
 
-        # 获取真实标注
+        score_mask = pred_instances['scores'] >= SCORE_THRESHOLD
+        pred_bboxes = pred_instances['bboxes'][score_mask].cpu().numpy()
+        pred_scores = pred_instances['scores'][score_mask].cpu().numpy()
+
+        gt_bboxes = gt_instances['bboxes'].cpu().numpy()
+        gt_labels = gt_instances['labels'].cpu().numpy()
+
+        num_preds = len(pred_bboxes)
+        num_gts = len(gt_bboxes)
+
+        y_vector = np.full(num_preds, -1, dtype=int)
+        gt_is_matched = np.zeros(gt_bboxes.shape[0],dtype=bool)
+
+        # 按照置信度对预测框进行排序
+        if num_preds > 0:
+            sorted_pred_indices = np.argsort(pred_scores)[::-1]
+        else:
+            sorted_pred_indices = []
 
 
+        # 处理一个特殊情况：如果有预测，但图中没有任何真实物体
+        if num_gts == 0 and num_preds > 0:
+            y_vector[:] = BACKGROUND # 所有预测都是 "无中生有"
+            return torch.from_numpy(y_vector)
 
-        return None
+        # 循环处理已排序的预测框
+        for p_idx in sorted_pred_indices:
+            pred_box = pred_bboxes[p_idx]
+
+            # 计算与所有预测框的IOU，找到分数最高的和对应的max_iou
+            ious = np.array([self.__calculate_iou(pred_box,gt_box) for gt_box in gt_bboxes])
+            #找到最匹配的iou索引
+            best_gt_idx = np.argmax(ious)
+            max_iou = ious[best_gt_idx]
+
+            if max_iou >= IOU_THRESHOLD:
+                if not gt_is_matched[best_gt_idx]:
+                    # 未被占用，打标真实标签
+                    y_vector[p_idx] = gt_labels[best_gt_idx]
+                    gt_labels[best_gt_idx] = True
+                else:
+                    # 已被占用，标记背景
+                    y_vector[p_idx] = BACKGROUND
+            else:
+                y_vector[p_idx] = BACKGROUND
+
+        # 更新状态
+        y_tensor = torch.from_numpy(y_vector).long()
+
+        return y_tensor
+
+    def __calculate_iou(self,boxA, boxB):
+        """计算两个边界框的交并比 (IoU)"""
+        # 确保框是 [x1, y1, x2, y2] 格式
+        xA = max(boxA[0], boxB[0])
+        yA = max(boxA[1], boxB[1])
+        xB = min(boxA[2], boxB[2])
+        yB = min(boxA[3], boxB[3])
+        interArea = max(0, xB - xA) * max(0, yB - yA)
+        boxAArea = (boxA[2] - boxA[0]) * (boxA[3] - boxA[1])
+        boxBArea = (boxB[2] - boxB[0]) * (boxB[3] - boxB[1])
+        iou = interArea / float(boxAArea + boxBArea - interArea + epsilon)
+        return iou
