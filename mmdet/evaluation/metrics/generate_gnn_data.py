@@ -1,3 +1,5 @@
+import os
+
 from torch import Tensor
 
 from torch_geometric.transforms import KNNGraph
@@ -69,8 +71,11 @@ class GenerateGNNData(CocoMetric):
             gnn_list.append(gnn_data)
             gnn_with_visual_list.append(gnn_data_with_visual)
 
-        torch.save(gnn_list,'./gnn_data/gnn_train_data.pt')
-        torch.save(gnn_with_visual_list,'./gnn_data/gnn_train_data_with_visual.pt')
+        save_dir = 'gnn_data'
+        os.makedirs(save_dir, exist_ok=True)
+
+        torch.save(gnn_list,os.path.join(save_dir, 'gnn_train_data.pt'))
+        torch.save(gnn_with_visual_list, os.path.join(save_dir, 'gnn_with_visual_train_data.pt'))
 
 
     def __generate_gnn_data_and_save(self,data :dict)-> (Data,Data):
