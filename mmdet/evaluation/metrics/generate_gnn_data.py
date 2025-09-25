@@ -1,5 +1,6 @@
 import os
 
+from mmengine import MMLogger
 from torch import Tensor
 
 from torch_geometric.transforms import KNNGraph
@@ -11,72 +12,52 @@ from mmdet.structures.mask import encode_mask_results
 import torch
 from torch_geometric.data import Data
 
-from typing import Sequence
-
+from typing import Sequence, List, Optional
 import numpy as np
+import pickle
 
-SCORE_THRESHOLD = 0.3  # 置信度阈值
+SCORE_THRESHOLD = 0.05  # 置信度阈值
 IOU_THRESHOLD = 0.5 # IOU阈值
 BACKGROUND = 49
 epsilon = 1e-6  # 防止除零
 K_NEIGHBORS = 9
+info_list = []
 @METRICS.register_module()
 class GenerateGNNData(CocoMetric):
 
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.gnn_list:List[Optional[Data]] = []
+        self.gnn_with_visual_list:List[Optional[Data]] = []
+
     def process(self, data_batch: dict, data_samples: Sequence[dict]) -> None:
-        """Process one batch of data samples and predictions. The processed
-        results should be stored in ``self.results``, which will be used to
-        compute the metrics when all batches have been processed.
+        super().process(data_batch,data_samples)
 
-        Args:
-            data_batch (dict): A batch of data from the dataloader.
-            data_samples (Sequence[dict]): A batch of data samples that
-                contain annotations and predictions.
-        """
-        gnn_list = []
-        gnn_with_visual_list = []
+        for data in data_samples:
+            gnn_data,gnn_data_with_visual = self.__generate_gnn_data_and_save(data)
 
-        for data_sample in data_samples:
-            result = dict()
-            pred = data_sample['pred_instances']
-            result['img_id'] = data_sample['img_id']
-            result['bboxes'] = pred['bboxes'].cpu().numpy()
-            result['scores'] = pred['scores'].cpu().numpy()
-            result['labels'] = pred['labels'].cpu().numpy()
-            # encode mask to RLE
-            if 'masks' in pred:
-                result['masks'] = encode_mask_results(
-                    pred['masks'].detach().cpu().numpy()) if isinstance(
-                        pred['masks'], torch.Tensor) else pred['masks']
-            # some detectors use different scores for bbox and mask
-            if 'mask_scores' in pred:
-                result['mask_scores'] = pred['mask_scores'].cpu().numpy()
+            if gnn_data is not None:
+                self.gnn_list.append(gnn_data)
+            if gnn_data_with_visual is not None:
+                self.gnn_with_visual_list.append(gnn_data_with_visual)
 
-            # parse gt
-            gt = dict()
-            gt['width'] = data_sample['ori_shape'][1]
-            gt['height'] = data_sample['ori_shape'][0]
-            gt['img_id'] = data_sample['img_id']
-            if self._coco_api is None:
-                # TODO: Need to refactor to support LoadAnnotations
-                assert 'instances' in data_sample, \
-                    'ground truth is required for evaluation when ' \
-                    '`ann_file` is not provided'
-                gt['anns'] = data_sample['instances']
-            # add converted result to the results list
-            self.results.append((gt, result))
+    def compute_metrics(self,results:List) -> dict:
+        eval_results = super().compute_metrics(results)
 
-            # 生成图对象并保存
-            gnn_data,gnn_data_with_visual = self.__generate_gnn_data_and_save(data_sample)
-            gnn_list.append(gnn_data)
-            gnn_with_visual_list.append(gnn_data_with_visual)
+        MMLogger.info(MMLogger.get_current_instance(),"所有批次处理完成，开始保存GNN数据")
+        MMLogger.info(MMLogger.get_current_instance(),f"总共收集到{len(self.gnn_list)}个GNN图数据")
+        MMLogger.info(MMLogger.get_current_instance(),f"总共收集到{len(self.gnn_with_visual_list)}个带视觉特征的GNN图数据")
 
         save_dir = 'gnn_data'
         os.makedirs(save_dir, exist_ok=True)
 
-        torch.save(gnn_list,os.path.join(save_dir, 'gnn_train_data.pt'))
-        torch.save(gnn_with_visual_list, os.path.join(save_dir, 'gnn_with_visual_train_data.pt'))
+        torch.save(self.gnn_list, os.path.join(save_dir, f'gnn_data_{SCORE_THRESHOLD}.pt'))
+        torch.save(self.gnn_with_visual_list, os.path.join(save_dir, f'gnn_data_with_visual_{SCORE_THRESHOLD}.pt'))
 
+        with open(os.path.join(save_dir, f'info_{SCORE_THRESHOLD}.pkl'), 'wb') as f:
+            pickle.dump(info_list, f)
+
+        return eval_results
 
     def __generate_gnn_data_and_save(self,data :dict)-> (Data,Data):
         """
@@ -139,7 +120,7 @@ class GenerateGNNData(CocoMetric):
                 geom_shape_features,
                 semantic_features,
                 confidence_score,
-                visual  # 直接拼接视觉特征
+                visual.flatten()  # 直接拼接视觉特征
             ])
             feature_list_v2.append(features_v2)
 
@@ -181,7 +162,7 @@ class GenerateGNNData(CocoMetric):
         Returns:
 
         """
-
+        label_dict = {}
         # 获取预测结果
         pred_instances = data['pred_instances']
         gt_instances = data['gt_instances']
@@ -222,19 +203,23 @@ class GenerateGNNData(CocoMetric):
             max_iou = ious[best_gt_idx]
 
             if max_iou >= IOU_THRESHOLD:
+                label = gt_labels[best_gt_idx]
                 if not gt_is_matched[best_gt_idx]:
                     # 未被占用，打标真实标签
-                    y_vector[p_idx] = gt_labels[best_gt_idx]
-                    gt_labels[best_gt_idx] = True
+                    y_vector[p_idx] = label
+                    gt_is_matched[best_gt_idx] = True
+                    label_dict[label] = label_dict.get(label, 0) + 1
                 else:
                     # 已被占用，标记背景
                     y_vector[p_idx] = BACKGROUND
+                    label_dict[BACKGROUND] = label_dict.get(BACKGROUND, 0) + 1
             else:
                 y_vector[p_idx] = BACKGROUND
+                label_dict[BACKGROUND] = label_dict.get(BACKGROUND, 0) + 1
 
         # 更新状态
         y_tensor = torch.from_numpy(y_vector).long()
-
+        info_list.append(label_dict)
         return y_tensor
 
     def __calculate_iou(self,boxA, boxB):
