@@ -512,7 +512,7 @@ test_cfg = dict(type='TestLoop')
 test_dataloader = dict(
     batch_size=1,
     dataset=dict(
-        ann_file='annotations/val.json',
+        ann_file='annotations/train.json',
         backend_args=None,
         data_prefix=dict(img='preprocessing_images/'),
         data_root='C:\\Users\\Administrator\\PycharmProjects\\mmdetection-dental\\dataset\\coco\\crop_child\\',
@@ -845,7 +845,7 @@ test_dataloader = dict(
     persistent_workers=True,
     sampler=dict(shuffle=False, type='DefaultSampler'))
 test_evaluator = dict(
-    ann_file='C:\\Users\\Administrator\\PycharmProjects\\mmdetection-dental\\dataset\\coco\\crop_child\\annotations\\val.json',
+    ann_file='C:\\Users\\Administrator\\PycharmProjects\\mmdetection-dental\\dataset\\coco\\crop_child\\annotations\\train.json',
     backend_args=None,
     classwise=True,
     format_only=False,

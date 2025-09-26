@@ -8,7 +8,6 @@ from torch_geometric.utils import to_undirected
 
 from mmdet.evaluation.metrics import CocoMetric
 from mmdet.registry import METRICS
-from mmdet.structures.mask import encode_mask_results
 import torch
 from torch_geometric.data import Data
 
@@ -16,12 +15,13 @@ from typing import Sequence, List, Optional
 import numpy as np
 import pickle
 
-SCORE_THRESHOLD = 0.05  # 置信度阈值
+SCORE_THRESHOLD = 0.3  # 置信度阈值
 IOU_THRESHOLD = 0.5 # IOU阈值
-BACKGROUND = 49
+BACKGROUND = 48
 epsilon = 1e-6  # 防止除零
 K_NEIGHBORS = 9
 info_list = []
+TYPE = 'train'
 @METRICS.register_module()
 class GenerateGNNData(CocoMetric):
 
@@ -51,8 +51,8 @@ class GenerateGNNData(CocoMetric):
         save_dir = 'gnn_data'
         os.makedirs(save_dir, exist_ok=True)
 
-        torch.save(self.gnn_list, os.path.join(save_dir, f'gnn_data_{SCORE_THRESHOLD}.pt'))
-        torch.save(self.gnn_with_visual_list, os.path.join(save_dir, f'gnn_data_with_visual_{SCORE_THRESHOLD}.pt'))
+        torch.save(self.gnn_list, os.path.join(save_dir, f'gnn_{TYPE}_data_{SCORE_THRESHOLD}.pt'))
+        torch.save(self.gnn_with_visual_list, os.path.join(save_dir, f'gnn_{TYPE}_data_with_visual_{SCORE_THRESHOLD}.pt'))
 
         with open(os.path.join(save_dir, f'info_{SCORE_THRESHOLD}.pkl'), 'wb') as f:
             pickle.dump(info_list, f)
@@ -69,7 +69,9 @@ class GenerateGNNData(CocoMetric):
 
         """
         pred_instances = data['pred_instances']
-
+        ori_shape = data['ori_shape'] # h,w
+        img_h = ori_shape[0]
+        img_w = ori_shape[1]
         if 'scores' not in pred_instances or len(pred_instances['scores']) == 0:
             return None, None
 
@@ -101,8 +103,8 @@ class GenerateGNNData(CocoMetric):
             aspect_ratio = w / (h + 1e-6)  # 防止除零
 
             # 2. 准备各类特征
-            geom_shape_features = torch.tensor([x_center, y_center, w, h, aspect_ratio])
-            semantic_features = all_class_probs[i]  # 52维
+            geom_shape_features = torch.tensor([x_center / img_w, y_center / img_h])
+            semantic_features = all_class_probs[i]  # 49维
             confidence_score = scores[i].unsqueeze(0)  # 1维
             visual = visual_features[i]  # 假设是1024或2048维
 
@@ -125,7 +127,7 @@ class GenerateGNNData(CocoMetric):
             feature_list_v2.append(features_v2)
 
             # 累积位置信息
-            pos_list.append(torch.tensor([x_center, y_center]))
+            pos_list.append(torch.tensor([x_center / img_w, y_center/img_h]))
 
         # --- [修正点] 在循环外一次性将列表转换为张量 ---
         x_v1 = torch.stack(feature_list_v1)
