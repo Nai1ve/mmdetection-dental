@@ -17,9 +17,67 @@ from mmdet.structures.bbox import get_box_tensor, scale_boxes
 class ConvFCBBoxHeadAddVisualFeature(Shared2FCBBoxHead):
 
 
+    def forward(self, x: Tuple[Tensor]) -> tuple:
+        """Forward features from the upstream network.
+        Args:
+            x (tuple[Tensor]): Features from the upstream network, each is
+                a 4D-tensor.
+
+        Returns:
+            tuple: A tuple of classification scores and bbox prediction.
+
+                - cls_score (Tensor): Classification scores for all \
+                    scale levels, each is a 4D-tensor, the channels number \
+                    is num_base_priors * num_classes.
+                - bbox_pred (Tensor): Box energies / deltas for all \
+                    scale levels, each is a 4D-tensor, the channels number \
+                    is num_base_priors * 4.
+                - feature_embed (Tensor): Feature embedding for all \
+        """
+        # shared part
+        if self.num_shared_convs > 0:
+            for conv in self.shared_convs:
+                x = conv(x)
+
+        if self.num_shared_fcs > 0:
+            if self.with_avg_pool:
+                x = self.avg_pool(x)
+
+            x = x.flatten(1)
+
+            for fc in self.shared_fcs:
+                x = self.relu(fc(x))
+        # separate branches
+        x_cls = x
+        x_reg = x
+
+        for conv in self.cls_convs:
+            x_cls = conv(x_cls)
+        if x_cls.dim() > 2:
+            if self.with_avg_pool:
+                x_cls = self.avg_pool(x_cls)
+            x_cls = x_cls.flatten(1)
+        for fc in self.cls_fcs:
+            x_cls = self.relu(fc(x_cls))
+
+        for conv in self.reg_convs:
+            x_reg = conv(x_reg)
+        if x_reg.dim() > 2:
+            if self.with_avg_pool:
+                x_reg = self.avg_pool(x_reg)
+            x_reg = x_reg.flatten(1)
+        for fc in self.reg_fcs:
+            x_reg = self.relu(fc(x_reg))
+        # 特征信息是x_cls
+        cls_score = self.fc_cls(x_cls) if self.with_cls else None
+        bbox_pred = self.fc_reg(x_reg) if self.with_reg else None
+        return cls_score, bbox_pred,x_cls
+
+
     def predict_by_feat(self,
                         rois: Tuple[Tensor],
                         cls_scores: Tuple[Tensor],
+                        x_cls: Tuple[Tensor],
                         bbox_preds: Tuple[Tensor],
                         batch_img_metas: List[dict],
                         rcnn_test_cfg: Optional[ConfigDict] = None,
@@ -62,6 +120,7 @@ class ConvFCBBoxHeadAddVisualFeature(Shared2FCBBoxHead):
             results = self._predict_by_feat_single_add_visual_feature(
                 roi=rois[img_id],
                 cls_score=cls_scores[img_id],
+                x_cls=x_cls[img_id],
                 bbox_pred=bbox_preds[img_id],
                 img_meta=img_meta,
                 rescale=rescale,
@@ -78,6 +137,7 @@ class ConvFCBBoxHeadAddVisualFeature(Shared2FCBBoxHead):
             self,
             roi: Tensor,
             cls_score: Tensor,
+            x_cls: Tensor,
             bbox_pred: Tensor,
             img_meta: dict,
             rescale: bool = False,
@@ -179,6 +239,7 @@ class ConvFCBBoxHeadAddVisualFeature(Shared2FCBBoxHead):
             # 使用keep_idx 筛选出匹配的视觉特征和完整概率
             final_all_class_probs = scores[proposal_inds]
             final_visual_features = bbox_feat[proposal_inds]
+            final_x_cls = x_cls[proposal_inds]
 
             results.set_field(
                 value=final_visual_features,
@@ -189,6 +250,12 @@ class ConvFCBBoxHeadAddVisualFeature(Shared2FCBBoxHead):
             results.set_field(
                 value=final_all_class_probs,
                 name='all_class_probs',
+                dtype=Tensor,
+            )
+
+            results.set_field(
+                value=final_x_cls,
+                name='x_cls',
                 dtype=Tensor,
             )
 

@@ -11,17 +11,21 @@ from mmdet.registry import METRICS
 import torch
 from torch_geometric.data import Data
 
+import torch.nn.functional as F
+
 from typing import Sequence, List, Optional
 import numpy as np
 import pickle
+import math
 
-SCORE_THRESHOLD = 0.3  # 置信度阈值
+
+SCORE_THRESHOLD = 0.05  # 置信度阈值
 IOU_THRESHOLD = 0.5 # IOU阈值
 BACKGROUND = 48
 epsilon = 1e-6  # 防止除零
 K_NEIGHBORS = 9
 info_list = []
-TYPE = 'train'
+TYPE = 'test'
 @METRICS.register_module()
 class GenerateGNNData(CocoMetric):
 
@@ -29,17 +33,20 @@ class GenerateGNNData(CocoMetric):
         super().__init__(**kwargs)
         self.gnn_list:List[Optional[Data]] = []
         self.gnn_with_visual_list:List[Optional[Data]] = []
+        self.gnn_with_visual_embedding_list:List[Optional[Data]] = []
 
     def process(self, data_batch: dict, data_samples: Sequence[dict]) -> None:
         super().process(data_batch,data_samples)
 
         for data in data_samples:
-            gnn_data,gnn_data_with_visual = self.__generate_gnn_data_and_save(data)
+            gnn_data,gnn_data_with_visual,gnn_data_with_visual_embedding = self.__generate_gnn_data_and_save(data)
 
             if gnn_data is not None:
                 self.gnn_list.append(gnn_data)
             if gnn_data_with_visual is not None:
                 self.gnn_with_visual_list.append(gnn_data_with_visual)
+            if gnn_data_with_visual_embedding is not None:
+                self.gnn_with_visual_embedding_list.append(gnn_data_with_visual_embedding)
 
     def compute_metrics(self,results:List) -> dict:
         eval_results = super().compute_metrics(results)
@@ -53,6 +60,7 @@ class GenerateGNNData(CocoMetric):
 
         torch.save(self.gnn_list, os.path.join(save_dir, f'gnn_{TYPE}_data_{SCORE_THRESHOLD}.pt'))
         torch.save(self.gnn_with_visual_list, os.path.join(save_dir, f'gnn_{TYPE}_data_with_visual_{SCORE_THRESHOLD}.pt'))
+        torch.save(self.gnn_with_visual_embedding_list,os.path.join(save_dir, f'gnn_{TYPE}_data_with_visual_embedding_{SCORE_THRESHOLD}.pt'))
 
         with open(os.path.join(save_dir, f'info_{SCORE_THRESHOLD}.pkl'), 'wb') as f:
             pickle.dump(info_list, f)
@@ -84,12 +92,14 @@ class GenerateGNNData(CocoMetric):
         all_class_probs = pred_instances['all_class_probs'][score_mask]
         scores = pred_instances['scores'][score_mask]
         visual_features = pred_instances['visual_features'][score_mask]
+        x_cls = pred_instances['x_cls'][score_mask]
 
         pred_num = bboxes.shape[0]
 
         # --- 使用Python列表进行高效累积 ---
         feature_list_v1 = []
         feature_list_v2 = []
+        feature_list_v3 = []
         pos_list = []
 
         for i in range(pred_num):
@@ -103,28 +113,48 @@ class GenerateGNNData(CocoMetric):
             aspect_ratio = w / (h + 1e-6)  # 防止除零
 
             # 2. 准备各类特征
-            geom_shape_features = torch.tensor([x_center / img_w, y_center / img_h])
+            geom_shape_features = torch.tensor([x_center / img_w, y_center / img_h,w / img_w,h / img_h ])
+            aspect_ratio_features = torch.tensor([math.log(aspect_ratio)])
             semantic_features = all_class_probs[i]  # 49维
             confidence_score = scores[i].unsqueeze(0)  # 1维
             visual = visual_features[i]  # 假设是1024或2048维
+            x_cls_item = x_cls[i]
 
             # 3. 拼接成最终的特征向量并添加到列表中
             # V1.0 特征
+            normalized_geom_shape_features = 2 * geom_shape_features - 1
+            normalized_semantic_features = 2 * semantic_features - 1
+            normalized_confidence_score = 2 * confidence_score - 1
+            normalized_x_cls = F.normalize(x_cls_item, p=2,dim=-1)
+
+
             features_v1 = torch.cat([
-                geom_shape_features,
-                semantic_features,
-                confidence_score
+                normalized_geom_shape_features,
+                aspect_ratio_features,
+                normalized_semantic_features,
+                normalized_confidence_score
             ])
             feature_list_v1.append(features_v1)
 
             # V2.0 特征
+            normalized_visual_features = 2 * visual - 1
             features_v2 = torch.cat([
-                geom_shape_features,
-                semantic_features,
-                confidence_score,
-                visual.flatten()  # 直接拼接视觉特征
+                normalized_geom_shape_features,
+                aspect_ratio_features,
+                normalized_semantic_features,
+                normalized_confidence_score,
+                normalized_visual_features.flatten()  # 直接拼接视觉特征
             ])
             feature_list_v2.append(features_v2)
+
+            features_v3 = torch.cat([
+                normalized_geom_shape_features,
+                aspect_ratio_features,
+                normalized_x_cls,
+                normalized_confidence_score
+            ])
+
+            feature_list_v3.append(features_v3)
 
             # 累积位置信息
             pos_list.append(torch.tensor([x_center / img_w, y_center/img_h]))
@@ -132,6 +162,7 @@ class GenerateGNNData(CocoMetric):
         # --- [修正点] 在循环外一次性将列表转换为张量 ---
         x_v1 = torch.stack(feature_list_v1)
         x_v2 = torch.stack(feature_list_v2)
+        x_v3 = torch.stack(feature_list_v3)
         pos = torch.stack(pos_list)
 
         # 找到邻居节点
@@ -151,8 +182,9 @@ class GenerateGNNData(CocoMetric):
         # --- [新增逻辑] 6. 组装并返回最终的Data对象 ---
         data_v1 = Data(x=x_v1, edge_index=edge_index, pos=pos, y=y)
         data_v2 = Data(x=x_v2, edge_index=edge_index, pos=pos, y=y)
+        data_v3 = Data(x=x_v3, edge_index=edge_index, pos=pos, y=y)
 
-        return data_v1,data_v2
+        return data_v1,data_v2,data_v3
 
 
     def __ground_truth_y(self,data:dict)->Tensor:

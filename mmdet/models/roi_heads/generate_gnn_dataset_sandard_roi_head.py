@@ -66,7 +66,7 @@ class GenerateGNNDatasetStandardRoIHead(StandardRoIHead):
             batch_img_metas,
             rpn_results_list,
             rcnn_test_cfg=self.test_cfg,
-            rescale=bbox_rescale)
+            rescale=bbox_rescale)# x：四个尺度的特征信息
 
         if self.with_mask:
             results_list = self.predict_mask(
@@ -127,10 +127,13 @@ class GenerateGNNDatasetStandardRoIHead(StandardRoIHead):
         cls_scores = bbox_results['cls_score']
         bbox_preds = bbox_results['bbox_pred']
         bbox_feats = bbox_results['bbox_feats']
+        features = bbox_results['x_cls']
         num_proposals_per_img = tuple(len(p) for p in proposals)
         rois = rois.split(num_proposals_per_img, 0)
         cls_scores = cls_scores.split(num_proposals_per_img, 0)
         bbox_feats = bbox_feats.split(num_proposals_per_img, 0)
+        features = features.split(num_proposals_per_img, 0)
+
         # some detector with_reg is False, bbox_preds will be None
         if bbox_preds is not None:
             # TODO move this to a sabl_roi_head
@@ -146,6 +149,7 @@ class GenerateGNNDatasetStandardRoIHead(StandardRoIHead):
         result_list = self.bbox_head.predict_by_feat(
             rois=rois,
             cls_scores=cls_scores,
+            x_cls=features,
             bbox_preds=bbox_preds,
             batch_img_metas=batch_img_metas,
             rcnn_test_cfg=rcnn_test_cfg,
@@ -153,3 +157,30 @@ class GenerateGNNDatasetStandardRoIHead(StandardRoIHead):
             bbox_feats = bbox_feats
         )
         return result_list
+
+
+    def _bbox_forward(self, x: Tuple[Tensor], rois: Tensor) -> dict:
+        """Box head forward function used in both training and testing.
+
+        Args:
+            x (tuple[Tensor]): List of multi-level img features.
+            rois (Tensor): RoIs with the shape (n, 5) where the first
+                column indicates batch id of each RoI.
+
+        Returns:
+             dict[str, Tensor]: Usually returns a dictionary with keys:
+
+                - `cls_score` (Tensor): Classification scores.
+                - `bbox_pred` (Tensor): Box energies / deltas.
+                - `bbox_feats` (Tensor): Extract bbox RoI features.
+        """
+        # TODO: a more flexible way to decide which feature maps to use
+        bbox_feats = self.bbox_roi_extractor(
+            x[:self.bbox_roi_extractor.num_inputs], rois)
+        if self.with_shared_head:
+            bbox_feats = self.shared_head(bbox_feats)
+        cls_score, bbox_pred,x_cls = self.bbox_head(bbox_feats)# bbox_feats  特征融合后的信息
+
+        bbox_results = dict(
+            cls_score=cls_score, bbox_pred=bbox_pred, bbox_feats=bbox_feats,x_cls=x_cls)
+        return bbox_results
