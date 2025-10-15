@@ -78,6 +78,8 @@ class GenerateGNNData(CocoMetric):
         """
         pred_instances = data['pred_instances']
         ori_shape = data['ori_shape'] # h,w
+        img_id = data['img_id']
+        img_path = data['img_path']
         img_h = ori_shape[0]
         img_w = ori_shape[1]
         if 'scores' not in pred_instances or len(pred_instances['scores']) == 0:
@@ -86,6 +88,10 @@ class GenerateGNNData(CocoMetric):
         score_mask = pred_instances['scores'] >= SCORE_THRESHOLD
         if not torch.any(score_mask):
             return None, None # 如果过滤后没有框了，也返回空值
+
+        final_bboxes_unnormalized = pred_instances['bboxes'][score_mask]
+        final_scores = pred_instances['scores'][score_mask]
+        final_raw_labels = pred_instances['labels'][score_mask]  # Faster R-CNN的原始预测标签
 
         # --- 获取所有需要的数据 ---
         bboxes = pred_instances['bboxes'][score_mask]
@@ -178,6 +184,19 @@ class GenerateGNNData(CocoMetric):
             # 如果y的生成逻辑有问题或数量不匹配，则此样本无效
             # print(f"警告: 标签数量 ({len(y) if y is not None else 'None'}) 与预测框数量 ({pred_num}) 不匹配。跳过此样本。")
             return None, None
+
+        common_attrs = {
+            'edge_index': edge_index,
+            'pos':pos,
+            'y':y,
+            'img_id': img_id,
+            'img_path': img_path,
+            'ori_shape': torch.tensor(ori_shape),  # 存为tensor
+            # 存储与每个节点一一对应的原始预测信息
+            'pred_bboxes_raw': final_bboxes_unnormalized,  # [N, 4]
+            'pred_scores_raw': final_scores,  # [N]
+            'pred_labels_raw': final_raw_labels  # [N]
+        }
 
         # --- [新增逻辑] 6. 组装并返回最终的Data对象 ---
         data_v1 = Data(x=x_v1, edge_index=edge_index, pos=pos, y=y)
