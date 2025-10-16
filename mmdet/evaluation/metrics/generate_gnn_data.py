@@ -199,9 +199,9 @@ class GenerateGNNData(CocoMetric):
         }
 
         # --- [新增逻辑] 6. 组装并返回最终的Data对象 ---
-        data_v1 = Data(x=x_v1, edge_index=edge_index, pos=pos, y=y)
-        data_v2 = Data(x=x_v2, edge_index=edge_index, pos=pos, y=y)
-        data_v3 = Data(x=x_v3, edge_index=edge_index, pos=pos, y=y)
+        data_v1 = Data(x=x_v1, **common_attrs)
+        data_v2 = Data(x=x_v2, **common_attrs)
+        data_v3 = Data(x=x_v3, **common_attrs)
 
         return data_v1,data_v2,data_v3
 
