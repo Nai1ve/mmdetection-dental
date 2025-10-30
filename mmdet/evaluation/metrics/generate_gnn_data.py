@@ -107,11 +107,11 @@ class GenerateGNNData(CocoMetric):
         img_h, img_w = ori_shape[0], ori_shape[1]
 
         if 'scores' not in pred_instances or len(pred_instances['scores']) == 0:
-            return None, None, None
+            return None, None
 
         # --- 1. 准备预测数据 (过滤 + 提取) ---
         score_mask = pred_instances['scores'] >= self.score_threshold
-        if not torch.any(score_mask): return None, None, None
+        if not torch.any(score_mask): return None, None
 
         # 获取所有需要的数据 (应用 mask)
         final_bboxes_unnormalized = pred_instances['bboxes'][score_mask]
@@ -155,7 +155,7 @@ class GenerateGNNData(CocoMetric):
         if y_tensor is None or len(y_tensor) != num_preds:
             MMLogger.warning(MMLogger.get_current_instance(),
                              f"图片 {img_id}: 标签数量 ({len(y_tensor) if y_tensor is not None else 'None'}) 与预测框数量 ({num_preds}) 不匹配。跳过。")
-            return None, None, None
+            return None, None
 
         # --- 4. [新增] 运行 classify_errors_refined 进行交叉验证 ---
         # 准备 classify_errors_refined 的输入格式: [xmin, ymin, xmax, ymax, pred_cls_idx, score]
