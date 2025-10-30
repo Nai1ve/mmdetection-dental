@@ -9,11 +9,11 @@ model = dict(
             type='ConvFCBBoxHeadAddVisualFeature',
             num_classes=48)))
 
-train_cfg = dict(type='EpochBasedTrainLoop', max_epochs=1, val_interval=1)
+train_cfg = dict(type='EpochBasedTrainLoop', max_epochs=5, val_interval=1)
 # 日志等级
 log_level = 'DEBUG'
 # 修改数据集相关配置
-data_root = r"C:\Users\Administrator\PycharmProjects\mmdetection-dental\dataset\coco\crop_child\\"
+data_root = r"C:\Users\Administrator\PycharmProjects\mmdetection-dental\dataset\coco\crop_child/"
 
 metainfo = {
     'classes': ('11','12','13','14','15','16','17',
@@ -73,8 +73,8 @@ test_pipeline = [
 ]
 
 train_dataloader = dict(
-    batch_size=4,
-    num_workers=2,
+    batch_size=1,
+    num_workers=1,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=True),
     batch_sampler=dict(type='AspectRatioBatchSampler'),
@@ -82,7 +82,7 @@ train_dataloader = dict(
         type=dataset_type,
         metainfo = metainfo,
         data_root=data_root,
-        ann_file='annotations/train.json',
+        ann_file='annotations/val.json',
         data_prefix=dict(img='preprocessing_images/'),
         filter_cfg=dict(filter_empty_gt=True, min_size=32),
         pipeline=train_pipeline,
@@ -109,6 +109,11 @@ val_evaluator = dict(
     ann_file=data_root + 'annotations/val.json',
     metric=['bbox'],
     format_only=False,
+    score_threshold=0.05,
+    iou_threshold=0.5,
+    k_neighbors=9,
+    data_type='test',
+    gnn_save_dir='gnn_data',
     classwise=True,
     backend_args=backend_args)
 test_evaluator = val_evaluator
