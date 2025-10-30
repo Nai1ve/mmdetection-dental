@@ -448,89 +448,61 @@ class GenerateGNNData(CocoMetric):
         return  iou
 
     def classify_errors_refined(self,predictions, ground_truths, iou_threshold=0.5):
-        """
-        对目标检测结果进行精细化的错误分类 (V2 - 采用以预测为中心的标准匹配逻辑)。
-        """
-        # 如果没有预测或真实框，提前返回
-        num_preds = predictions.shape[0]
-        num_gts = ground_truths.shape[0]
-        if num_gts == 0:
-            return {'TP': [], 'FP_C': [], 'DUPS': [], 'SPAN': [], 'FP_H': predictions.tolist(), 'FN': []}
-        if num_preds == 0:
-            return {'TP': [], 'FP_C': [], 'DUPS': [], 'SPAN': [], 'FP_H': [], 'FN': ground_truths.tolist()}
+        num_preds, num_gts = predictions.shape[0], ground_truths.shape[0]
+        if num_gts == 0: return {'TP': [], 'FP_C': [], 'DUPS': [], 'SPAN': [], 'FP_H': predictions.tolist(), 'FN': []}
+        if num_preds == 0: return {'TP': [], 'FP_C': [], 'DUPS': [], 'SPAN': [], 'FP_H': [],
+                                   'FN': ground_truths.tolist()}
+        # 确保按分数排序
+        sort_inds = np.argsort(predictions[:, 5])[::-1]
+        predictions = predictions[sort_inds]
 
-        # 按置信度从高到低对预测进行排序
-        predictions = predictions[predictions[:, 5].argsort()[::-1]]
-
-        # 初始化跟踪器
         gt_matched = np.zeros(num_gts, dtype=bool)
         pred_assignment = np.full(num_preds, 'UNMATCHED', dtype=object)
+        # 存储每个预测匹配到的GT索引和IoU，方便后续查找
+        pred_match_info = np.full(num_preds, None, dtype=object)
 
-        # 计算IoU矩阵
-        iou_matrix = np.zeros((num_preds, num_gts))
+        iou_matrix = np.array([[self.__calculate_iou(p[:4], g[:4]) for g in ground_truths] for p in predictions])
+
         for i in range(num_preds):
-            for j in range(num_gts):
-                iou_matrix[i, j] = self.__calculate_iou(predictions[i, :4], ground_truths[j, :4])
-
-        # Pass 1: 以预测为中心，进行贪婪匹配 (识别TP和FP-C)
-        for i in range(num_preds):
-            # 寻找当前预测的最佳GT匹配
-            best_gt_idx = -1
-            max_iou = iou_threshold
-
-            # 只在尚未匹配的GT中寻找
+            best_gt_idx, max_iou = -1, iou_threshold
             for j in range(num_gts):
                 if not gt_matched[j] and iou_matrix[i, j] >= max_iou:
-                    max_iou = iou_matrix[i, j]
-                    best_gt_idx = j
-
+                    max_iou, best_gt_idx = iou_matrix[i, j], j
             if best_gt_idx != -1:
                 gt_matched[best_gt_idx] = True
-                pred_assignment[i] = 'MATCHED'
-                if predictions[i, 4] == ground_truths[best_gt_idx, 4]:
-                    pred_assignment[i] = 'TP'
-                    # print(best_gt_idx)
-                else:
-                    print(
-                        f'i = {i},j = {j},best_gt_idx={best_gt_idx},predictions[i, 4] = {predictions[i, 4]},ground_truths[best_gt_idx, 4]={ground_truths[best_gt_idx, 4]}')
-                    pred_assignment[i] = 'FP_C'
+                pred_assignment[i] = 'TP' if predictions[i, 4] == ground_truths[best_gt_idx, 4] else 'FP_C'
+                pred_match_info[i] = {'gt_idx': best_gt_idx, 'iou': max_iou}  # 记录匹配信息
 
-        # Pass 2: 处理所有未匹配的预测 (识别DUPS和FP-H)
         for i in range(num_preds):
             if pred_assignment[i] == 'UNMATCHED':
-                # 找到与这个未匹配预测重叠度最高的GT (无论该GT是否已被匹配)
                 best_gt_idx = np.argmax(iou_matrix[i, :])
-                max_iou = iou_matrix[i, best_gt_idx]
-
+                max_iou = iou_matrix[i, best_gt_idx] if num_gts > 0 else 0  # 处理无GT情况
                 if max_iou >= iou_threshold:
-                    # 如果它与某个GT重叠度很高，但没能在Pass 1中匹配上
-                    # 说明它是一个多余的框，我们根据类别判断是DUPS还是FP-C
-                    if predictions[i, 4] == ground_truths[best_gt_idx, 4]:
-                        pred_assignment[i] = 'DUPS'
-                    else:
-                        pred_assignment[i] = 'FP_C'
+                    pred_assignment[i] = 'DUPS' if predictions[i, 4] == ground_truths[best_gt_idx, 4] else 'FP_C'
+                    pred_match_info[i] = {'gt_idx': best_gt_idx, 'iou': max_iou}  # 记录匹配信息
                 else:
-                    # 如果与所有GT的重叠度都低，则是伪影
                     pred_assignment[i] = 'FP_H'
+                    pred_match_info[i] = None  # 没有匹配
 
-        # Pass 3: 全局检查跨牙框 (SPAN)，这是一个最高优先级的错误
         for i in range(num_preds):
-            num_overlapping_gts = np.sum(iou_matrix[i, :] >= iou_threshold)
+            num_overlapping_gts = np.sum(iou_matrix[i, :] >= iou_threshold) if num_gts > 0 else 0
             if num_overlapping_gts > 1:
                 pred_assignment[i] = 'SPAN'
+                # SPAN也可能匹配了一个主GT，保留匹配信息可能有用
+                # 如果 pred_match_info[i] is None:
+                #    best_gt_idx = np.argmax(iou_matrix[i, :])
+                #    pred_match_info[i] = {'gt_idx': best_gt_idx, 'iou': iou_matrix[i, best_gt_idx]}
 
-        # Pass 4: 编译最终结果
+        # 编译结果时，带上原始排序的索引，方便后续查找
         results = defaultdict(list)
+        original_indices = sort_inds  # 保存排序前的索引
         for i in range(num_preds):
-            results[pred_assignment[i]].append(predictions[i].tolist())
+            # 保存 (原始预测框, 原始索引)
+            results[pred_assignment[i]].append((predictions[i].tolist(), original_indices[i]))
 
-        unmatched_gts = ground_truths[~gt_matched]
-        results['FN'] = unmatched_gts.tolist()
+        results['FN'] = ground_truths[~gt_matched].tolist()
+        for key in ['MATCHED', 'UNMATCHED']:
+            if key in results: del results[key]
 
-        # 清理一下，防止有'MATCHED'的键存在(虽然理论上不会)
-        if 'MATCHED' in results:
-            del results['MATCHED']
-        if 'UNMATCHED' in results:
-            del results['UNMATCHED']
-
-        return dict(results)
+        # 返回错误分类结果和每个预测框匹配的GT信息(按排序后的顺序)
+        return dict(results), pred_match_info
