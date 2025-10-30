@@ -10,7 +10,7 @@ echo "--- Script started. Logging to: ${LOG_FILE} ---"
 
     WORK_DIR_BASE='/root/work_dirs/k_fold_teeth_experiment' 
     K_FOLDS=5
-    KFOLD_ANN_DIR="data/kfold_annotations"                             # K-Fold标注文件目录
+    KFOLD_ANN_DIR="/root/autodl-tmp/dataset/coco/crop_child/annotations"                             # K-Fold标注文件目录
     OUTPUT_PKL_DIR="gnn_training_data_raw"                             # 保存每折预测结果的目录
 
     # 创建输出目录
@@ -39,7 +39,6 @@ echo "--- Script started. Logging to: ${LOG_FILE} ---"
                 data.val.ann_file=${VAL_ANN_FILE} \
                 # 如果你的配置文件中没有验证器(validator)或需要关闭验证,可以注释掉 data.val.ann_file
                 # 或者如果你想在训练时就用这个fold进行验证,则保持
-            --gpu-id ${GPU_ID}
             # 可以添加 --auto-scale-lr 等参数优化训练
         echo "--- Searching for best checkpoint in ${WORK_DIR} ---"
         CHECKPOINT_FILE=$(find "${WORK_DIR}" -maxdepth 1 -name "best_*.pth" | head -n 1)
@@ -67,7 +66,6 @@ echo "--- Script started. Logging to: ${LOG_FILE} ---"
             --cfg-options \
                 data.test.ann_file=${VAL_ANN_FILE} \
                 # 确保test配置指向的是当前fold的验证文件
-            --gpu-id ${GPU_ID}
 
         echo "Predictions for Fold ${FOLD} saved to ${OUTPUT_PKL_FILE}"
     done
