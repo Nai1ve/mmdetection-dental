@@ -3,14 +3,17 @@ _base_ = '../faster_rcnn/faster-rcnn_r50_fpn_1x_coco.py'
 dataset_type = 'CocoDataset'
 # 我们还需要更改 head 中的 num_classes 以匹配数据集中的类别数
 model = dict(
+    rpn_head=dict(
+    anchor_generator = dict(ratios=[0.5, 0.75, 1.5])
+    ),
     roi_head=dict(
-        type='StandardRoIHead',
-        bbox_head=dict(num_classes=48)))
+        bbox_head=dict(num_classes=48)
+    ))
 
-train_cfg = dict(type='EpochBasedTrainLoop', max_epochs=1, val_interval=1)
+train_cfg = dict(type='EpochBasedTrainLoop', max_epochs=100, val_interval=1)
 
 # 修改数据集相关配置
-data_root = r"C:\Users\Administrator\PycharmProjects\mmdetection-dental\dataset\coco\crop_child\\"
+data_root = r"/root/autodl-tmp/dataset/coco/crop_child/"
 
 metainfo = {
     'classes': ('11','12','13','14','15','16','17',
@@ -56,7 +59,7 @@ test_pipeline = [
         contrast_range=(0.5, 1.5),
         # 对应 hsv_s: 0.7
         # MMDetection中的饱和度调整范围，YOLO的0.7gain可以近似为(1-0.7, 1+0.7)
-        saturation_range=(0.3, 1.7), 
+        saturation_range=(0.3, 1.7),
         # 对应 hsv_v: 0.4
         # MMDetection中通常用 brightness_delta, contrast_range, hue_delta 等来近似
         # MMDetection的hue_delta是 [-hue_delta, hue_delta]，
@@ -70,7 +73,7 @@ test_pipeline = [
 ]
 
 train_dataloader = dict(
-    batch_size=4,
+    batch_size=8,
     num_workers=2,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=True),
@@ -86,7 +89,7 @@ train_dataloader = dict(
         backend_args=backend_args))
 val_dataloader = dict(
     batch_size=1,
-    num_workers=1,
+    num_workers=2,
     persistent_workers=True,
     drop_last=False,
     sampler=dict(type='DefaultSampler', shuffle=False),

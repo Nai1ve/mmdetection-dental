@@ -28,6 +28,9 @@ epsilon = 1e-6  # 防止除零
 #K_NEIGHBORS = 9
 #info_list = []
 #TYPE = 'test'
+def ensure_cpu(tensor):
+    """确保张量在CPU上"""
+    return tensor.cpu() if tensor.is_cuda else tensor
 @METRICS.register_module()
 class GenerateGNNData(CocoMetric):
 
@@ -264,19 +267,19 @@ class GenerateGNNData(CocoMetric):
             normalized_semantic_features = 2 * semantic_features - 1
 
             feature_v1 = torch.cat([
-                geom_shape_features, # 4D
-                area_feature,# 1D
-                aspect_ratio_features, #1D
-                normalized_semantic_features, #49D
-                confidence_score
+                ensure_cpu(geom_shape_features), # 4D
+                ensure_cpu(area_feature),# 1D
+                ensure_cpu(aspect_ratio_features), #1D
+                ensure_cpu(normalized_semantic_features), #49D
+                ensure_cpu(confidence_score)
             ])
 
             features_v3 = torch.cat([
-                geom_shape_features,  # 4D
-                area_feature,  # 1D (新增)
-                aspect_ratio_features,  # 1D
-                normalized_x_cls,  # 1024D
-                confidence_score  # 1D
+                ensure_cpu(geom_shape_features),  # 4D
+                ensure_cpu(area_feature),  # 1D (新增)
+                ensure_cpu(aspect_ratio_features),  # 1D
+                ensure_cpu(normalized_x_cls),  # 1024D
+                ensure_cpu(confidence_score)  # 1D
             ])
             feature_list_v1.append(feature_v1)
             feature_list_v3.append(features_v3)
@@ -336,9 +339,9 @@ class GenerateGNNData(CocoMetric):
             torch.stack(avg_dist_list)
         ], dim=1)
 
-        x_v1_final = torch.cat([x_v1.to(relational_features.device),relational_features],dim=1)
+        x_v1_final = torch.cat([x_v1,relational_features],dim=1)
         # 确保 relational_features 和 x_v3 的设备一致
-        x_v3_final = torch.cat([x_v3.to(relational_features.device), relational_features], dim=1)
+        x_v3_final = torch.cat([x_v3, relational_features], dim=1)
 
         common_attrs = {
             'edge_index': edge_index, 'pos': pos, 'y': y_tensor, 'img_id': img_id,

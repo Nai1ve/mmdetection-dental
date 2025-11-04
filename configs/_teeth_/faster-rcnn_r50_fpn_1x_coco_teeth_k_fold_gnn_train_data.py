@@ -11,9 +11,9 @@ model = dict(
 
 train_cfg = dict(type='EpochBasedTrainLoop', max_epochs=5, val_interval=1)
 # 日志等级
-log_level = 'DEBUG'
+#log_level = 'DEBUG'
 # 修改数据集相关配置
-data_root = r"C:\Users\Administrator\PycharmProjects\mmdetection-dental\dataset\coco\crop_child/"
+data_root = r"/root/autodl-tmp/dataset/coco/crop_child/"
 
 metainfo = {
     'classes': ('11','12','13','14','15','16','17',
