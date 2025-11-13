@@ -7,16 +7,9 @@ model = dict(
     anchor_generator = dict(ratios=[0.5, 0.75, 1.5])
     ),
     roi_head=dict(
-        bbox_head = dict(
-        num_classes=48,
-        type='CCSWBBOXHead',
-        crown_weight = 1.5,# 超参数 牙冠权重
-        root_weight = 0.5,
-        crown_root_split_ratio = 0.5
-    )
-    )
-)
-train_cfg = dict(max_epochs=100, type='EpochBasedTrainLoop', val_interval=1)
+        bbox_head=dict(num_classes=48)
+    ))
+
 # 修改数据集相关配置
 data_root = '/root/autodl-tmp/dataset/coco/crop_child/'
 metainfo = {
@@ -63,7 +56,7 @@ test_pipeline = [
         contrast_range=(0.5, 1.5),
         # 对应 hsv_s: 0.7
         # MMDetection中的饱和度调整范围，YOLO的0.7gain可以近似为(1-0.7, 1+0.7)
-        saturation_range=(0.3, 1.7),
+        saturation_range=(0.3, 1.7), 
         # 对应 hsv_v: 0.4
         # MMDetection中通常用 brightness_delta, contrast_range, hue_delta 等来近似
         # MMDetection的hue_delta是 [-hue_delta, hue_delta]，
@@ -86,7 +79,7 @@ train_dataloader = dict(
         type=dataset_type,
         metainfo = metainfo,
         data_root=data_root,
-        ann_file='annotations/train_100.json',
+        ann_file='annotations/train_80.json',
         data_prefix=dict(img='preprocessing_images/'),
         filter_cfg=dict(filter_empty_gt=True, min_size=32),
         pipeline=train_pipeline,

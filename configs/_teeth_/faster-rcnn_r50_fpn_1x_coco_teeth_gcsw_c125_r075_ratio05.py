@@ -9,9 +9,9 @@ model = dict(
     roi_head=dict(
         bbox_head = dict(
         num_classes=48,
-        type='CCSWBBOXHead',
-        crown_weight = 1.5,# 超参数 牙冠权重
-        root_weight = 0.5,
+        type='GCSWBBOXHead',
+        crown_weight = 1.25,# 超参数 牙冠权重
+        root_weight = 0.75,
         crown_root_split_ratio = 0.5
     )
     )

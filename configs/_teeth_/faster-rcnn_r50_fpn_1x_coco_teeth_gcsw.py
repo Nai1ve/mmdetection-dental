@@ -7,16 +7,16 @@ model = dict(
     anchor_generator = dict(ratios=[0.5, 0.75, 1.5])
     ),
     roi_head=dict(
-        bbox_head=dict(num_classes=48)
-    ),
-    bbox_head = dict(
+        bbox_head = dict(
+        num_classes=48,
         type='GCSWBBOXHead',
         crown_weight = 1.5,# 超参数 牙冠权重
         root_weight = 0.5,
         crown_root_split_ratio = 0.5
     )
+    )
 )
-
+train_cfg = dict(max_epochs=100, type='EpochBasedTrainLoop', val_interval=1)
 # 修改数据集相关配置
 data_root = '/root/autodl-tmp/dataset/coco/crop_child/'
 metainfo = {

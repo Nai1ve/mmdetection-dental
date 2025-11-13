@@ -83,7 +83,7 @@ class CCSWBBOXHead(Shared2FCBBoxHead):
         cls_reg_targets = self.get_targets(
             sampling_results, rcnn_train_cfg, concat=concat)
         logger = MMLogger.get_current_instance()
-        logger.info("-- 开始调用自定义loss---")
+        #logger.info("-- 开始调用自定义loss---")
         losses = self.loss(
             cls_score,
             bbox_pred,
@@ -106,7 +106,7 @@ class CCSWBBOXHead(Shared2FCBBoxHead):
              bbox_targets: Tensor,
              bbox_weights: Tensor,
              reduction_override: Optional[str] = None,
-             sampling_results:list[SamplingResult] = None) -> dict:
+             sampling_results:List[SamplingResult] = None) -> dict:
         """Calculate the loss based on the network predictions and targets.
 
         Args:
@@ -139,12 +139,12 @@ class CCSWBBOXHead(Shared2FCBBoxHead):
             dict: A dictionary of loss.
         """
         logger = MMLogger.get_current_instance()
-        logger.info("-- 进入自定义loss---")
+        #logger.info("-- 进入自定义loss---")
 
         pos_inds = (labels >=0) & (labels < self.num_classes)
         num_pos_samples = pos_inds.sum()
 
-        self.logger.info(f"start label_weights:{label_weights}")
+        #self.logger.info(f"start label_weights:{label_weights}")
         if num_pos_samples > 0:
             # 创建自定义空间权重
             custom_label_weights = label_weights.clone()
@@ -181,7 +181,7 @@ class CCSWBBOXHead(Shared2FCBBoxHead):
 
             # --- 7. 使用我们修改后的权重 ---
             label_weights = custom_label_weights
-            self.logger.info(f"final weights:{label_weights}")
+            #self.logger.info(f"final weights:{label_weights}")
             losses = dict()
 
             if cls_score is not None:

@@ -8,8 +8,8 @@ echo "--- Script started. Logging to: ${LOG_FILE} ---"
     TRAIN_CONFIG_FILE='configs/_teeth_/faster-rcnn_r50_fpn_1x_coco_teeth_k_fold.py'
     TEST_CONFIG_FILE='configs/_teeth_/faster-rcnn_r50_fpn_1x_coco_teeth_k_fold_gnn_train_data.py'
 
-    WORK_DIR_BASE="/root/autodl-tmp/work_dirs/k_fold_teeth_experiment_$(date +'%Y%m%d_%H%M%S')"
-    # WORK_DIR_BASE="/root/autodl-tmp/work_dirs/k_fold_teeth_experiment_20251030_180223"
+    # WORK_DIR_BASE="/root/autodl-tmp/work_dirs/k_fold_teeth_experiment_$(date +'%Y%m%d_%H%M%S')"
+    WORK_DIR_BASE="/root/autodl-tmp/work_dirs/k_fold_teeth_experiment_20251030_180223"
     K_FOLDS=5
     KFOLD_ANN_DIR="/root/autodl-tmp/dataset/coco/crop_child/annotations"                             # K-Fold标注文件目录
     OUTPUT_PKL_DIR="gnn_training_data_raw"                             # 保存每折预测结果的目录
@@ -18,7 +18,7 @@ echo "--- Script started. Logging to: ${LOG_FILE} ---"
     mkdir -p ${OUTPUT_PKL_DIR}
 
     # 循环 K 折
-    for (( FOLD=5; FOLD<=${K_FOLDS}; FOLD++ ))
+    for (( FOLD=1; FOLD<=${K_FOLDS}; FOLD++ ))
     do
         echo "========================================================"
         echo "Processing Fold ${FOLD}/${K_FOLDS}"
@@ -61,14 +61,16 @@ echo "--- Script started. Logging to: ${LOG_FILE} ---"
         fi
 
         echo "Using checkpoint: ${CHECKPOINT_FILE}"
-
+        DATA_TYPE="train_fold_${FOLD}"
+        echo "--- ${DATA_TYPE} ---"
         # 3. 在对应的验证集 (即本折数据) 上进行预测
         echo "--- Predicting on Fold ${FOLD} using Model trained on other folds ---"
         python tools/test.py ${TEST_CONFIG_FILE} ${CHECKPOINT_FILE} \
             --out ${OUTPUT_PKL_FILE} \
             --cfg-options \
                  test_dataloader.dataset.ann_file=${VAL_ANN_FILE} \
-                 test_evaluator.ann_file=${VAL_ANN_FILE}
+                 test_evaluator.ann_file=${VAL_ANN_FILE} \
+                 test_evaluator.data_type=${DATA_TYPE} \
                 # 确保test配置指向的是当前fold的验证文件
 
         echo "-- python tools/test.py ${TEST_CONFIG_FILE} ${CHECKPOINT_FILE}  --out ${OUTPUT_PKL_FILE} --cfg-options test_dataloader.dataset.ann_file=${VAL_ANN_FILE}  test_evaluator.ann_file=${VAL_ANN_FILE} --"
@@ -87,16 +89,16 @@ echo "--- Script started. Logging to: ${LOG_FILE} ---"
 echo "--- K-Fold process finished. ---"
 echo "--- Full log file saved to: ${LOG_FILE} ---"
 
-# 等待 10 秒, 给你一个短暂的窗口来按 Ctrl+C (如果你突然反悔)
-echo "--- Process complete. Shutting down server in 10 seconds... ---"
-echo "--- (Press Ctrl+C NOW to cancel shutdown) ---"
-sleep 10
+# # 等待 10 秒, 给你一个短暂的窗口来按 Ctrl+C (如果你突然反悔)
+# echo "--- Process complete. Shutting down server in 10 seconds... ---"
+# echo "--- (Press Ctrl+C NOW to cancel shutdown) ---"
+# sleep 10
 
-echo "--- Issuing shutdown command: ${SHUTDOWN_CMD} now ---"
-echo "--- 拜拜! ---"
+# echo "--- Issuing shutdown command: ${SHUTDOWN_CMD} now ---"
+# echo "--- 拜拜! ---"
 
-# 执行关机
-# 再次提醒: 这需要 sudo 权限
-sudo ${SHUTDOWN_CMD} now
+# # 执行关机
+# # 再次提醒: 这需要 sudo 权限
+# sudo ${SHUTDOWN_CMD} now
 
 exit 0

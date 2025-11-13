@@ -29,10 +29,10 @@ class GCSWBBOXHead(Shared2FCBBoxHead):
                  **kwargs
                  ):
         super().__init__(*args,**kwargs)
-        self.logger = MMLogger.get_current_instance()
-        self.logger.info(f"crown_weight:{crown_weight},"
-                         f"root_weight:{root_weight},"
-                         f"crown_root_split_ratio:{crown_root_split_ratio}")
+        #self.logger = MMLogger.get_current_instance()
+        #self.logger.info(f"crown_weight:{crown_weight},"
+        #                f"root_weight:{root_weight},"
+        #                 f"crown_root_split_ratio:{crown_root_split_ratio}")
         self.crown_weight = crown_weight
         self.root_weight = root_weight
         self.crown_root_split_ratio = crown_root_split_ratio
@@ -76,7 +76,7 @@ class GCSWBBOXHead(Shared2FCBBoxHead):
 
         cls_reg_targets = self.get_targets(
             sampling_results, rcnn_train_cfg, concat=concat)
-        self.logger.info("-- 开始调用自定义loss---")
+        #self.logger.info("-- 开始调用自定义loss---")
         losses = self.loss(
             cls_score,
             bbox_pred,
@@ -99,7 +99,7 @@ class GCSWBBOXHead(Shared2FCBBoxHead):
              bbox_targets: Tensor,
              bbox_weights: Tensor,
              reduction_override: Optional[str] = None,
-             sampling_results:list[SamplingResult] = None) -> dict:
+             sampling_results:List[SamplingResult] = None) -> dict:
         """Calculate the loss based on the network predictions and targets.
 
         Args:
@@ -131,11 +131,11 @@ class GCSWBBOXHead(Shared2FCBBoxHead):
         Returns:
             dict: A dictionary of loss.
         """
-        self.logger.info("-- 进入自定义loss---")
+        #self.logger.info("-- 进入自定义loss---")
 
         pos_inds = (labels >=0) & (labels < self.num_classes)
         num_pos_samples = pos_inds.sum()
-        self.logger.info(f"start label_weights:{label_weights}")
+        #self.logger.info(f"start label_weights:{label_weights}")
         if num_pos_samples > 0:
             # 创建自定义空间权重
             custom_label_weights = label_weights.clone()
@@ -146,7 +146,7 @@ class GCSWBBOXHead(Shared2FCBBoxHead):
 
             # 获取符合条件的真实标签索引及其提议框
             pos_labels = labels[pos_inds]
-            self.logger.info(f"pos_labels:{pos_labels}")
+            #self.logger.info(f"pos_labels:{pos_labels}")
             pos_proposal_boxes = rois[pos_inds][:,1:]# 去掉 batch_index
 
             for i in range(num_pos_samples):
@@ -161,21 +161,21 @@ class GCSWBBOXHead(Shared2FCBBoxHead):
                 proposal_y_center = (proposal_box[1] + proposal_box[3]) / 2
                 original_index = torch.where(pos_inds)[0][i]
 
-                self.logger.info(f"proposal_y_center:{proposal_y_center},gt_crown_root_midline:{gt_crown_root_midline}")
+                #self.logger.info(f"proposal_y_center:{proposal_y_center},gt_crown_root_midline:{gt_crown_root_midline}")
                 if proposal_y_center < gt_crown_root_midline:
                     # 候选框中心在牙冠区, 增加权重
-                    self.logger.info(f"center before custom_label_weights :{custom_label_weights[original_index]}")
+                    #self.logger.info(f"center before custom_label_weights :{custom_label_weights[original_index]}")
                     custom_label_weights[original_index] *= self.crown_weight
-                    self.logger.info(f"center after custom_label_weights :{custom_label_weights[original_index]}")
+                    #self.logger.info(f"center after custom_label_weights :{custom_label_weights[original_index]}")
                 else:
                     # 候选框中心在牙根区, 降低权重
-                    self.logger.info(f"no center before custom_label_weights :{custom_label_weights[original_index]}")
+                    #self.logger.info(f"no center before custom_label_weights :{custom_label_weights[original_index]}")
                     custom_label_weights[original_index] *= self.root_weight
-                    self.logger.info(f"no center after custom_label_weights:{custom_label_weights[original_index]}")
+                    #self.logger.info(f"no center after custom_label_weights:{custom_label_weights[original_index]}")
 
             # --- 7. 使用我们修改后的权重 ---
             label_weights = custom_label_weights
-            self.logger.info(f"final weights:{label_weights}")
+            #self.logger.info(f"final weights:{label_weights}")
             losses = dict()
 
             if cls_score is not None:
