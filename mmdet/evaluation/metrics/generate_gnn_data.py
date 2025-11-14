@@ -64,7 +64,7 @@ class GenerateGNNData(CocoMetric):
         self.y_label_stats = defaultdict(int)
         self.logger = MMLogger.get_current_instance()
 
-        self.logger.info(f"GenerateGNNData (V3-Debug) initialized with:")
+        self.logger.info(f"GenerateGNNData initialized with:")
         self.logger.info(f"  score_threshold: {self.score_threshold}")
         self.logger.info(f"  iou_threshold: {self.iou_threshold}")
         self.logger.info(f"  k_neighbors: {self.k_neighbors}")
@@ -75,7 +75,6 @@ class GenerateGNNData(CocoMetric):
         """处理一个批次的数据"""
         super().process(data_batch, data_samples)
         for data_sample in data_samples:
-
             gnn_data = self.__generate_gnn_data_and_save(data_sample)
             if gnn_data is not None:
                 self.gnn_with_visual_embedding_list.append(gnn_data)
@@ -98,7 +97,7 @@ class GenerateGNNData(CocoMetric):
 
         os.makedirs(self.gnn_save_dir, exist_ok=True)
         base_filename = (
-            f'gnn_{self.data_type}_data_with_visual_embedding'
+            f'gnn_{self.data_type}_data'
             f'_score{self.score_threshold:.2f}'
             f'_iou{self.iou_threshold:.2f}'
             f'_k{self.k_neighbors}'

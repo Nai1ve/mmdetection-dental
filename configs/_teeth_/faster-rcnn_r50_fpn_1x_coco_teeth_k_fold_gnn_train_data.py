@@ -53,19 +53,6 @@ test_pipeline = [
     dict(type='Resize', scale=(1333, 800), keep_ratio=True),
     # If you don't have a gt annotation, delete the pipeline
     dict(type='LoadAnnotations', with_bbox=True),
-        dict(
-        type='PhotoMetricDistortion',
-        brightness_delta=32,
-        contrast_range=(0.5, 1.5),
-        # 对应 hsv_s: 0.7
-        # MMDetection中的饱和度调整范围，YOLO的0.7gain可以近似为(1-0.7, 1+0.7)
-        saturation_range=(0.3, 1.7), 
-        # 对应 hsv_v: 0.4
-        # MMDetection中通常用 brightness_delta, contrast_range, hue_delta 等来近似
-        # MMDetection的hue_delta是 [-hue_delta, hue_delta]，
-        # 这里为0，因为YOLO参数中hsv_h为0
-        hue_delta=0,
-    ),
     dict(
         type='PackDetInputs',
         meta_keys=('img_id', 'img_path', 'ori_shape', 'img_shape',
@@ -82,7 +69,7 @@ train_dataloader = dict(
         type=dataset_type,
         metainfo = metainfo,
         data_root=data_root,
-        ann_file='annotations/val.json',
+        ann_file='annotations/train.json',
         data_prefix=dict(img='preprocessing_images/'),
         filter_cfg=dict(filter_empty_gt=True, min_size=32),
         pipeline=train_pipeline,
@@ -104,16 +91,16 @@ val_dataloader = dict(
         backend_args=backend_args))
 test_dataloader = val_dataloader
 
-val_evaluator = dict(
-    type='GenerateGNNData',
+
+val_evaluator =dict(
+    type='ExtractRawFeatures',
     ann_file=data_root + 'annotations/val.json',
     metric=['bbox'],
     format_only=False,
-    score_threshold=0.05,
-    iou_threshold=0.5,
-    k_neighbors=9,
     data_type='test',
-    gnn_save_dir='gnn_data',
+    save_dir='gnn_data',
     classwise=True,
-    backend_args=backend_args)
+    backend_args=backend_args
+)
+
 test_evaluator = val_evaluator
