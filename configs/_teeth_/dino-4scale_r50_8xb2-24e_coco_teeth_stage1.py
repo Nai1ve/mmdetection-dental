@@ -1,6 +1,6 @@
 _base_ = '../dino/dino-4scale_r50_8xb2-24e_coco.py'
 
-data_root = 'data/processed/private_coco_53/'
+data_root = '/root/autodl-tmp/private_coco_53/'
 dataset_type = 'CocoDataset'
 backend_args = None
 
