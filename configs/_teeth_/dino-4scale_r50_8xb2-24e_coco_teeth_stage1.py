@@ -137,4 +137,5 @@ load_from = (
     'dino-4scale_r50_improved_8xb2-12e_coco/'
     'dino-4scale_r50_improved_8xb2-12e_coco_20230818_162607-6f47a913.pth')
 
-work_dir = './work_dirs/stage1_dino_private_53'
+# Persist logs and checkpoints outside the repo on AutoDL.
+work_dir = '/root/autodl-tmp/work_dirs/stage1_dino_private_53'
