@@ -1,0 +1,4421 @@
+{
+  "protocol": "conf>=0.01; score-sorted top K per image; cardinality-first matching",
+  "test_metrics": [
+    {
+      "job": "b0_s42",
+      "variant": "standard",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "split": "val",
+      "coco_ap": 0.7775916458296116,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 6915,
+          "matched": 6888,
+          "fn": 27,
+          "recall": 0.9960954446854664,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "extra_recall": 0.7,
+          "candidates_per_image": 43.97560975609756,
+          "unmatched_candidates_per_image": 1.975609756097561
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 6915,
+          "matched": 6537,
+          "fn": 378,
+          "recall": 0.9453362255965293,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "extra_recall": 0.6,
+          "candidates_per_image": 43.97560975609756,
+          "unmatched_candidates_per_image": 4.115853658536586
+        }
+      ]
+    },
+    {
+      "job": "b0_s42",
+      "variant": "standard",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "split": "internal_test",
+      "coco_ap": 0.7768979941853467,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 13709,
+          "matched": 13655,
+          "fn": 54,
+          "recall": 0.9960609818367496,
+          "extra_gt": 20,
+          "extra_matched": 18,
+          "extra_recall": 0.9,
+          "candidates_per_image": 43.707317073170735,
+          "unmatched_candidates_per_image": 2.076219512195122
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 13709,
+          "matched": 12982,
+          "fn": 727,
+          "recall": 0.9469691443577212,
+          "extra_gt": 20,
+          "extra_matched": 15,
+          "extra_recall": 0.75,
+          "candidates_per_image": 43.707317073170735,
+          "unmatched_candidates_per_image": 4.128048780487805
+        }
+      ]
+    },
+    {
+      "job": "b0_s42",
+      "variant": "standard",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "split": "external_test",
+      "coco_ap": 0.7595568732881112,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 20795,
+          "matched": 20649,
+          "fn": 146,
+          "recall": 0.9929790815099784,
+          "extra_gt": 53,
+          "extra_matched": 41,
+          "extra_recall": 0.7735849056603774,
+          "candidates_per_image": 46.77731958762887,
+          "unmatched_candidates_per_image": 4.202061855670103
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 20795,
+          "matched": 18902,
+          "fn": 1893,
+          "recall": 0.9089685020437606,
+          "extra_gt": 53,
+          "extra_matched": 30,
+          "extra_recall": 0.5660377358490566,
+          "candidates_per_image": 46.77731958762887,
+          "unmatched_candidates_per_image": 7.804123711340206
+        }
+      ]
+    },
+    {
+      "job": "b0_s42",
+      "variant": "standard",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "split": "val",
+      "coco_ap": 0.7809535061957248,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 6915,
+          "matched": 6896,
+          "fn": 19,
+          "recall": 0.9972523499638467,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "extra_recall": 0.7,
+          "candidates_per_image": 49.19512195121951,
+          "unmatched_candidates_per_image": 7.146341463414634
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 6915,
+          "matched": 6587,
+          "fn": 328,
+          "recall": 0.9525668835864064,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "extra_recall": 0.7,
+          "candidates_per_image": 49.19512195121951,
+          "unmatched_candidates_per_image": 9.03048780487805
+        }
+      ]
+    },
+    {
+      "job": "b0_s42",
+      "variant": "standard",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "split": "internal_test",
+      "coco_ap": 0.7799640758710551,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 13709,
+          "matched": 13670,
+          "fn": 39,
+          "recall": 0.9971551535487636,
+          "extra_gt": 20,
+          "extra_matched": 18,
+          "extra_recall": 0.9,
+          "candidates_per_image": 49.292682926829265,
+          "unmatched_candidates_per_image": 7.615853658536586
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 13709,
+          "matched": 13099,
+          "fn": 610,
+          "recall": 0.9555036837114305,
+          "extra_gt": 20,
+          "extra_matched": 15,
+          "extra_recall": 0.75,
+          "candidates_per_image": 49.292682926829265,
+          "unmatched_candidates_per_image": 9.356707317073171
+        }
+      ]
+    },
+    {
+      "job": "b0_s42",
+      "variant": "standard",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "split": "external_test",
+      "coco_ap": 0.7637502831779043,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 20795,
+          "matched": 20679,
+          "fn": 116,
+          "recall": 0.9944217359942293,
+          "extra_gt": 53,
+          "extra_matched": 43,
+          "extra_recall": 0.8113207547169812,
+          "candidates_per_image": 54.294845360824745,
+          "unmatched_candidates_per_image": 11.657731958762886
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 20795,
+          "matched": 19113,
+          "fn": 1682,
+          "recall": 0.9191151719163261,
+          "extra_gt": 53,
+          "extra_matched": 34,
+          "extra_recall": 0.6415094339622641,
+          "candidates_per_image": 54.294845360824745,
+          "unmatched_candidates_per_image": 14.88659793814433
+        }
+      ]
+    },
+    {
+      "job": "balance_s42",
+      "variant": "balance",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "split": "val",
+      "coco_ap": 0.7717797851648984,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 6915,
+          "matched": 6885,
+          "fn": 30,
+          "recall": 0.9956616052060737,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "extra_recall": 0.8,
+          "candidates_per_image": 43.52439024390244,
+          "unmatched_candidates_per_image": 1.5426829268292683
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 6915,
+          "matched": 6553,
+          "fn": 362,
+          "recall": 0.9476500361532899,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "extra_recall": 0.6,
+          "candidates_per_image": 43.52439024390244,
+          "unmatched_candidates_per_image": 3.567073170731707
+        }
+      ]
+    },
+    {
+      "job": "balance_s42",
+      "variant": "balance",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "split": "internal_test",
+      "coco_ap": 0.7724929133255507,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 13709,
+          "matched": 13642,
+          "fn": 67,
+          "recall": 0.9951126996863374,
+          "extra_gt": 20,
+          "extra_matched": 16,
+          "extra_recall": 0.8,
+          "candidates_per_image": 43.27743902439025,
+          "unmatched_candidates_per_image": 1.6859756097560976
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 13709,
+          "matched": 12948,
+          "fn": 761,
+          "recall": 0.9444890218104894,
+          "extra_gt": 20,
+          "extra_matched": 12,
+          "extra_recall": 0.6,
+          "candidates_per_image": 43.27743902439025,
+          "unmatched_candidates_per_image": 3.801829268292683
+        }
+      ]
+    },
+    {
+      "job": "balance_s42",
+      "variant": "balance",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "split": "external_test",
+      "coco_ap": 0.7539673260209815,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 20795,
+          "matched": 20621,
+          "fn": 174,
+          "recall": 0.9916326039913441,
+          "extra_gt": 53,
+          "extra_matched": 38,
+          "extra_recall": 0.7169811320754716,
+          "candidates_per_image": 45.3340206185567,
+          "unmatched_candidates_per_image": 2.816494845360825
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 20795,
+          "matched": 18854,
+          "fn": 1941,
+          "recall": 0.9066602548689588,
+          "extra_gt": 53,
+          "extra_matched": 24,
+          "extra_recall": 0.4528301886792453,
+          "candidates_per_image": 45.3340206185567,
+          "unmatched_candidates_per_image": 6.45979381443299
+        }
+      ]
+    },
+    {
+      "job": "balance_s42",
+      "variant": "balance",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "split": "val",
+      "coco_ap": 0.7763608193155825,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 6915,
+          "matched": 6891,
+          "fn": 24,
+          "recall": 0.996529284164859,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "extra_recall": 0.8,
+          "candidates_per_image": 46.97560975609756,
+          "unmatched_candidates_per_image": 4.9573170731707314
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 6915,
+          "matched": 6598,
+          "fn": 317,
+          "recall": 0.9541576283441793,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "extra_recall": 0.7,
+          "candidates_per_image": 46.97560975609756,
+          "unmatched_candidates_per_image": 6.7439024390243905
+        }
+      ]
+    },
+    {
+      "job": "balance_s42",
+      "variant": "balance",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "split": "internal_test",
+      "coco_ap": 0.775619124960024,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 13709,
+          "matched": 13658,
+          "fn": 51,
+          "recall": 0.9962798161791524,
+          "extra_gt": 20,
+          "extra_matched": 18,
+          "extra_recall": 0.9,
+          "candidates_per_image": 46.94207317073171,
+          "unmatched_candidates_per_image": 5.301829268292683
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 13709,
+          "matched": 13059,
+          "fn": 650,
+          "recall": 0.9525858924793931,
+          "extra_gt": 20,
+          "extra_matched": 12,
+          "extra_recall": 0.6,
+          "candidates_per_image": 46.94207317073171,
+          "unmatched_candidates_per_image": 7.128048780487805
+        }
+      ]
+    },
+    {
+      "job": "balance_s42",
+      "variant": "balance",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "split": "external_test",
+      "coco_ap": 0.756903327354156,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 20795,
+          "matched": 20655,
+          "fn": 140,
+          "recall": 0.9932676124068286,
+          "extra_gt": 53,
+          "extra_matched": 43,
+          "extra_recall": 0.8113207547169812,
+          "candidates_per_image": 49.7979381443299,
+          "unmatched_candidates_per_image": 7.210309278350516
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 20795,
+          "matched": 18995,
+          "fn": 1800,
+          "recall": 0.9134407309449387,
+          "extra_gt": 53,
+          "extra_matched": 27,
+          "extra_recall": 0.5094339622641509,
+          "candidates_per_image": 49.7979381443299,
+          "unmatched_candidates_per_image": 10.632989690721649
+        }
+      ]
+    },
+    {
+      "job": "hard_s42",
+      "variant": "hard",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "split": "val",
+      "coco_ap": 0.7743574218901071,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 6915,
+          "matched": 6890,
+          "fn": 25,
+          "recall": 0.9963846710050615,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "extra_recall": 0.8,
+          "candidates_per_image": 48.792682926829265,
+          "unmatched_candidates_per_image": 6.780487804878049
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 6915,
+          "matched": 6534,
+          "fn": 381,
+          "recall": 0.9449023861171366,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "extra_recall": 0.6,
+          "candidates_per_image": 48.792682926829265,
+          "unmatched_candidates_per_image": 8.951219512195122
+        }
+      ]
+    },
+    {
+      "job": "hard_s42",
+      "variant": "hard",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "split": "internal_test",
+      "coco_ap": 0.7768011003872439,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 13709,
+          "matched": 13665,
+          "fn": 44,
+          "recall": 0.996790429644759,
+          "extra_gt": 20,
+          "extra_matched": 17,
+          "extra_recall": 0.85,
+          "candidates_per_image": 48.76829268292683,
+          "unmatched_candidates_per_image": 7.1067073170731705
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 13709,
+          "matched": 12995,
+          "fn": 714,
+          "recall": 0.9479174265081334,
+          "extra_gt": 20,
+          "extra_matched": 15,
+          "extra_recall": 0.75,
+          "candidates_per_image": 48.76829268292683,
+          "unmatched_candidates_per_image": 9.149390243902438
+        }
+      ]
+    },
+    {
+      "job": "hard_s42",
+      "variant": "hard",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "split": "external_test",
+      "coco_ap": 0.7600100887907889,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 20795,
+          "matched": 20681,
+          "fn": 114,
+          "recall": 0.9945179129598462,
+          "extra_gt": 53,
+          "extra_matched": 45,
+          "extra_recall": 0.8490566037735849,
+          "candidates_per_image": 52.544329896907215,
+          "unmatched_candidates_per_image": 9.903092783505155
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 20795,
+          "matched": 18808,
+          "fn": 1987,
+          "recall": 0.904448184659774,
+          "extra_gt": 53,
+          "extra_matched": 26,
+          "extra_recall": 0.49056603773584906,
+          "candidates_per_image": 52.544329896907215,
+          "unmatched_candidates_per_image": 13.764948453608248
+        }
+      ]
+    },
+    {
+      "job": "hard_s42",
+      "variant": "hard",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "split": "val",
+      "coco_ap": 0.777888823415017,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 6915,
+          "matched": 6900,
+          "fn": 15,
+          "recall": 0.9978308026030369,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "extra_recall": 0.8,
+          "candidates_per_image": 56.542682926829265,
+          "unmatched_candidates_per_image": 14.46951219512195
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 6915,
+          "matched": 6609,
+          "fn": 306,
+          "recall": 0.9557483731019523,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "extra_recall": 0.7,
+          "candidates_per_image": 56.542682926829265,
+          "unmatched_candidates_per_image": 16.24390243902439
+        }
+      ]
+    },
+    {
+      "job": "hard_s42",
+      "variant": "hard",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "split": "internal_test",
+      "coco_ap": 0.7799283534791758,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 13709,
+          "matched": 13679,
+          "fn": 30,
+          "recall": 0.997811656575972,
+          "extra_gt": 20,
+          "extra_matched": 18,
+          "extra_recall": 0.9,
+          "candidates_per_image": 57.051829268292686,
+          "unmatched_candidates_per_image": 15.347560975609756
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 13709,
+          "matched": 13145,
+          "fn": 564,
+          "recall": 0.9588591436282734,
+          "extra_gt": 20,
+          "extra_matched": 15,
+          "extra_recall": 0.75,
+          "candidates_per_image": 57.051829268292686,
+          "unmatched_candidates_per_image": 16.975609756097562
+        }
+      ]
+    },
+    {
+      "job": "hard_s42",
+      "variant": "hard",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "split": "external_test",
+      "coco_ap": 0.7639413488269147,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 20795,
+          "matched": 20722,
+          "fn": 73,
+          "recall": 0.9964895407549892,
+          "extra_gt": 53,
+          "extra_matched": 49,
+          "extra_recall": 0.9245283018867925,
+          "candidates_per_image": 64.47835051546392,
+          "unmatched_candidates_per_image": 21.75257731958763
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 20795,
+          "matched": 19093,
+          "fn": 1702,
+          "recall": 0.9181534022601587,
+          "extra_gt": 53,
+          "extra_matched": 34,
+          "extra_recall": 0.6415094339622641,
+          "candidates_per_image": 64.47835051546392,
+          "unmatched_candidates_per_image": 25.111340206185567
+        }
+      ]
+    },
+    {
+      "job": "combined_s42",
+      "variant": "combined",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "split": "val",
+      "coco_ap": 0.7719144820810251,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 6915,
+          "matched": 6886,
+          "fn": 29,
+          "recall": 0.9958062183658712,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "extra_recall": 0.6,
+          "candidates_per_image": 43.048780487804876,
+          "unmatched_candidates_per_image": 1.0609756097560976
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 6915,
+          "matched": 6540,
+          "fn": 375,
+          "recall": 0.9457700650759219,
+          "extra_gt": 10,
+          "extra_matched": 5,
+          "extra_recall": 0.5,
+          "candidates_per_image": 43.048780487804876,
+          "unmatched_candidates_per_image": 3.1707317073170733
+        }
+      ]
+    },
+    {
+      "job": "combined_s42",
+      "variant": "combined",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "split": "internal_test",
+      "coco_ap": 0.7728864905634419,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 13709,
+          "matched": 13645,
+          "fn": 64,
+          "recall": 0.9953315340287402,
+          "extra_gt": 20,
+          "extra_matched": 16,
+          "extra_recall": 0.8,
+          "candidates_per_image": 42.81707317073171,
+          "unmatched_candidates_per_image": 1.2164634146341464
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 13709,
+          "matched": 12979,
+          "fn": 730,
+          "recall": 0.9467503100153184,
+          "extra_gt": 20,
+          "extra_matched": 13,
+          "extra_recall": 0.65,
+          "candidates_per_image": 42.81707317073171,
+          "unmatched_candidates_per_image": 3.2469512195121952
+        }
+      ]
+    },
+    {
+      "job": "combined_s42",
+      "variant": "combined",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "split": "external_test",
+      "coco_ap": 0.7472474800485347,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 20795,
+          "matched": 20611,
+          "fn": 184,
+          "recall": 0.9911517191632604,
+          "extra_gt": 53,
+          "extra_matched": 36,
+          "extra_recall": 0.6792452830188679,
+          "candidates_per_image": 44.241237113402065,
+          "unmatched_candidates_per_image": 1.7443298969072165
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 20795,
+          "matched": 18769,
+          "fn": 2026,
+          "recall": 0.9025727338302476,
+          "extra_gt": 53,
+          "extra_matched": 24,
+          "extra_recall": 0.4528301886792453,
+          "candidates_per_image": 44.241237113402065,
+          "unmatched_candidates_per_image": 5.542268041237113
+        }
+      ]
+    },
+    {
+      "job": "combined_s42",
+      "variant": "combined",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "split": "val",
+      "coco_ap": 0.77526856219054,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 6915,
+          "matched": 6890,
+          "fn": 25,
+          "recall": 0.9963846710050615,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "extra_recall": 0.6,
+          "candidates_per_image": 45.75609756097561,
+          "unmatched_candidates_per_image": 3.7439024390243905
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 6915,
+          "matched": 6570,
+          "fn": 345,
+          "recall": 0.9501084598698482,
+          "extra_gt": 10,
+          "extra_matched": 5,
+          "extra_recall": 0.5,
+          "candidates_per_image": 45.75609756097561,
+          "unmatched_candidates_per_image": 5.695121951219512
+        }
+      ]
+    },
+    {
+      "job": "combined_s42",
+      "variant": "combined",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "split": "internal_test",
+      "coco_ap": 0.7752777395280553,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 13709,
+          "matched": 13662,
+          "fn": 47,
+          "recall": 0.9965715953023561,
+          "extra_gt": 20,
+          "extra_matched": 17,
+          "extra_recall": 0.85,
+          "candidates_per_image": 45.728658536585364,
+          "unmatched_candidates_per_image": 4.076219512195122
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 13709,
+          "matched": 13038,
+          "fn": 671,
+          "recall": 0.9510540520825735,
+          "extra_gt": 20,
+          "extra_matched": 13,
+          "extra_recall": 0.65,
+          "candidates_per_image": 45.728658536585364,
+          "unmatched_candidates_per_image": 5.978658536585366
+        }
+      ]
+    },
+    {
+      "job": "combined_s42",
+      "variant": "combined",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "split": "external_test",
+      "coco_ap": 0.7478146105663698,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 20795,
+          "matched": 20634,
+          "fn": 161,
+          "recall": 0.9922577542678529,
+          "extra_gt": 53,
+          "extra_matched": 39,
+          "extra_recall": 0.7358490566037735,
+          "candidates_per_image": 47.9340206185567,
+          "unmatched_candidates_per_image": 5.389690721649485
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 20795,
+          "matched": 18884,
+          "fn": 1911,
+          "recall": 0.9081029093532099,
+          "extra_gt": 53,
+          "extra_matched": 27,
+          "extra_recall": 0.5094339622641509,
+          "candidates_per_image": 47.9340206185567,
+          "unmatched_candidates_per_image": 8.997938144329897
+        }
+      ]
+    },
+    {
+      "job": "baseline_s43",
+      "variant": "baseline",
+      "seed": 43,
+      "postprocessing": "nms06",
+      "split": "val",
+      "coco_ap": 0.7699565915464003,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 6915,
+          "matched": 6883,
+          "fn": 32,
+          "recall": 0.9953723788864787,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "extra_recall": 0.8,
+          "candidates_per_image": 46.06707317073171,
+          "unmatched_candidates_per_image": 4.097560975609756
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 6915,
+          "matched": 6516,
+          "fn": 399,
+          "recall": 0.942299349240781,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "extra_recall": 0.7,
+          "candidates_per_image": 46.06707317073171,
+          "unmatched_candidates_per_image": 6.335365853658536
+        }
+      ]
+    },
+    {
+      "job": "baseline_s43",
+      "variant": "baseline",
+      "seed": 43,
+      "postprocessing": "nms06",
+      "split": "internal_test",
+      "coco_ap": 0.7716918157262006,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 13709,
+          "matched": 13654,
+          "fn": 55,
+          "recall": 0.9959880370559486,
+          "extra_gt": 20,
+          "extra_matched": 18,
+          "extra_recall": 0.9,
+          "candidates_per_image": 45.9390243902439,
+          "unmatched_candidates_per_image": 4.310975609756097
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 13709,
+          "matched": 12989,
+          "fn": 720,
+          "recall": 0.9474797578233277,
+          "extra_gt": 20,
+          "extra_matched": 14,
+          "extra_recall": 0.7,
+          "candidates_per_image": 45.9390243902439,
+          "unmatched_candidates_per_image": 6.338414634146342
+        }
+      ]
+    },
+    {
+      "job": "baseline_s43",
+      "variant": "baseline",
+      "seed": 43,
+      "postprocessing": "nms06",
+      "split": "external_test",
+      "coco_ap": 0.7589806707215488,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 20795,
+          "matched": 20675,
+          "fn": 120,
+          "recall": 0.9942293820629959,
+          "extra_gt": 53,
+          "extra_matched": 42,
+          "extra_recall": 0.7924528301886793,
+          "candidates_per_image": 48.74432989690722,
+          "unmatched_candidates_per_image": 6.115463917525773
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 20795,
+          "matched": 18986,
+          "fn": 1809,
+          "recall": 0.9130079345996633,
+          "extra_gt": 53,
+          "extra_matched": 30,
+          "extra_recall": 0.5660377358490566,
+          "candidates_per_image": 48.74432989690722,
+          "unmatched_candidates_per_image": 9.597938144329897
+        }
+      ]
+    },
+    {
+      "job": "baseline_s43",
+      "variant": "baseline",
+      "seed": 43,
+      "postprocessing": "_nms085",
+      "split": "val",
+      "coco_ap": 0.774146579757993,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 6915,
+          "matched": 6892,
+          "fn": 23,
+          "recall": 0.9966738973246565,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "extra_recall": 0.8,
+          "candidates_per_image": 52.16463414634146,
+          "unmatched_candidates_per_image": 10.140243902439025
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 6915,
+          "matched": 6581,
+          "fn": 334,
+          "recall": 0.9516992046276211,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "extra_recall": 0.8,
+          "candidates_per_image": 52.16463414634146,
+          "unmatched_candidates_per_image": 12.036585365853659
+        }
+      ]
+    },
+    {
+      "job": "baseline_s43",
+      "variant": "baseline",
+      "seed": 43,
+      "postprocessing": "_nms085",
+      "split": "internal_test",
+      "coco_ap": 0.7730880671209556,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 13709,
+          "matched": 13672,
+          "fn": 37,
+          "recall": 0.9973010431103655,
+          "extra_gt": 20,
+          "extra_matched": 18,
+          "extra_recall": 0.9,
+          "candidates_per_image": 51.6280487804878,
+          "unmatched_candidates_per_image": 9.945121951219512
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 13709,
+          "matched": 13083,
+          "fn": 626,
+          "recall": 0.9543365672186155,
+          "extra_gt": 20,
+          "extra_matched": 14,
+          "extra_recall": 0.7,
+          "candidates_per_image": 51.6280487804878,
+          "unmatched_candidates_per_image": 11.740853658536585
+        }
+      ]
+    },
+    {
+      "job": "baseline_s43",
+      "variant": "baseline",
+      "seed": 43,
+      "postprocessing": "_nms085",
+      "split": "external_test",
+      "coco_ap": 0.760717771816386,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 20795,
+          "matched": 20713,
+          "fn": 82,
+          "recall": 0.9960567444097139,
+          "extra_gt": 53,
+          "extra_matched": 44,
+          "extra_recall": 0.8301886792452831,
+          "candidates_per_image": 55.855670103092784,
+          "unmatched_candidates_per_image": 13.148453608247422
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 20795,
+          "matched": 19200,
+          "fn": 1595,
+          "recall": 0.923298869920654,
+          "extra_gt": 53,
+          "extra_matched": 30,
+          "extra_recall": 0.5660377358490566,
+          "candidates_per_image": 55.855670103092784,
+          "unmatched_candidates_per_image": 16.2680412371134
+        }
+      ]
+    },
+    {
+      "job": "balance_s43",
+      "variant": "balance",
+      "seed": 43,
+      "postprocessing": "nms06",
+      "split": "val",
+      "coco_ap": 0.7728253871807833,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 6915,
+          "matched": 6891,
+          "fn": 24,
+          "recall": 0.996529284164859,
+          "extra_gt": 10,
+          "extra_matched": 10,
+          "extra_recall": 1.0,
+          "candidates_per_image": 44.53658536585366,
+          "unmatched_candidates_per_image": 2.518292682926829
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 6915,
+          "matched": 6537,
+          "fn": 378,
+          "recall": 0.9453362255965293,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "extra_recall": 0.7,
+          "candidates_per_image": 44.53658536585366,
+          "unmatched_candidates_per_image": 4.676829268292683
+        }
+      ]
+    },
+    {
+      "job": "balance_s43",
+      "variant": "balance",
+      "seed": 43,
+      "postprocessing": "nms06",
+      "split": "internal_test",
+      "coco_ap": 0.7734953638781482,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 13709,
+          "matched": 13658,
+          "fn": 51,
+          "recall": 0.9962798161791524,
+          "extra_gt": 20,
+          "extra_matched": 15,
+          "extra_recall": 0.75,
+          "candidates_per_image": 44.7530487804878,
+          "unmatched_candidates_per_image": 3.1128048780487805
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 13709,
+          "matched": 12980,
+          "fn": 729,
+          "recall": 0.9468232547961193,
+          "extra_gt": 20,
+          "extra_matched": 11,
+          "extra_recall": 0.55,
+          "candidates_per_image": 44.7530487804878,
+          "unmatched_candidates_per_image": 5.179878048780488
+        }
+      ]
+    },
+    {
+      "job": "balance_s43",
+      "variant": "balance",
+      "seed": 43,
+      "postprocessing": "nms06",
+      "split": "external_test",
+      "coco_ap": 0.7551730823693437,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 20795,
+          "matched": 20653,
+          "fn": 142,
+          "recall": 0.9931714354412118,
+          "extra_gt": 53,
+          "extra_matched": 44,
+          "extra_recall": 0.8301886792452831,
+          "candidates_per_image": 47.175257731958766,
+          "unmatched_candidates_per_image": 4.591752577319587
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 20795,
+          "matched": 18895,
+          "fn": 1900,
+          "recall": 0.908631882664102,
+          "extra_gt": 53,
+          "extra_matched": 29,
+          "extra_recall": 0.5471698113207547,
+          "candidates_per_image": 47.175257731958766,
+          "unmatched_candidates_per_image": 8.216494845360824
+        }
+      ]
+    },
+    {
+      "job": "balance_s43",
+      "variant": "balance",
+      "seed": 43,
+      "postprocessing": "_nms085",
+      "split": "val",
+      "coco_ap": 0.7752894154711533,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 6915,
+          "matched": 6899,
+          "fn": 16,
+          "recall": 0.9976861894432393,
+          "extra_gt": 10,
+          "extra_matched": 10,
+          "extra_recall": 1.0,
+          "candidates_per_image": 50.0,
+          "unmatched_candidates_per_image": 7.932926829268292
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 6915,
+          "matched": 6595,
+          "fn": 320,
+          "recall": 0.9537237888647867,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "extra_recall": 0.8,
+          "candidates_per_image": 50.0,
+          "unmatched_candidates_per_image": 9.786585365853659
+        }
+      ]
+    },
+    {
+      "job": "balance_s43",
+      "variant": "balance",
+      "seed": 43,
+      "postprocessing": "_nms085",
+      "split": "internal_test",
+      "coco_ap": 0.7756217239746493,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 13709,
+          "matched": 13677,
+          "fn": 32,
+          "recall": 0.9976657670143702,
+          "extra_gt": 20,
+          "extra_matched": 17,
+          "extra_recall": 0.85,
+          "candidates_per_image": 50.4359756097561,
+          "unmatched_candidates_per_image": 8.737804878048781
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 13709,
+          "matched": 13089,
+          "fn": 620,
+          "recall": 0.9547742359034211,
+          "extra_gt": 20,
+          "extra_matched": 12,
+          "extra_recall": 0.6,
+          "candidates_per_image": 50.4359756097561,
+          "unmatched_candidates_per_image": 10.53048780487805
+        }
+      ]
+    },
+    {
+      "job": "balance_s43",
+      "variant": "balance",
+      "seed": 43,
+      "postprocessing": "_nms085",
+      "split": "external_test",
+      "coco_ap": 0.7591148722920984,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 20795,
+          "matched": 20687,
+          "fn": 108,
+          "recall": 0.9948064438566964,
+          "extra_gt": 53,
+          "extra_matched": 46,
+          "extra_recall": 0.8679245283018868,
+          "candidates_per_image": 54.01855670103093,
+          "unmatched_candidates_per_image": 11.364948453608248
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 20795,
+          "matched": 19104,
+          "fn": 1691,
+          "recall": 0.9186823755710507,
+          "extra_gt": 53,
+          "extra_matched": 34,
+          "extra_recall": 0.6415094339622641,
+          "candidates_per_image": 54.01855670103093,
+          "unmatched_candidates_per_image": 14.628865979381443
+        }
+      ]
+    },
+    {
+      "job": "baseline_s44",
+      "variant": "baseline",
+      "seed": 44,
+      "postprocessing": "nms06",
+      "split": "val",
+      "coco_ap": 0.7788856596231462,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 6915,
+          "matched": 6888,
+          "fn": 27,
+          "recall": 0.9960954446854664,
+          "extra_gt": 10,
+          "extra_matched": 10,
+          "extra_recall": 1.0,
+          "candidates_per_image": 44.298780487804876,
+          "unmatched_candidates_per_image": 2.298780487804878
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 6915,
+          "matched": 6559,
+          "fn": 356,
+          "recall": 0.9485177151120752,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "extra_recall": 0.7,
+          "candidates_per_image": 44.298780487804876,
+          "unmatched_candidates_per_image": 4.304878048780488
+        }
+      ]
+    },
+    {
+      "job": "baseline_s44",
+      "variant": "baseline",
+      "seed": 44,
+      "postprocessing": "nms06",
+      "split": "internal_test",
+      "coco_ap": 0.7823970162674255,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 13709,
+          "matched": 13653,
+          "fn": 56,
+          "recall": 0.9959150922751477,
+          "extra_gt": 20,
+          "extra_matched": 17,
+          "extra_recall": 0.85,
+          "candidates_per_image": 43.97560975609756,
+          "unmatched_candidates_per_image": 2.350609756097561
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 13709,
+          "matched": 13036,
+          "fn": 673,
+          "recall": 0.9509081625209717,
+          "extra_gt": 20,
+          "extra_matched": 12,
+          "extra_recall": 0.6,
+          "candidates_per_image": 43.97560975609756,
+          "unmatched_candidates_per_image": 4.2317073170731705
+        }
+      ]
+    },
+    {
+      "job": "baseline_s44",
+      "variant": "baseline",
+      "seed": 44,
+      "postprocessing": "nms06",
+      "split": "external_test",
+      "coco_ap": 0.7394600577591502,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 20795,
+          "matched": 20631,
+          "fn": 164,
+          "recall": 0.9921134888194277,
+          "extra_gt": 53,
+          "extra_matched": 38,
+          "extra_recall": 0.7169811320754716,
+          "candidates_per_image": 45.10515463917526,
+          "unmatched_candidates_per_image": 2.5670103092783507
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 20795,
+          "matched": 18608,
+          "fn": 2187,
+          "recall": 0.8948304880981005,
+          "extra_gt": 53,
+          "extra_matched": 28,
+          "extra_recall": 0.5283018867924528,
+          "candidates_per_image": 45.10515463917526,
+          "unmatched_candidates_per_image": 6.738144329896907
+        }
+      ]
+    },
+    {
+      "job": "baseline_s44",
+      "variant": "baseline",
+      "seed": 44,
+      "postprocessing": "_nms085",
+      "split": "val",
+      "coco_ap": 0.7815166036092164,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 6915,
+          "matched": 6900,
+          "fn": 15,
+          "recall": 0.9978308026030369,
+          "extra_gt": 10,
+          "extra_matched": 10,
+          "extra_recall": 1.0,
+          "candidates_per_image": 50.5609756097561,
+          "unmatched_candidates_per_image": 8.487804878048781
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 6915,
+          "matched": 6624,
+          "fn": 291,
+          "recall": 0.9579175704989153,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "extra_recall": 0.7,
+          "candidates_per_image": 50.5609756097561,
+          "unmatched_candidates_per_image": 10.170731707317072
+        }
+      ]
+    },
+    {
+      "job": "baseline_s44",
+      "variant": "baseline",
+      "seed": 44,
+      "postprocessing": "_nms085",
+      "split": "internal_test",
+      "coco_ap": 0.7844643757129223,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 13709,
+          "matched": 13673,
+          "fn": 36,
+          "recall": 0.9973739878911664,
+          "extra_gt": 20,
+          "extra_matched": 17,
+          "extra_recall": 0.85,
+          "candidates_per_image": 50.448170731707314,
+          "unmatched_candidates_per_image": 8.762195121951219
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 13709,
+          "matched": 13159,
+          "fn": 550,
+          "recall": 0.9598803705594865,
+          "extra_gt": 20,
+          "extra_matched": 12,
+          "extra_recall": 0.6,
+          "candidates_per_image": 50.448170731707314,
+          "unmatched_candidates_per_image": 10.329268292682928
+        }
+      ]
+    },
+    {
+      "job": "baseline_s44",
+      "variant": "baseline",
+      "seed": 44,
+      "postprocessing": "_nms085",
+      "split": "external_test",
+      "coco_ap": 0.7436728562381143,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 20795,
+          "matched": 20664,
+          "fn": 131,
+          "recall": 0.9937004087521039,
+          "extra_gt": 53,
+          "extra_matched": 43,
+          "extra_recall": 0.8113207547169812,
+          "candidates_per_image": 51.49484536082474,
+          "unmatched_candidates_per_image": 8.888659793814433
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 20795,
+          "matched": 18791,
+          "fn": 2004,
+          "recall": 0.9036306804520318,
+          "extra_gt": 53,
+          "extra_matched": 30,
+          "extra_recall": 0.5660377358490566,
+          "candidates_per_image": 51.49484536082474,
+          "unmatched_candidates_per_image": 12.750515463917527
+        }
+      ]
+    },
+    {
+      "job": "balance_s44",
+      "variant": "balance",
+      "seed": 44,
+      "postprocessing": "nms06",
+      "split": "val",
+      "coco_ap": 0.7738923872182811,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 6915,
+          "matched": 6896,
+          "fn": 19,
+          "recall": 0.9972523499638467,
+          "extra_gt": 10,
+          "extra_matched": 10,
+          "extra_recall": 1.0,
+          "candidates_per_image": 50.00609756097561,
+          "unmatched_candidates_per_image": 7.9573170731707314
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 6915,
+          "matched": 6544,
+          "fn": 371,
+          "recall": 0.9463485177151121,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "extra_recall": 0.7,
+          "candidates_per_image": 50.00609756097561,
+          "unmatched_candidates_per_image": 10.103658536585366
+        }
+      ]
+    },
+    {
+      "job": "balance_s44",
+      "variant": "balance",
+      "seed": 44,
+      "postprocessing": "nms06",
+      "split": "internal_test",
+      "coco_ap": 0.773686748397961,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 13709,
+          "matched": 13671,
+          "fn": 38,
+          "recall": 0.9972280983295645,
+          "extra_gt": 20,
+          "extra_matched": 18,
+          "extra_recall": 0.9,
+          "candidates_per_image": 50.28963414634146,
+          "unmatched_candidates_per_image": 8.609756097560975
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 13709,
+          "matched": 13022,
+          "fn": 687,
+          "recall": 0.9498869355897586,
+          "extra_gt": 20,
+          "extra_matched": 16,
+          "extra_recall": 0.8,
+          "candidates_per_image": 50.28963414634146,
+          "unmatched_candidates_per_image": 10.588414634146341
+        }
+      ]
+    },
+    {
+      "job": "balance_s44",
+      "variant": "balance",
+      "seed": 44,
+      "postprocessing": "nms06",
+      "split": "external_test",
+      "coco_ap": 0.7531377940868896,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 20795,
+          "matched": 20711,
+          "fn": 84,
+          "recall": 0.9959605674440971,
+          "extra_gt": 53,
+          "extra_matched": 46,
+          "extra_recall": 0.8679245283018868,
+          "candidates_per_image": 53.208247422680415,
+          "unmatched_candidates_per_image": 10.505154639175258
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 20795,
+          "matched": 18731,
+          "fn": 2064,
+          "recall": 0.9007453714835297,
+          "extra_gt": 53,
+          "extra_matched": 24,
+          "extra_recall": 0.4528301886792453,
+          "candidates_per_image": 53.208247422680415,
+          "unmatched_candidates_per_image": 14.587628865979381
+        }
+      ]
+    },
+    {
+      "job": "balance_s44",
+      "variant": "balance",
+      "seed": 44,
+      "postprocessing": "_nms085",
+      "split": "val",
+      "coco_ap": 0.7779147349909773,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 6915,
+          "matched": 6903,
+          "fn": 12,
+          "recall": 0.9982646420824295,
+          "extra_gt": 10,
+          "extra_matched": 10,
+          "extra_recall": 1.0,
+          "candidates_per_image": 59.103658536585364,
+          "unmatched_candidates_per_image": 17.01219512195122
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 6915,
+          "matched": 6621,
+          "fn": 294,
+          "recall": 0.9574837310195228,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "extra_recall": 0.8,
+          "candidates_per_image": 59.103658536585364,
+          "unmatched_candidates_per_image": 18.73170731707317
+        }
+      ]
+    },
+    {
+      "job": "balance_s44",
+      "variant": "balance",
+      "seed": 44,
+      "postprocessing": "_nms085",
+      "split": "internal_test",
+      "coco_ap": 0.7761014036902458,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 13709,
+          "matched": 13689,
+          "fn": 20,
+          "recall": 0.9985411043839814,
+          "extra_gt": 20,
+          "extra_matched": 19,
+          "extra_recall": 0.95,
+          "candidates_per_image": 60.11280487804878,
+          "unmatched_candidates_per_image": 18.378048780487806
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 13709,
+          "matched": 13135,
+          "fn": 574,
+          "recall": 0.9581296958202641,
+          "extra_gt": 20,
+          "extra_matched": 16,
+          "extra_recall": 0.8,
+          "candidates_per_image": 60.11280487804878,
+          "unmatched_candidates_per_image": 20.067073170731707
+        }
+      ]
+    },
+    {
+      "job": "balance_s44",
+      "variant": "balance",
+      "seed": 44,
+      "postprocessing": "_nms085",
+      "split": "external_test",
+      "coco_ap": 0.7569906506716386,
+      "metrics": [
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.5,
+          "gt": 20795,
+          "matched": 20746,
+          "fn": 49,
+          "recall": 0.99764366434239,
+          "extra_gt": 53,
+          "extra_matched": 49,
+          "extra_recall": 0.9245283018867925,
+          "candidates_per_image": 65.55463917525773,
+          "unmatched_candidates_per_image": 22.77938144329897
+        },
+        {
+          "mode": "all_candidates",
+          "score_threshold": 0.01,
+          "iou_threshold": 0.75,
+          "gt": 20795,
+          "matched": 18977,
+          "fn": 1818,
+          "recall": 0.9125751382543881,
+          "extra_gt": 53,
+          "extra_matched": 28,
+          "extra_recall": 0.5283018867924528,
+          "candidates_per_image": 65.55463917525773,
+          "unmatched_candidates_per_image": 26.42680412371134
+        }
+      ]
+    }
+  ],
+  "validation_budgets": [
+    {
+      "job": "b0_s42",
+      "variant": "standard",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "budget": null,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6888,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 7212,
+          "extra_missed_ids": [
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9960954446854664,
+          "candidates_per_image": 43.97560975609756,
+          "unmatched_per_image": 1.975609756097561
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6537,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "candidates": 7212,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9453362255965293,
+          "candidates_per_image": 43.97560975609756,
+          "unmatched_per_image": 4.115853658536586
+        }
+      }
+    },
+    {
+      "job": "b0_s42",
+      "variant": "standard",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "budget": 40,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6473,
+          "extra_gt": 10,
+          "extra_matched": 3,
+          "candidates": 6522,
+          "extra_missed_ids": [
+            753,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9360809833694866,
+          "candidates_per_image": 39.76829268292683,
+          "unmatched_per_image": 0.29878048780487804
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6242,
+          "extra_gt": 10,
+          "extra_matched": 3,
+          "candidates": 6522,
+          "extra_missed_ids": [
+            753,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9026753434562546,
+          "candidates_per_image": 39.76829268292683,
+          "unmatched_per_image": 1.7073170731707317
+        }
+      }
+    },
+    {
+      "job": "b0_s42",
+      "variant": "standard",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "budget": 50,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6887,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 7192,
+          "extra_missed_ids": [
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9959508315256689,
+          "candidates_per_image": 43.853658536585364,
+          "unmatched_per_image": 1.8597560975609757
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6537,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "candidates": 7192,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9453362255965293,
+          "candidates_per_image": 43.853658536585364,
+          "unmatched_per_image": 3.9939024390243905
+        }
+      }
+    },
+    {
+      "job": "b0_s42",
+      "variant": "standard",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "budget": 60,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6888,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 7212,
+          "extra_missed_ids": [
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9960954446854664,
+          "candidates_per_image": 43.97560975609756,
+          "unmatched_per_image": 1.975609756097561
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6537,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "candidates": 7212,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9453362255965293,
+          "candidates_per_image": 43.97560975609756,
+          "unmatched_per_image": 4.115853658536586
+        }
+      }
+    },
+    {
+      "job": "b0_s42",
+      "variant": "standard",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "budget": null,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6896,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 8068,
+          "extra_missed_ids": [
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9972523499638467,
+          "candidates_per_image": 49.19512195121951,
+          "unmatched_per_image": 7.146341463414634
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6587,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 8068,
+          "extra_missed_ids": [
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9525668835864064,
+          "candidates_per_image": 49.19512195121951,
+          "unmatched_per_image": 9.03048780487805
+        }
+      }
+    },
+    {
+      "job": "b0_s42",
+      "variant": "standard",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "budget": 40,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6451,
+          "extra_gt": 10,
+          "extra_matched": 3,
+          "candidates": 6552,
+          "extra_missed_ids": [
+            753,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9328994938539407,
+          "candidates_per_image": 39.951219512195124,
+          "unmatched_per_image": 0.6158536585365854
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6227,
+          "extra_gt": 10,
+          "extra_matched": 3,
+          "candidates": 6552,
+          "extra_missed_ids": [
+            753,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9005061460592914,
+          "candidates_per_image": 39.951219512195124,
+          "unmatched_per_image": 1.9817073170731707
+        }
+      }
+    },
+    {
+      "job": "b0_s42",
+      "variant": "standard",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "budget": 50,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6871,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 7645,
+          "extra_missed_ids": [
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9936370209689082,
+          "candidates_per_image": 46.61585365853659,
+          "unmatched_per_image": 4.719512195121951
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6561,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "candidates": 7645,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9488069414316703,
+          "candidates_per_image": 46.61585365853659,
+          "unmatched_per_image": 6.609756097560975
+        }
+      }
+    },
+    {
+      "job": "b0_s42",
+      "variant": "standard",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "budget": 60,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6894,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 7993,
+          "extra_missed_ids": [
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9969631236442517,
+          "candidates_per_image": 48.73780487804878,
+          "unmatched_per_image": 6.701219512195122
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6583,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 7993,
+          "extra_missed_ids": [
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9519884309472162,
+          "candidates_per_image": 48.73780487804878,
+          "unmatched_per_image": 8.597560975609756
+        }
+      }
+    },
+    {
+      "job": "balance_s42",
+      "variant": "balance",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "budget": null,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6885,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "candidates": 7138,
+          "extra_missed_ids": [
+            3197,
+            6310
+          ],
+          "recall": 0.9956616052060737,
+          "candidates_per_image": 43.52439024390244,
+          "unmatched_per_image": 1.5426829268292683
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6553,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "candidates": 7138,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9476500361532899,
+          "candidates_per_image": 43.52439024390244,
+          "unmatched_per_image": 3.567073170731707
+        }
+      }
+    },
+    {
+      "job": "balance_s42",
+      "variant": "balance",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "budget": 40,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6477,
+          "extra_gt": 10,
+          "extra_matched": 2,
+          "candidates": 6527,
+          "extra_missed_ids": [
+            753,
+            966,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9366594360086767,
+          "candidates_per_image": 39.798780487804876,
+          "unmatched_per_image": 0.3048780487804878
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6249,
+          "extra_gt": 10,
+          "extra_matched": 2,
+          "candidates": 6527,
+          "extra_missed_ids": [
+            753,
+            966,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9036876355748373,
+          "candidates_per_image": 39.798780487804876,
+          "unmatched_per_image": 1.6951219512195121
+        }
+      }
+    },
+    {
+      "job": "balance_s42",
+      "variant": "balance",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "budget": 50,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6885,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "candidates": 7128,
+          "extra_missed_ids": [
+            3197,
+            6310
+          ],
+          "recall": 0.9956616052060737,
+          "candidates_per_image": 43.46341463414634,
+          "unmatched_per_image": 1.4817073170731707
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6553,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "candidates": 7128,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9476500361532899,
+          "candidates_per_image": 43.46341463414634,
+          "unmatched_per_image": 3.5060975609756095
+        }
+      }
+    },
+    {
+      "job": "balance_s42",
+      "variant": "balance",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "budget": 60,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6885,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "candidates": 7138,
+          "extra_missed_ids": [
+            3197,
+            6310
+          ],
+          "recall": 0.9956616052060737,
+          "candidates_per_image": 43.52439024390244,
+          "unmatched_per_image": 1.5426829268292683
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6553,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "candidates": 7138,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9476500361532899,
+          "candidates_per_image": 43.52439024390244,
+          "unmatched_per_image": 3.567073170731707
+        }
+      }
+    },
+    {
+      "job": "balance_s42",
+      "variant": "balance",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "budget": null,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6891,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "candidates": 7704,
+          "extra_missed_ids": [
+            3197,
+            6310
+          ],
+          "recall": 0.996529284164859,
+          "candidates_per_image": 46.97560975609756,
+          "unmatched_per_image": 4.9573170731707314
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6598,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 7704,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            6310
+          ],
+          "recall": 0.9541576283441793,
+          "candidates_per_image": 46.97560975609756,
+          "unmatched_per_image": 6.7439024390243905
+        }
+      }
+    },
+    {
+      "job": "balance_s42",
+      "variant": "balance",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "budget": 40,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6464,
+          "extra_gt": 10,
+          "extra_matched": 2,
+          "candidates": 6543,
+          "extra_missed_ids": [
+            753,
+            966,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9347794649313087,
+          "candidates_per_image": 39.896341463414636,
+          "unmatched_per_image": 0.4817073170731707
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6245,
+          "extra_gt": 10,
+          "extra_matched": 2,
+          "candidates": 6543,
+          "extra_missed_ids": [
+            753,
+            966,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9031091829356471,
+          "candidates_per_image": 39.896341463414636,
+          "unmatched_per_image": 1.8170731707317074
+        }
+      }
+    },
+    {
+      "job": "balance_s42",
+      "variant": "balance",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "budget": 50,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6882,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 7453,
+          "extra_missed_ids": [
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9952277657266811,
+          "candidates_per_image": 45.44512195121951,
+          "unmatched_per_image": 3.481707317073171
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6585,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "candidates": 7453,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9522776572668112,
+          "candidates_per_image": 45.44512195121951,
+          "unmatched_per_image": 5.2926829268292686
+        }
+      }
+    },
+    {
+      "job": "balance_s42",
+      "variant": "balance",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "budget": 60,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6889,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "candidates": 7680,
+          "extra_missed_ids": [
+            3197,
+            6310
+          ],
+          "recall": 0.9962400578452639,
+          "candidates_per_image": 46.829268292682926,
+          "unmatched_per_image": 4.823170731707317
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6597,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 7680,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            6310
+          ],
+          "recall": 0.9540130151843818,
+          "candidates_per_image": 46.829268292682926,
+          "unmatched_per_image": 6.603658536585366
+        }
+      }
+    },
+    {
+      "job": "hard_s42",
+      "variant": "hard",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "budget": null,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6890,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "candidates": 8002,
+          "extra_missed_ids": [
+            3197,
+            6310
+          ],
+          "recall": 0.9963846710050615,
+          "candidates_per_image": 48.792682926829265,
+          "unmatched_per_image": 6.780487804878049
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6534,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "candidates": 8002,
+          "extra_missed_ids": [
+            966,
+            2290,
+            3197,
+            6310
+          ],
+          "recall": 0.9449023861171366,
+          "candidates_per_image": 48.792682926829265,
+          "unmatched_per_image": 8.951219512195122
+        }
+      }
+    },
+    {
+      "job": "hard_s42",
+      "variant": "hard",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "budget": 40,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6470,
+          "extra_gt": 10,
+          "extra_matched": 3,
+          "candidates": 6557,
+          "extra_missed_ids": [
+            966,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.935647143890094,
+          "candidates_per_image": 39.98170731707317,
+          "unmatched_per_image": 0.5304878048780488
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6223,
+          "extra_gt": 10,
+          "extra_matched": 3,
+          "candidates": 6557,
+          "extra_missed_ids": [
+            966,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.8999276934201013,
+          "candidates_per_image": 39.98170731707317,
+          "unmatched_per_image": 2.0365853658536586
+        }
+      }
+    },
+    {
+      "job": "hard_s42",
+      "variant": "hard",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "budget": 50,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6889,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "candidates": 7778,
+          "extra_missed_ids": [
+            3197,
+            6310
+          ],
+          "recall": 0.9962400578452639,
+          "candidates_per_image": 47.426829268292686,
+          "unmatched_per_image": 5.420731707317073
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6529,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "candidates": 7778,
+          "extra_missed_ids": [
+            966,
+            2290,
+            3197,
+            6310
+          ],
+          "recall": 0.944179320318149,
+          "candidates_per_image": 47.426829268292686,
+          "unmatched_per_image": 7.615853658536586
+        }
+      }
+    },
+    {
+      "job": "hard_s42",
+      "variant": "hard",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "budget": 60,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6890,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "candidates": 7998,
+          "extra_missed_ids": [
+            3197,
+            6310
+          ],
+          "recall": 0.9963846710050615,
+          "candidates_per_image": 48.76829268292683,
+          "unmatched_per_image": 6.7560975609756095
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6534,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "candidates": 7998,
+          "extra_missed_ids": [
+            966,
+            2290,
+            3197,
+            6310
+          ],
+          "recall": 0.9449023861171366,
+          "candidates_per_image": 48.76829268292683,
+          "unmatched_per_image": 8.926829268292684
+        }
+      }
+    },
+    {
+      "job": "hard_s42",
+      "variant": "hard",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "budget": null,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6900,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "candidates": 9273,
+          "extra_missed_ids": [
+            3197,
+            6310
+          ],
+          "recall": 0.9978308026030369,
+          "candidates_per_image": 56.542682926829265,
+          "unmatched_per_image": 14.46951219512195
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6609,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 9273,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            6310
+          ],
+          "recall": 0.9557483731019523,
+          "candidates_per_image": 56.542682926829265,
+          "unmatched_per_image": 16.24390243902439
+        }
+      }
+    },
+    {
+      "job": "hard_s42",
+      "variant": "hard",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "budget": 40,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6443,
+          "extra_gt": 10,
+          "extra_matched": 3,
+          "candidates": 6560,
+          "extra_missed_ids": [
+            966,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9317425885755604,
+          "candidates_per_image": 40.0,
+          "unmatched_per_image": 0.7134146341463414
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6210,
+          "extra_gt": 10,
+          "extra_matched": 3,
+          "candidates": 6560,
+          "extra_missed_ids": [
+            966,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.8980477223427332,
+          "candidates_per_image": 40.0,
+          "unmatched_per_image": 2.1341463414634148
+        }
+      }
+    },
+    {
+      "job": "hard_s42",
+      "variant": "hard",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "budget": 50,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6878,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "candidates": 8048,
+          "extra_missed_ids": [
+            3197,
+            6310
+          ],
+          "recall": 0.9946493130874909,
+          "candidates_per_image": 49.073170731707314,
+          "unmatched_per_image": 7.134146341463414
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6568,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "candidates": 8048,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9498192335502531,
+          "candidates_per_image": 49.073170731707314,
+          "unmatched_per_image": 9.024390243902438
+        }
+      }
+    },
+    {
+      "job": "hard_s42",
+      "variant": "hard",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "budget": 60,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6899,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "candidates": 8875,
+          "extra_missed_ids": [
+            3197,
+            6310
+          ],
+          "recall": 0.9976861894432393,
+          "candidates_per_image": 54.11585365853659,
+          "unmatched_per_image": 12.048780487804878
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6598,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 8875,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            6310
+          ],
+          "recall": 0.9541576283441793,
+          "candidates_per_image": 54.11585365853659,
+          "unmatched_per_image": 13.884146341463415
+        }
+      }
+    },
+    {
+      "job": "combined_s42",
+      "variant": "combined",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "budget": null,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6886,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "candidates": 7060,
+          "extra_missed_ids": [
+            966,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9958062183658712,
+          "candidates_per_image": 43.048780487804876,
+          "unmatched_per_image": 1.0609756097560976
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6540,
+          "extra_gt": 10,
+          "extra_matched": 5,
+          "candidates": 7060,
+          "extra_missed_ids": [
+            966,
+            2290,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9457700650759219,
+          "candidates_per_image": 43.048780487804876,
+          "unmatched_per_image": 3.1707317073170733
+        }
+      }
+    },
+    {
+      "job": "combined_s42",
+      "variant": "combined",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "budget": 40,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6474,
+          "extra_gt": 10,
+          "extra_matched": 2,
+          "candidates": 6513,
+          "extra_missed_ids": [
+            753,
+            966,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9362255965292842,
+          "candidates_per_image": 39.71341463414634,
+          "unmatched_per_image": 0.23780487804878048
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6235,
+          "extra_gt": 10,
+          "extra_matched": 2,
+          "candidates": 6513,
+          "extra_missed_ids": [
+            753,
+            966,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9016630513376718,
+          "candidates_per_image": 39.71341463414634,
+          "unmatched_per_image": 1.6951219512195121
+        }
+      }
+    },
+    {
+      "job": "combined_s42",
+      "variant": "combined",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "budget": 50,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6886,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "candidates": 7058,
+          "extra_missed_ids": [
+            966,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9958062183658712,
+          "candidates_per_image": 43.03658536585366,
+          "unmatched_per_image": 1.048780487804878
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6540,
+          "extra_gt": 10,
+          "extra_matched": 5,
+          "candidates": 7058,
+          "extra_missed_ids": [
+            966,
+            2290,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9457700650759219,
+          "candidates_per_image": 43.03658536585366,
+          "unmatched_per_image": 3.158536585365854
+        }
+      }
+    },
+    {
+      "job": "combined_s42",
+      "variant": "combined",
+      "seed": 42,
+      "postprocessing": "nms06",
+      "budget": 60,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6886,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "candidates": 7060,
+          "extra_missed_ids": [
+            966,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9958062183658712,
+          "candidates_per_image": 43.048780487804876,
+          "unmatched_per_image": 1.0609756097560976
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6540,
+          "extra_gt": 10,
+          "extra_matched": 5,
+          "candidates": 7060,
+          "extra_missed_ids": [
+            966,
+            2290,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9457700650759219,
+          "candidates_per_image": 43.048780487804876,
+          "unmatched_per_image": 3.1707317073170733
+        }
+      }
+    },
+    {
+      "job": "combined_s42",
+      "variant": "combined",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "budget": null,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6890,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "candidates": 7504,
+          "extra_missed_ids": [
+            966,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9963846710050615,
+          "candidates_per_image": 45.75609756097561,
+          "unmatched_per_image": 3.7439024390243905
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6570,
+          "extra_gt": 10,
+          "extra_matched": 5,
+          "candidates": 7504,
+          "extra_missed_ids": [
+            966,
+            2290,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9501084598698482,
+          "candidates_per_image": 45.75609756097561,
+          "unmatched_per_image": 5.695121951219512
+        }
+      }
+    },
+    {
+      "job": "combined_s42",
+      "variant": "combined",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "budget": 40,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6463,
+          "extra_gt": 10,
+          "extra_matched": 2,
+          "candidates": 6533,
+          "extra_missed_ids": [
+            753,
+            966,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9346348517715112,
+          "candidates_per_image": 39.83536585365854,
+          "unmatched_per_image": 0.4268292682926829
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6228,
+          "extra_gt": 10,
+          "extra_matched": 2,
+          "candidates": 6533,
+          "extra_missed_ids": [
+            753,
+            966,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.900650759219089,
+          "candidates_per_image": 39.83536585365854,
+          "unmatched_per_image": 1.8597560975609757
+        }
+      }
+    },
+    {
+      "job": "combined_s42",
+      "variant": "combined",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "budget": 50,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6885,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "candidates": 7368,
+          "extra_missed_ids": [
+            966,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9956616052060737,
+          "candidates_per_image": 44.926829268292686,
+          "unmatched_per_image": 2.9451219512195124
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6563,
+          "extra_gt": 10,
+          "extra_matched": 5,
+          "candidates": 7368,
+          "extra_missed_ids": [
+            966,
+            2290,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9490961677512654,
+          "candidates_per_image": 44.926829268292686,
+          "unmatched_per_image": 4.908536585365853
+        }
+      }
+    },
+    {
+      "job": "combined_s42",
+      "variant": "combined",
+      "seed": 42,
+      "postprocessing": "_nms085",
+      "budget": 60,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6890,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "candidates": 7489,
+          "extra_missed_ids": [
+            966,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9963846710050615,
+          "candidates_per_image": 45.66463414634146,
+          "unmatched_per_image": 3.652439024390244
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6570,
+          "extra_gt": 10,
+          "extra_matched": 5,
+          "candidates": 7489,
+          "extra_missed_ids": [
+            966,
+            2290,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9501084598698482,
+          "candidates_per_image": 45.66463414634146,
+          "unmatched_per_image": 5.603658536585366
+        }
+      }
+    },
+    {
+      "job": "baseline_s43",
+      "variant": "baseline",
+      "seed": 43,
+      "postprocessing": "nms06",
+      "budget": null,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6883,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "candidates": 7555,
+          "extra_missed_ids": [
+            3197,
+            6310
+          ],
+          "recall": 0.9953723788864787,
+          "candidates_per_image": 46.06707317073171,
+          "unmatched_per_image": 4.097560975609756
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6516,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 7555,
+          "extra_missed_ids": [
+            966,
+            3197,
+            6310
+          ],
+          "recall": 0.942299349240781,
+          "candidates_per_image": 46.06707317073171,
+          "unmatched_per_image": 6.335365853658536
+        }
+      }
+    },
+    {
+      "job": "baseline_s43",
+      "variant": "baseline",
+      "seed": 43,
+      "postprocessing": "nms06",
+      "budget": 40,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6469,
+          "extra_gt": 10,
+          "extra_matched": 2,
+          "candidates": 6544,
+          "extra_missed_ids": [
+            753,
+            966,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9355025307302964,
+          "candidates_per_image": 39.90243902439025,
+          "unmatched_per_image": 0.4573170731707317
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6227,
+          "extra_gt": 10,
+          "extra_matched": 2,
+          "candidates": 6544,
+          "extra_missed_ids": [
+            753,
+            966,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9005061460592914,
+          "candidates_per_image": 39.90243902439025,
+          "unmatched_per_image": 1.9329268292682926
+        }
+      }
+    },
+    {
+      "job": "baseline_s43",
+      "variant": "baseline",
+      "seed": 43,
+      "postprocessing": "nms06",
+      "budget": 50,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6883,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "candidates": 7467,
+          "extra_missed_ids": [
+            3197,
+            6310
+          ],
+          "recall": 0.9953723788864787,
+          "candidates_per_image": 45.53048780487805,
+          "unmatched_per_image": 3.5609756097560976
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6516,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 7467,
+          "extra_missed_ids": [
+            966,
+            3197,
+            6310
+          ],
+          "recall": 0.942299349240781,
+          "candidates_per_image": 45.53048780487805,
+          "unmatched_per_image": 5.798780487804878
+        }
+      }
+    },
+    {
+      "job": "baseline_s43",
+      "variant": "baseline",
+      "seed": 43,
+      "postprocessing": "nms06",
+      "budget": 60,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6883,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "candidates": 7555,
+          "extra_missed_ids": [
+            3197,
+            6310
+          ],
+          "recall": 0.9953723788864787,
+          "candidates_per_image": 46.06707317073171,
+          "unmatched_per_image": 4.097560975609756
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6516,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 7555,
+          "extra_missed_ids": [
+            966,
+            3197,
+            6310
+          ],
+          "recall": 0.942299349240781,
+          "candidates_per_image": 46.06707317073171,
+          "unmatched_per_image": 6.335365853658536
+        }
+      }
+    },
+    {
+      "job": "baseline_s43",
+      "variant": "baseline",
+      "seed": 43,
+      "postprocessing": "_nms085",
+      "budget": null,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6892,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "candidates": 8555,
+          "extra_missed_ids": [
+            3197,
+            6310
+          ],
+          "recall": 0.9966738973246565,
+          "candidates_per_image": 52.16463414634146,
+          "unmatched_per_image": 10.140243902439025
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6581,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "candidates": 8555,
+          "extra_missed_ids": [
+            3197,
+            6310
+          ],
+          "recall": 0.9516992046276211,
+          "candidates_per_image": 52.16463414634146,
+          "unmatched_per_image": 12.036585365853659
+        }
+      }
+    },
+    {
+      "job": "baseline_s43",
+      "variant": "baseline",
+      "seed": 43,
+      "postprocessing": "_nms085",
+      "budget": 40,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6449,
+          "extra_gt": 10,
+          "extra_matched": 2,
+          "candidates": 6554,
+          "extra_missed_ids": [
+            753,
+            966,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9326102675343456,
+          "candidates_per_image": 39.96341463414634,
+          "unmatched_per_image": 0.6402439024390244
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6219,
+          "extra_gt": 10,
+          "extra_matched": 2,
+          "candidates": 6554,
+          "extra_missed_ids": [
+            753,
+            966,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.899349240780911,
+          "candidates_per_image": 39.96341463414634,
+          "unmatched_per_image": 2.042682926829268
+        }
+      }
+    },
+    {
+      "job": "baseline_s43",
+      "variant": "baseline",
+      "seed": 43,
+      "postprocessing": "_nms085",
+      "budget": 50,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6873,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 7817,
+          "extra_missed_ids": [
+            3197,
+            6310,
+            6641
+          ],
+          "recall": 0.9939262472885032,
+          "candidates_per_image": 47.66463414634146,
+          "unmatched_per_image": 5.7560975609756095
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6549,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 7817,
+          "extra_missed_ids": [
+            3197,
+            6310,
+            6641
+          ],
+          "recall": 0.9470715835140998,
+          "candidates_per_image": 47.66463414634146,
+          "unmatched_per_image": 7.7317073170731705
+        }
+      }
+    },
+    {
+      "job": "baseline_s43",
+      "variant": "baseline",
+      "seed": 43,
+      "postprocessing": "_nms085",
+      "budget": 60,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6888,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "candidates": 8370,
+          "extra_missed_ids": [
+            3197,
+            6310
+          ],
+          "recall": 0.9960954446854664,
+          "candidates_per_image": 51.03658536585366,
+          "unmatched_per_image": 9.036585365853659
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6576,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "candidates": 8370,
+          "extra_missed_ids": [
+            3197,
+            6310
+          ],
+          "recall": 0.9509761388286334,
+          "candidates_per_image": 51.03658536585366,
+          "unmatched_per_image": 10.939024390243903
+        }
+      }
+    },
+    {
+      "job": "balance_s43",
+      "variant": "balance",
+      "seed": 43,
+      "postprocessing": "nms06",
+      "budget": null,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6891,
+          "extra_gt": 10,
+          "extra_matched": 10,
+          "candidates": 7304,
+          "extra_missed_ids": [],
+          "recall": 0.996529284164859,
+          "candidates_per_image": 44.53658536585366,
+          "unmatched_per_image": 2.518292682926829
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6537,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 7304,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            5423
+          ],
+          "recall": 0.9453362255965293,
+          "candidates_per_image": 44.53658536585366,
+          "unmatched_per_image": 4.676829268292683
+        }
+      }
+    },
+    {
+      "job": "balance_s43",
+      "variant": "balance",
+      "seed": 43,
+      "postprocessing": "nms06",
+      "budget": 40,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6470,
+          "extra_gt": 10,
+          "extra_matched": 4,
+          "candidates": 6527,
+          "extra_missed_ids": [
+            966,
+            1957,
+            2290,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.935647143890094,
+          "candidates_per_image": 39.798780487804876,
+          "unmatched_per_image": 0.3475609756097561
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6237,
+          "extra_gt": 10,
+          "extra_matched": 3,
+          "candidates": 6527,
+          "extra_missed_ids": [
+            966,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9019522776572668,
+          "candidates_per_image": 39.798780487804876,
+          "unmatched_per_image": 1.7682926829268293
+        }
+      }
+    },
+    {
+      "job": "balance_s43",
+      "variant": "balance",
+      "seed": 43,
+      "postprocessing": "nms06",
+      "budget": 50,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6890,
+          "extra_gt": 10,
+          "extra_matched": 10,
+          "candidates": 7275,
+          "extra_missed_ids": [],
+          "recall": 0.9963846710050615,
+          "candidates_per_image": 44.359756097560975,
+          "unmatched_per_image": 2.347560975609756
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6537,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 7275,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            5423
+          ],
+          "recall": 0.9453362255965293,
+          "candidates_per_image": 44.359756097560975,
+          "unmatched_per_image": 4.5
+        }
+      }
+    },
+    {
+      "job": "balance_s43",
+      "variant": "balance",
+      "seed": 43,
+      "postprocessing": "nms06",
+      "budget": 60,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6891,
+          "extra_gt": 10,
+          "extra_matched": 10,
+          "candidates": 7304,
+          "extra_missed_ids": [],
+          "recall": 0.996529284164859,
+          "candidates_per_image": 44.53658536585366,
+          "unmatched_per_image": 2.518292682926829
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6537,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 7304,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            5423
+          ],
+          "recall": 0.9453362255965293,
+          "candidates_per_image": 44.53658536585366,
+          "unmatched_per_image": 4.676829268292683
+        }
+      }
+    },
+    {
+      "job": "balance_s43",
+      "variant": "balance",
+      "seed": 43,
+      "postprocessing": "_nms085",
+      "budget": null,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6899,
+          "extra_gt": 10,
+          "extra_matched": 10,
+          "candidates": 8200,
+          "extra_missed_ids": [],
+          "recall": 0.9976861894432393,
+          "candidates_per_image": 50.0,
+          "unmatched_per_image": 7.932926829268292
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6595,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "candidates": 8200,
+          "extra_missed_ids": [
+            3197,
+            5423
+          ],
+          "recall": 0.9537237888647867,
+          "candidates_per_image": 50.0,
+          "unmatched_per_image": 9.786585365853659
+        }
+      }
+    },
+    {
+      "job": "balance_s43",
+      "variant": "balance",
+      "seed": 43,
+      "postprocessing": "_nms085",
+      "budget": 40,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6454,
+          "extra_gt": 10,
+          "extra_matched": 3,
+          "candidates": 6543,
+          "extra_missed_ids": [
+            753,
+            966,
+            1957,
+            2290,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9333333333333333,
+          "candidates_per_image": 39.896341463414636,
+          "unmatched_per_image": 0.5426829268292683
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6230,
+          "extra_gt": 10,
+          "extra_matched": 2,
+          "candidates": 6543,
+          "extra_missed_ids": [
+            753,
+            966,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.900939985538684,
+          "candidates_per_image": 39.896341463414636,
+          "unmatched_per_image": 1.9085365853658536
+        }
+      }
+    },
+    {
+      "job": "balance_s43",
+      "variant": "balance",
+      "seed": 43,
+      "postprocessing": "_nms085",
+      "budget": 50,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6886,
+          "extra_gt": 10,
+          "extra_matched": 9,
+          "candidates": 7688,
+          "extra_missed_ids": [
+            2290
+          ],
+          "recall": 0.9958062183658712,
+          "candidates_per_image": 46.8780487804878,
+          "unmatched_per_image": 4.890243902439025
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6570,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 7688,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            5423
+          ],
+          "recall": 0.9501084598698482,
+          "candidates_per_image": 46.8780487804878,
+          "unmatched_per_image": 6.817073170731708
+        }
+      }
+    },
+    {
+      "job": "balance_s43",
+      "variant": "balance",
+      "seed": 43,
+      "postprocessing": "_nms085",
+      "budget": 60,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6895,
+          "extra_gt": 10,
+          "extra_matched": 10,
+          "candidates": 8106,
+          "extra_missed_ids": [],
+          "recall": 0.9971077368040492,
+          "candidates_per_image": 49.426829268292686,
+          "unmatched_per_image": 7.384146341463414
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6592,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "candidates": 8106,
+          "extra_missed_ids": [
+            3197,
+            5423
+          ],
+          "recall": 0.953289949385394,
+          "candidates_per_image": 49.426829268292686,
+          "unmatched_per_image": 9.231707317073171
+        }
+      }
+    },
+    {
+      "job": "baseline_s44",
+      "variant": "baseline",
+      "seed": 44,
+      "postprocessing": "nms06",
+      "budget": null,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6888,
+          "extra_gt": 10,
+          "extra_matched": 10,
+          "candidates": 7265,
+          "extra_missed_ids": [],
+          "recall": 0.9960954446854664,
+          "candidates_per_image": 44.298780487804876,
+          "unmatched_per_image": 2.298780487804878
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6559,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 7265,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            6310
+          ],
+          "recall": 0.9485177151120752,
+          "candidates_per_image": 44.298780487804876,
+          "unmatched_per_image": 4.304878048780488
+        }
+      }
+    },
+    {
+      "job": "baseline_s44",
+      "variant": "baseline",
+      "seed": 44,
+      "postprocessing": "nms06",
+      "budget": 40,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6473,
+          "extra_gt": 10,
+          "extra_matched": 2,
+          "candidates": 6531,
+          "extra_missed_ids": [
+            753,
+            966,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9360809833694866,
+          "candidates_per_image": 39.823170731707314,
+          "unmatched_per_image": 0.35365853658536583
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6265,
+          "extra_gt": 10,
+          "extra_matched": 2,
+          "candidates": 6531,
+          "extra_missed_ids": [
+            753,
+            966,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9060014461315979,
+          "candidates_per_image": 39.823170731707314,
+          "unmatched_per_image": 1.6219512195121952
+        }
+      }
+    },
+    {
+      "job": "baseline_s44",
+      "variant": "baseline",
+      "seed": 44,
+      "postprocessing": "nms06",
+      "budget": 50,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6888,
+          "extra_gt": 10,
+          "extra_matched": 10,
+          "candidates": 7232,
+          "extra_missed_ids": [],
+          "recall": 0.9960954446854664,
+          "candidates_per_image": 44.09756097560975,
+          "unmatched_per_image": 2.097560975609756
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6557,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "candidates": 7232,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9482284887924801,
+          "candidates_per_image": 44.09756097560975,
+          "unmatched_per_image": 4.115853658536586
+        }
+      }
+    },
+    {
+      "job": "baseline_s44",
+      "variant": "baseline",
+      "seed": 44,
+      "postprocessing": "nms06",
+      "budget": 60,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6888,
+          "extra_gt": 10,
+          "extra_matched": 10,
+          "candidates": 7265,
+          "extra_missed_ids": [],
+          "recall": 0.9960954446854664,
+          "candidates_per_image": 44.298780487804876,
+          "unmatched_per_image": 2.298780487804878
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6559,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 7265,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            6310
+          ],
+          "recall": 0.9485177151120752,
+          "candidates_per_image": 44.298780487804876,
+          "unmatched_per_image": 4.304878048780488
+        }
+      }
+    },
+    {
+      "job": "baseline_s44",
+      "variant": "baseline",
+      "seed": 44,
+      "postprocessing": "_nms085",
+      "budget": null,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6900,
+          "extra_gt": 10,
+          "extra_matched": 10,
+          "candidates": 8292,
+          "extra_missed_ids": [],
+          "recall": 0.9978308026030369,
+          "candidates_per_image": 50.5609756097561,
+          "unmatched_per_image": 8.487804878048781
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6624,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 8292,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            6310
+          ],
+          "recall": 0.9579175704989153,
+          "candidates_per_image": 50.5609756097561,
+          "unmatched_per_image": 10.170731707317072
+        }
+      }
+    },
+    {
+      "job": "baseline_s44",
+      "variant": "baseline",
+      "seed": 44,
+      "postprocessing": "_nms085",
+      "budget": 40,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6458,
+          "extra_gt": 10,
+          "extra_matched": 2,
+          "candidates": 6550,
+          "extra_missed_ids": [
+            753,
+            966,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9339117859725234,
+          "candidates_per_image": 39.9390243902439,
+          "unmatched_per_image": 0.5609756097560976
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6261,
+          "extra_gt": 10,
+          "extra_matched": 2,
+          "candidates": 6550,
+          "extra_missed_ids": [
+            753,
+            966,
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9054229934924078,
+          "candidates_per_image": 39.9390243902439,
+          "unmatched_per_image": 1.7621951219512195
+        }
+      }
+    },
+    {
+      "job": "baseline_s44",
+      "variant": "baseline",
+      "seed": 44,
+      "postprocessing": "_nms085",
+      "budget": 50,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6885,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "candidates": 7662,
+          "extra_missed_ids": [
+            2290,
+            6310
+          ],
+          "recall": 0.9956616052060737,
+          "candidates_per_image": 46.71951219512195,
+          "unmatched_per_image": 4.737804878048781
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6589,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "candidates": 7662,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9528561099060014,
+          "candidates_per_image": 46.71951219512195,
+          "unmatched_per_image": 6.5426829268292686
+        }
+      }
+    },
+    {
+      "job": "baseline_s44",
+      "variant": "baseline",
+      "seed": 44,
+      "postprocessing": "_nms085",
+      "budget": 60,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6896,
+          "extra_gt": 10,
+          "extra_matched": 9,
+          "candidates": 8142,
+          "extra_missed_ids": [
+            6310
+          ],
+          "recall": 0.9972523499638467,
+          "candidates_per_image": 49.646341463414636,
+          "unmatched_per_image": 7.597560975609756
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6621,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 8142,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            6310
+          ],
+          "recall": 0.9574837310195228,
+          "candidates_per_image": 49.646341463414636,
+          "unmatched_per_image": 9.274390243902438
+        }
+      }
+    },
+    {
+      "job": "balance_s44",
+      "variant": "balance",
+      "seed": 44,
+      "postprocessing": "nms06",
+      "budget": null,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6896,
+          "extra_gt": 10,
+          "extra_matched": 10,
+          "candidates": 8201,
+          "extra_missed_ids": [],
+          "recall": 0.9972523499638467,
+          "candidates_per_image": 50.00609756097561,
+          "unmatched_per_image": 7.9573170731707314
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6544,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 8201,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            6310
+          ],
+          "recall": 0.9463485177151121,
+          "candidates_per_image": 50.00609756097561,
+          "unmatched_per_image": 10.103658536585366
+        }
+      }
+    },
+    {
+      "job": "balance_s44",
+      "variant": "balance",
+      "seed": 44,
+      "postprocessing": "nms06",
+      "budget": 40,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6476,
+          "extra_gt": 10,
+          "extra_matched": 4,
+          "candidates": 6556,
+          "extra_missed_ids": [
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9365148228488792,
+          "candidates_per_image": 39.97560975609756,
+          "unmatched_per_image": 0.4878048780487805
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6237,
+          "extra_gt": 10,
+          "extra_matched": 4,
+          "candidates": 6556,
+          "extra_missed_ids": [
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9019522776572668,
+          "candidates_per_image": 39.97560975609756,
+          "unmatched_per_image": 1.9451219512195121
+        }
+      }
+    },
+    {
+      "job": "balance_s44",
+      "variant": "balance",
+      "seed": 44,
+      "postprocessing": "nms06",
+      "budget": 50,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6893,
+          "extra_gt": 10,
+          "extra_matched": 9,
+          "candidates": 7836,
+          "extra_missed_ids": [
+            6310
+          ],
+          "recall": 0.9968185104844541,
+          "candidates_per_image": 47.78048780487805,
+          "unmatched_per_image": 5.75
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6542,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 7836,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            6310
+          ],
+          "recall": 0.946059291395517,
+          "candidates_per_image": 47.78048780487805,
+          "unmatched_per_image": 7.890243902439025
+        }
+      }
+    },
+    {
+      "job": "balance_s44",
+      "variant": "balance",
+      "seed": 44,
+      "postprocessing": "nms06",
+      "budget": 60,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6896,
+          "extra_gt": 10,
+          "extra_matched": 10,
+          "candidates": 8171,
+          "extra_missed_ids": [],
+          "recall": 0.9972523499638467,
+          "candidates_per_image": 49.823170731707314,
+          "unmatched_per_image": 7.774390243902439
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6544,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 8171,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            6310
+          ],
+          "recall": 0.9463485177151121,
+          "candidates_per_image": 49.823170731707314,
+          "unmatched_per_image": 9.920731707317072
+        }
+      }
+    },
+    {
+      "job": "balance_s44",
+      "variant": "balance",
+      "seed": 44,
+      "postprocessing": "_nms085",
+      "budget": null,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6903,
+          "extra_gt": 10,
+          "extra_matched": 10,
+          "candidates": 9693,
+          "extra_missed_ids": [],
+          "recall": 0.9982646420824295,
+          "candidates_per_image": 59.103658536585364,
+          "unmatched_per_image": 17.01219512195122
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6621,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "candidates": 9693,
+          "extra_missed_ids": [
+            3197,
+            6310
+          ],
+          "recall": 0.9574837310195228,
+          "candidates_per_image": 59.103658536585364,
+          "unmatched_per_image": 18.73170731707317
+        }
+      }
+    },
+    {
+      "job": "balance_s44",
+      "variant": "balance",
+      "seed": 44,
+      "postprocessing": "_nms085",
+      "budget": 40,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6453,
+          "extra_gt": 10,
+          "extra_matched": 4,
+          "candidates": 6560,
+          "extra_missed_ids": [
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9331887201735358,
+          "candidates_per_image": 40.0,
+          "unmatched_per_image": 0.6524390243902439
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6227,
+          "extra_gt": 10,
+          "extra_matched": 4,
+          "candidates": 6560,
+          "extra_missed_ids": [
+            1957,
+            2290,
+            3197,
+            5423,
+            6310,
+            6641
+          ],
+          "recall": 0.9005061460592914,
+          "candidates_per_image": 40.0,
+          "unmatched_per_image": 2.0304878048780486
+        }
+      }
+    },
+    {
+      "job": "balance_s44",
+      "variant": "balance",
+      "seed": 44,
+      "postprocessing": "_nms085",
+      "budget": 50,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6889,
+          "extra_gt": 10,
+          "extra_matched": 8,
+          "candidates": 8093,
+          "extra_missed_ids": [
+            5423,
+            6310
+          ],
+          "recall": 0.9962400578452639,
+          "candidates_per_image": 49.34756097560975,
+          "unmatched_per_image": 7.341463414634147
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6586,
+          "extra_gt": 10,
+          "extra_matched": 6,
+          "candidates": 8093,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            5423,
+            6310
+          ],
+          "recall": 0.9524222704266089,
+          "candidates_per_image": 49.34756097560975,
+          "unmatched_per_image": 9.189024390243903
+        }
+      }
+    },
+    {
+      "job": "balance_s44",
+      "variant": "balance",
+      "seed": 44,
+      "postprocessing": "_nms085",
+      "budget": 60,
+      "metrics": {
+        "0.5": {
+          "gt": 6915,
+          "matched": 6900,
+          "extra_gt": 10,
+          "extra_matched": 9,
+          "candidates": 9021,
+          "extra_missed_ids": [
+            6310
+          ],
+          "recall": 0.9978308026030369,
+          "candidates_per_image": 55.00609756097561,
+          "unmatched_per_image": 12.932926829268293
+        },
+        "0.75": {
+          "gt": 6915,
+          "matched": 6610,
+          "extra_gt": 10,
+          "extra_matched": 7,
+          "candidates": 9021,
+          "extra_missed_ids": [
+            2290,
+            3197,
+            6310
+          ],
+          "recall": 0.9558929862617498,
+          "candidates_per_image": 55.00609756097561,
+          "unmatched_per_image": 14.701219512195122
+        }
+      }
+    }
+  ]
+}

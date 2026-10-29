@@ -5,6 +5,7 @@ import gc
 import json
 import pickle
 import sys
+from functools import partial
 from pathlib import Path
 
 import numpy as np
@@ -27,7 +28,14 @@ def predict_in_batches(model, paths, batch, **kwargs):
 def train_model(cls, args):
     weights = Path('/root/autodl-tmp/models')/(args.model+'.pt')
     model = cls(str(weights))
-    if args.loss_variant != 'standard':
+    train_options = {}
+    if args.structure_config:
+        from dental_yolo_structure import DentalDetectionTrainer, log_structure_audit
+        from dental_yolo_ablation import log_assignment
+        train_options['trainer'] = partial(DentalDetectionTrainer, dental_options=args.structure_options)
+        model.add_callback('on_train_epoch_end', log_assignment)
+        model.add_callback('on_train_epoch_end', log_structure_audit)
+    elif args.loss_variant != 'standard':
         import ultralytics
         assert ultralytics.__version__ == '8.4.191', 'Custom loss requires audited Ultralytics 8.4.191'
         assert args.view == 'tooth1' and args.model == 'yolo11m'
@@ -45,7 +53,7 @@ def train_model(cls, args):
                 amp=True, rect=False, mosaic=0., mixup=0., fliplr=0., flipud=0.,
                 degrees=0., translate=0., scale=0., shear=0., perspective=0.,
                 hsv_h=0., hsv_s=0., hsv_v=0., patience=0, save_period=-1,
-                max_det=500, plots=False)
+                max_det=500, plots=False, **train_options)
 
 
 def main():
@@ -64,7 +72,20 @@ def main():
     p.add_argument('--seed', type=int, default=42)
     p.add_argument('--nms-iou', type=float, default=.6)
     p.add_argument('--eval-suffix', default='')
+    p.add_argument('--structure-config', type=Path, help='Audited dental structure JSON, single-class YOLO11m only')
     args = p.parse_args()
+    if args.structure_config:
+        import ultralytics
+        assert ultralytics.__version__ == '8.4.191'
+        assert args.model == 'yolo11m' and args.view == 'tooth1'
+        assert args.loss_variant == 'standard', 'Specify loss variant in structure config only'
+        options = json.loads(args.structure_config.read_text())
+        assert set(options) == {'feature', 'relation', 'quality', 'quality_weight', 'loss_variant'}
+        assert options['feature'] in ['none', 'control', 'direction']
+        assert type(options['relation']) is bool and type(options['quality']) is bool
+        assert options['loss_variant'] in ['baseline', 'balance']
+        assert 0 <= options['quality_weight'] <= 1
+        args.structure_options = options
     assert torch.cuda.is_available(), 'GPU required; refusing CPU training'
     assert args.batch > 0
     assert not (args.smoke and args.evaluate_only)
@@ -83,6 +104,12 @@ def main():
     # Best is selected by native validation metrics only, never by test performance.
     checkpoint = args.work_dir/'weights'/'best.pt'
     model = cls(str(checkpoint))
+    if args.structure_config:
+        assert getattr(model.model, 'dental_options', None) == args.structure_options, 'Checkpoint/config mismatch'
+    predictor_options = {}
+    if getattr(model.model, 'dental_options', {}).get('quality'):
+        from dental_yolo_structure import DentalQualityPredictor
+        predictor_options['predictor'] = DentalQualityPredictor
     reports = []
     for split in ['val', 'internal_test', 'external_test']:
         source = args.data_root/args.view/f'{split}.json'
@@ -91,7 +118,7 @@ def main():
         paths = [str((args.data_root/image['file_name']).resolve()) for image in coco['images']]
         results = predict_in_batches(model, paths, args.batch, device=0,
                                      imgsz=args.imgsz, rect=False, conf=.01, iou=args.nms_iou,
-                                     max_det=500, verbose=False)
+                                     max_det=500, verbose=False, **predictor_options)
         predictions, detections = [], []
         for image, result in zip(coco['images'], results, strict=True):
             boxes = result.boxes.xyxy.cpu().numpy()
@@ -99,10 +126,17 @@ def main():
             labels = result.boxes.cls.cpu().numpy().astype(int)
             predictions.append(dict(img_id=image['id'], pred_instances=dict(
                 bboxes=boxes, scores=scores, labels=labels, proposal_ids=np.arange(len(boxes)))))
-            for box, score, label in zip(boxes, scores, labels):
+            qualities = None
+            if hasattr(result, 'dental_quality'):
+                qualities = result.dental_quality.cpu().numpy()
+                predictions[-1]['pred_instances']['localization_quality'] = qualities
+                predictions[-1]['pred_instances']['anchor_indices'] = result.dental_anchor_indices.cpu().numpy()
+            for index, (box, score, label) in enumerate(zip(boxes, scores, labels)):
                 x1, y1, x2, y2 = map(float, box)
                 detections.append(dict(image_id=image['id'], category_id=categories[int(label)]['id'],
                                        bbox=[x1,y1,x2-x1,y2-y1], score=float(score)))
+                if qualities is not None:
+                    detections[-1]['localization_quality'] = float(qualities[index])
         out = args.work_dir/('eval'+args.eval_suffix)/split
         out.mkdir(parents=True, exist_ok=True)
         with (out/'predictions.pkl').open('wb') as stream:
