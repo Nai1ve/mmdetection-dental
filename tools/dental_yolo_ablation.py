@@ -18,6 +18,7 @@ class RecordingBCE(torch.nn.BCEWithLogitsLoss):
 
 def positive_weights(fg, indices, logits, targets, balance, hard):
     """Preserve foreground weight mass per image; leave background unchanged."""
+    fg, indices = fg.bool(), indices.long()
     counts = torch.zeros((fg.shape[0], int(indices.max())+1), device=fg.device)
     counts.scatter_add_(1, indices, fg.float())
     weights = torch.ones_like(fg, dtype=torch.float)
@@ -43,6 +44,7 @@ class DentalPositiveLoss(v8DetectionLoss):
     def get_assigned_targets_and_loss(self, preds, batch, **kwargs):
         assignment, loss, items = super().get_assigned_targets_and_loss(preds,batch,**kwargs)
         fg, indices = assignment[:2]
+        fg, indices = fg.bool(), indices.long()
         bce, logits, targets = self.bce.record
         self.bce.record = None
         w, counts = positive_weights(fg,indices,logits,targets,
