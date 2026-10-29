@@ -1,6 +1,7 @@
 """Train one detector and evaluate original private COCO splits, on GPU only."""
 import argparse
 import csv
+import gc
 import json
 import pickle
 import sys
@@ -16,20 +17,14 @@ sys.path.insert(0, str(Path(__file__).parent/'analysis_tools'))
 from evaluate_dental_candidate_file import evaluate
 
 
-def main():
-    p = argparse.ArgumentParser()
-    p.add_argument('--model', choices=['yolo11m', 'rtdetr-l'], required=True)
-    p.add_argument('--data-root', type=Path, required=True)
-    p.add_argument('--converted', type=Path, required=True)
-    p.add_argument('--work-dir', type=Path, required=True)
-    p.add_argument('--batch', type=int, default=4)
-    p.add_argument('--epochs', type=int, default=24)
-    p.add_argument('--imgsz', type=int, default=960)
-    p.add_argument('--view', choices=['fdi53', 'tooth1'], default='fdi53')
-    p.add_argument('--smoke', action='store_true', help='One epoch on four training images; no final test')
-    args = p.parse_args()
-    assert torch.cuda.is_available(), 'GPU required; refusing CPU training'
-    cls = YOLO if args.model == 'yolo11m' else RTDETR
+def predict_in_batches(model, paths, batch, **kwargs):
+    # A list of paths may become one in-memory batch inside Ultralytics.
+    # Bound the source list itself, not only the predictor's batch argument.
+    for start in range(0, len(paths), batch):
+        yield from model.predict(source=paths[start:start+batch], stream=True, batch=batch, **kwargs)
+
+
+def train_model(cls, args):
     weights = Path('/root/autodl-tmp/models')/(args.model+'.pt')
     model = cls(str(weights))
     model.train(data=str(args.converted/'val.yaml'), project=str(args.work_dir.parent),
@@ -41,6 +36,29 @@ def main():
                 degrees=0., translate=0., scale=0., shear=0., perspective=0.,
                 hsv_h=0., hsv_s=0., hsv_v=0., patience=0, save_period=-1,
                 max_det=500, plots=False)
+
+
+def main():
+    p = argparse.ArgumentParser()
+    p.add_argument('--model', choices=['yolo11m', 'rtdetr-l'], required=True)
+    p.add_argument('--data-root', type=Path, required=True)
+    p.add_argument('--converted', type=Path, required=True)
+    p.add_argument('--work-dir', type=Path, required=True)
+    p.add_argument('--batch', type=int, default=4)
+    p.add_argument('--epochs', type=int, default=24)
+    p.add_argument('--imgsz', type=int, default=960)
+    p.add_argument('--view', choices=['fdi53', 'tooth1'], default='fdi53')
+    p.add_argument('--smoke', action='store_true', help='One epoch on four training images; no final test')
+    p.add_argument('--evaluate-only', action='store_true', help='Use existing best.pt without retraining')
+    args = p.parse_args()
+    assert torch.cuda.is_available(), 'GPU required; refusing CPU training'
+    assert args.batch > 0
+    assert not (args.smoke and args.evaluate_only)
+    cls = YOLO if args.model == 'yolo11m' else RTDETR
+    if not args.evaluate_only:
+        train_model(cls, args)
+        gc.collect()
+        torch.cuda.empty_cache()
     if args.smoke:
         with (args.work_dir/'results.csv').open() as stream:
             row = list(csv.DictReader(stream))[-1]
@@ -57,9 +75,9 @@ def main():
         coco = json.loads(source.read_text())
         categories = sorted(coco['categories'], key=lambda x: x['id'])
         paths = [str((args.data_root/image['file_name']).resolve()) for image in coco['images']]
-        results = model.predict(source=paths, stream=True, batch=args.batch, device=0,
-                                imgsz=args.imgsz, rect=False, conf=.01, iou=.6,
-                                max_det=500, verbose=False)
+        results = predict_in_batches(model, paths, args.batch, device=0,
+                                     imgsz=args.imgsz, rect=False, conf=.01, iou=.6,
+                                     max_det=500, verbose=False)
         predictions, detections = [], []
         for image, result in zip(coco['images'], results, strict=True):
             boxes = result.boxes.xyxy.cpu().numpy()
