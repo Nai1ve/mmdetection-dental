@@ -1,0 +1,10 @@
+job,variant,seed,end,status,work_dir
+b0_s42,standard,42,2026-10-30T00:12:53+08:00,0,/root/autodl-tmp/work_dirs/yolo_night_b0_s42
+soft_nms_val,postprocess,42,2026-10-30T00:13:04+08:00,0,/root/autodl-tmp/work_dirs/yolo_night_b0_s42
+balance_s42,balance,42,2026-10-30T00:22:29+08:00,0,/root/autodl-tmp/work_dirs/yolo_night_balance_s42
+hard_s42,hard,42,2026-10-30T00:32:00+08:00,0,/root/autodl-tmp/work_dirs/yolo_night_hard_s42
+combined_s42,combined,42,2026-10-30T00:41:12+08:00,0,/root/autodl-tmp/work_dirs/yolo_night_combined_s42
+baseline_s43,baseline,43,2026-10-30T00:50:27+08:00,0,/root/autodl-tmp/work_dirs/yolo_night_baseline_s43
+balance_s43,balance,43,2026-10-30T00:59:39+08:00,0,/root/autodl-tmp/work_dirs/yolo_night_balance_s43
+baseline_s44,baseline,44,2026-10-30T01:08:53+08:00,0,/root/autodl-tmp/work_dirs/yolo_night_baseline_s44
+balance_s44,balance,44,2026-10-30T01:18:19+08:00,0,/root/autodl-tmp/work_dirs/yolo_night_balance_s44
