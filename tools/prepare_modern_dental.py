@@ -7,10 +7,10 @@ from pathlib import Path
 import yaml
 
 
-def prepare(root, output):
+def prepare(root, output, view='fdi53'):
     output.mkdir(parents=True, exist_ok=False)
     summary = {}
-    for source in sorted((root/'fdi53').glob('*.json')):
+    for source in sorted((root/view).glob('*.json')):
         data = json.loads(source.read_text())
         categories = sorted(data['categories'], key=lambda c: c['id'])
         mapping = {c['id']: i for i, c in enumerate(categories)}
@@ -49,5 +49,6 @@ if __name__ == '__main__':
     p = argparse.ArgumentParser()
     p.add_argument('--root', type=Path, required=True)
     p.add_argument('--output', type=Path, required=True)
+    p.add_argument('--view', choices=['fdi53', 'tooth1'], default='fdi53')
     args = p.parse_args()
-    print(prepare(args.root, args.output))
+    print(prepare(args.root, args.output, args.view))
