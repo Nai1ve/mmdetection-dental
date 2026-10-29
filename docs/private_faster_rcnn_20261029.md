@@ -59,3 +59,5 @@ AutoDL 上四组串行训练和测试均正常结束，均为 exit_code=0。环�
 初步解释：CCSW 没有带来整体 mAP 的稳定提升。三中心训练中，怀柔外部测试 mAP 持平（0.658），mAP75 略低（0.752 -> 0.751），多生牙 precision 小幅增加（0.168 -> 0.186）。单中心设定中，三个外部中心的 mAP 基本持平；多生牙 precision 在复兴门提高、世纪坛和怀柔变化很小。类别样本少且各中心差异明显，当前只跑了单次种子，不能据此认定 CCSW 有稳定收益。
 
 本轮只完成 COCO bbox 评估及候选导出，没有运行牙位漏检、定位命中或多生牙专门 recall/FROC 评估。因此 `extra_tooth_precision` 不能代表多生牙检出率，也不能单独证明召回改善。后续应补充 `teeth_error_profile` / 低阈值候选召回、定位误差和中心命中统计，再决定保留 CCSW 与否。下一轮 batch 试验按本记录前述计划先试 batch=4，baseline 与 CCSW 使用相同设置；本轮 checkpoint 与预测文件不覆盖。
+
+四组完整日志、状态表和本地复核结果另存于 [`records/remote_runs/20261029_private_frcnn_matrix/`](../records/remote_runs/20261029_private_frcnn_matrix/结果记录.md)。原始日志仅保存在本地归档，不推送到远端仓库。
