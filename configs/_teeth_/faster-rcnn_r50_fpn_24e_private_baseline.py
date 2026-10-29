@@ -5,7 +5,8 @@ _base_ = '../faster_rcnn/faster-rcnn_r50_fpn_1x_coco.py'
 custom_imports = dict(imports=['mmdet.models.roi_heads.dental_candidate_roi_head'],
                       allow_failed_imports=False)
 data_root = os.environ.get('DENTAL_DATA_ROOT', '/root/autodl-tmp/private_only').rstrip('/')+'/'
-test_split = os.environ.get('DENTAL_TEST_SPLIT', 'external_test')
+test_split = os.environ.get('DENTAL_TEST_SPLIT', 'external_test' if
+    os.path.isfile(data_root+'fdi53/external_test.json') else 'external_huairou')
 classes = tuple(str(n) for a,b in [(11,18),(21,28),(31,38),(41,48),
     (51,55),(61,65),(71,75),(81,85)] for n in range(a,b+1))+('extra_tooth',)
 metainfo = dict(classes=classes)
