@@ -1,5 +1,7 @@
 # 私有数据 Faster R-CNN / CCSW 对照
 
+指标更正：下文历史字段 `extra_tooth_precision` 实为 COCO 类别 AP@[0.50:0.95]，不是固定阈值 Precision。详见[候选召回复盘](candidate_recall_and_modern_detectors_20261029.md)。
+
 两组均为 Faster R-CNN R50-FPN、53 类、1600x960 保持比例缩放、batch=2、SGD lr=0.0025、24 轮、16/22 轮衰减、seed=42。继承相同 ImageNet ResNet50 初始化；不加载旧 48 类检测权重。
 
 后续批次资源调整记录：本轮固定 batch=2，不中途改配置。24GB 显存卡当前观察到的峰值占用约 9GB，下一轮优先试 batch=4；若峰值仍留有充足余量且训练稳定，再试 batch=6。baseline 与 CCSW 必须同步调整，并记录实际峰值显存、每轮时长和验证集召回/定位指标。batch 改动应单独登记为新实验，不覆盖本轮结果；若同时按线性规则调整学习率（batch=4 时 0.0025 -> 0.005），需在实验表中明确标注。
