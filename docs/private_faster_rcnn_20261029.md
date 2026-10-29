@@ -34,3 +34,28 @@ CCSW 使用 `ccsw` 参数并换工作目录。单中心数据更换 DENTAL_DATA_
 - `configs/_teeth_/faster-rcnn_r50_fpn_24e_private_ccsw.py`
 
 打包数据只包含正式划分图像、两套 COCO 视图、划分清单和复核表。review 内含原始病例路径/文件名，仅在受控服务器使用；公开发布需另行去标识。
+
+## 2026-10-29 首轮服务器结果
+
+AutoDL 上四组串行训练和测试均正常结束，均为 exit_code=0。环境为单张 RTX 4090D 24GB；本轮训练 batch=2，观察到显存峰值约 9.5GB，结束后 GPU 空闲。训练、日志和权重均保存在 `/root/autodl-tmp`。四个工作目录总占用约 3.9GB，磁盘仍有约 39GB 可用。14 份 `predictions.pkl` 总计约 2.0GB，包含候选框及 RoI 特征，路径位于各工作目录的 `eval/<split>/predictions.pkl`。
+
+| 数据划分 | 方法 | 测试集 | mAP | mAP50 | mAP75 | extra_tooth_precision |
+|---|---|---|---:|---:|---:|---:|
+| 三中心训练 | baseline | val | 0.702 | 0.976 | 0.838 | 0.181 |
+| 三中心训练 | baseline | internal_test | 0.640 | 0.897 | 0.769 | 0.170 |
+| 三中心训练 | baseline | external_test（怀柔） | 0.658 | 0.959 | 0.752 | 0.168 |
+| 三中心训练 | CCSW | val | 0.701 | 0.976 | 0.844 | 0.154 |
+| 三中心训练 | CCSW | internal_test | 0.644 | 0.908 | 0.767 | 0.188 |
+| 三中心训练 | CCSW | external_test（怀柔） | 0.658 | 0.963 | 0.751 | 0.186 |
+| 单中心训练（北京口腔） | baseline | val | 0.669 | 0.973 | 0.801 | 0.199 |
+| 单中心训练（北京口腔） | baseline | external_fuxingmen | 0.625 | 0.890 | 0.754 | 0.307 |
+| 单中心训练（北京口腔） | baseline | external_shijitan | 0.664 | 0.927 | 0.807 | 0.108 |
+| 单中心训练（北京口腔） | baseline | external_huairou | 0.643 | 0.956 | 0.745 | 0.131 |
+| 单中心训练（北京口腔） | CCSW | val | 0.672 | 0.974 | 0.799 | 0.182 |
+| 单中心训练（北京口腔） | CCSW | external_fuxingmen | 0.625 | 0.892 | 0.755 | 0.360 |
+| 单中心训练（北京口腔） | CCSW | external_shijitan | 0.664 | 0.928 | 0.806 | 0.138 |
+| 单中心训练（北京口腔） | CCSW | external_huairou | 0.640 | 0.955 | 0.738 | 0.134 |
+
+初步解释：CCSW 没有带来整体 mAP 的稳定提升。三中心训练中，怀柔外部测试 mAP 持平（0.658），mAP75 略低（0.752 -> 0.751），多生牙 precision 小幅增加（0.168 -> 0.186）。单中心设定中，三个外部中心的 mAP 基本持平；多生牙 precision 在复兴门提高、世纪坛和怀柔变化很小。类别样本少且各中心差异明显，当前只跑了单次种子，不能据此认定 CCSW 有稳定收益。
+
+本轮只完成 COCO bbox 评估及候选导出，没有运行牙位漏检、定位命中或多生牙专门 recall/FROC 评估。因此 `extra_tooth_precision` 不能代表多生牙检出率，也不能单独证明召回改善。后续应补充 `teeth_error_profile` / 低阈值候选召回、定位误差和中心命中统计，再决定保留 CCSW 与否。下一轮 batch 试验按本记录前述计划先试 batch=4，baseline 与 CCSW 使用相同设置；本轮 checkpoint 与预测文件不覆盖。
