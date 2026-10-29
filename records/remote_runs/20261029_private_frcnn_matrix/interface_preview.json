@@ -1,0 +1,5662 @@
+[
+  {
+    "experiment": "private_only_baseline",
+    "img_id": 1,
+    "image_size": {
+      "width": 2440,
+      "height": 1292
+    },
+    "coordinates": "original_image_xyxy",
+    "grouping_is_provisional": true,
+    "raw_artifact": "private_only_baseline/eval/val/predictions.pkl",
+    "entities": [
+      {
+        "bbox": [
+          1017.3051147460938,
+          547.0082397460938,
+          1100.89306640625,
+          654.084228515625
+        ],
+        "score": 0.9997865557670593,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 35,
+            "category": "54",
+            "probability": 0.9997865557670593
+          },
+          {
+            "label": 36,
+            "category": "55",
+            "probability": 9.580500773154199e-05
+          },
+          {
+            "label": 34,
+            "category": "53",
+            "probability": 2.0700066670542583e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          0
+        ]
+      },
+      {
+        "bbox": [
+          1353.108154296875,
+          687.3427124023438,
+          1446.015380859375,
+          816.685546875
+        ],
+        "score": 0.9997653365135193,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 45,
+            "category": "74",
+            "probability": 0.9997653365135193
+          },
+          {
+            "label": 46,
+            "category": "75",
+            "probability": 1.7981543351197615e-05
+          },
+          {
+            "label": 44,
+            "category": "73",
+            "probability": 1.6101896108011715e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          1
+        ]
+      },
+      {
+        "bbox": [
+          1111.634521484375,
+          440.59625244140625,
+          1197.794921875,
+          607.9594116210938
+        ],
+        "score": 0.9997598528862,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 1,
+            "category": "12",
+            "probability": 0.9997598528862
+          },
+          {
+            "label": 2,
+            "category": "13",
+            "probability": 4.100951991858892e-05
+          },
+          {
+            "label": 3,
+            "category": "14",
+            "probability": 3.3039614208973944e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          2
+        ]
+      },
+      {
+        "bbox": [
+          1025.0748291015625,
+          444.4918212890625,
+          1105.5028076171875,
+          584.9824829101562
+        ],
+        "score": 0.999749481678009,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 3,
+            "category": "14",
+            "probability": 0.999749481678009
+          },
+          {
+            "label": 11,
+            "category": "24",
+            "probability": 6.434547685785219e-05
+          },
+          {
+            "label": 9,
+            "category": "22",
+            "probability": 3.604081575758755e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          3
+        ]
+      },
+      {
+        "bbox": [
+          1388.1094970703125,
+          535.0302734375,
+          1470.20361328125,
+          663.7710571289062
+        ],
+        "score": 0.9996846914291382,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 40,
+            "category": "64",
+            "probability": 0.9996846914291382
+          },
+          {
+            "label": 39,
+            "category": "63",
+            "probability": 0.00018012984946835786
+          },
+          {
+            "label": 36,
+            "category": "55",
+            "probability": 2.2494738004752435e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          4
+        ]
+      },
+      {
+        "bbox": [
+          1415.62744140625,
+          654.32275390625,
+          1542.187744140625,
+          811.2727661132812
+        ],
+        "score": 0.9996758699417114,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 46,
+            "category": "75",
+            "probability": 0.9996758699417114
+          },
+          {
+            "label": 45,
+            "category": "74",
+            "probability": 9.173207945423201e-05
+          },
+          {
+            "label": 12,
+            "category": "25",
+            "probability": 4.444549995241687e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          5
+        ]
+      },
+      {
+        "bbox": [
+          1384.77978515625,
+          433.9766845703125,
+          1458.962158203125,
+          574.1939697265625
+        ],
+        "score": 0.9996113181114197,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 11,
+            "category": "24",
+            "probability": 0.9996113181114197
+          },
+          {
+            "label": 9,
+            "category": "22",
+            "probability": 8.687290392117575e-05
+          },
+          {
+            "label": 12,
+            "category": "25",
+            "probability": 3.922508403775282e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          6
+        ]
+      },
+      {
+        "bbox": [
+          930.3453979492188,
+          643.3287353515625,
+          1065.957763671875,
+          802.3129272460938
+        ],
+        "score": 0.9995618462562561,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 51,
+            "category": "85",
+            "probability": 0.9995618462562561
+          },
+          {
+            "label": 50,
+            "category": "84",
+            "probability": 7.687242032261565e-05
+          },
+          {
+            "label": 46,
+            "category": "75",
+            "probability": 3.517331788316369e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          7
+        ]
+      },
+      {
+        "bbox": [
+          1509.53955078125,
+          614.7333374023438,
+          1691.399169921875,
+          823.03173828125
+        ],
+        "score": 0.9995612502098083,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 21,
+            "category": "36",
+            "probability": 0.9995612502098083
+          },
+          {
+            "label": 13,
+            "category": "26",
+            "probability": 6.557752203661948e-05
+          },
+          {
+            "label": 29,
+            "category": "46",
+            "probability": 5.66588387300726e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          8
+        ]
+      },
+      {
+        "bbox": [
+          1340.387451171875,
+          342.12579345703125,
+          1410.662353515625,
+          509.4822692871094
+        ],
+        "score": 0.9995606541633606,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 10,
+            "category": "23",
+            "probability": 0.9995606541633606
+          },
+          {
+            "label": 2,
+            "category": "13",
+            "probability": 0.0001302112068515271
+          },
+          {
+            "label": 9,
+            "category": "22",
+            "probability": 0.0001070365178748034
+          }
+        ],
+        "raw_candidate_indices": [
+          9
+        ]
+      },
+      {
+        "bbox": [
+          1660.0399169921875,
+          642.0044555664062,
+          1786.1123046875,
+          770.5599975585938
+        ],
+        "score": 0.9995207786560059,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 22,
+            "category": "37",
+            "probability": 0.9995207786560059
+          },
+          {
+            "label": 51,
+            "category": "85",
+            "probability": 5.869779852218926e-05
+          },
+          {
+            "label": 14,
+            "category": "27",
+            "probability": 3.641915100160986e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          10
+        ]
+      },
+      {
+        "bbox": [
+          1513.5841064453125,
+          410.3853454589844,
+          1641.512451171875,
+          617.311279296875
+        ],
+        "score": 0.9994839429855347,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 13,
+            "category": "26",
+            "probability": 0.9994839429855347
+          },
+          {
+            "label": 41,
+            "category": "65",
+            "probability": 9.196803148370236e-05
+          },
+          {
+            "label": 5,
+            "category": "16",
+            "probability": 4.241559508955106e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          11
+        ]
+      },
+      {
+        "bbox": [
+          1443.634521484375,
+          405.8377990722656,
+          1532.1072998046875,
+          535.8148803710938
+        ],
+        "score": 0.9994325041770935,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 12,
+            "category": "25",
+            "probability": 0.9994325041770935
+          },
+          {
+            "label": 11,
+            "category": "24",
+            "probability": 0.0001668959012022242
+          },
+          {
+            "label": 2,
+            "category": "13",
+            "probability": 0.00013023252540733665
+          }
+        ],
+        "raw_candidate_indices": [
+          12
+        ]
+      },
+      {
+        "bbox": [
+          782.4705810546875,
+          337.9991455078125,
+          906.8256225585938,
+          482.61761474609375
+        ],
+        "score": 0.999414324760437,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 6,
+            "category": "17",
+            "probability": 0.999414324760437
+          },
+          {
+            "label": 5,
+            "category": "16",
+            "probability": 0.0001384672796120867
+          },
+          {
+            "label": 10,
+            "category": "23",
+            "probability": 9.209511335939169e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          13
+        ]
+      },
+      {
+        "bbox": [
+          1393.4158935546875,
+          784.69189453125,
+          1477.764892578125,
+          898.10986328125
+        ],
+        "score": 0.9993756413459778,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 19,
+            "category": "34",
+            "probability": 0.9993756413459778
+          },
+          {
+            "label": 20,
+            "category": "35",
+            "probability": 0.00020446255803108215
+          },
+          {
+            "label": 12,
+            "category": "25",
+            "probability": 9.174940350931138e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          14
+        ]
+      },
+      {
+        "bbox": [
+          776.7760009765625,
+          597.2635498046875,
+          967.7578735351562,
+          813.4931640625
+        ],
+        "score": 0.9993656277656555,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 29,
+            "category": "46",
+            "probability": 0.9993656277656555
+          },
+          {
+            "label": 28,
+            "category": "45",
+            "probability": 0.000117624738777522
+          },
+          {
+            "label": 51,
+            "category": "85",
+            "probability": 5.471665281220339e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          15
+        ]
+      },
+      {
+        "bbox": [
+          1029.585205078125,
+          680.0008544921875,
+          1135.489013671875,
+          811.8587646484375
+        ],
+        "score": 0.9993352293968201,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 50,
+            "category": "84",
+            "probability": 0.9993352293968201
+          },
+          {
+            "label": 46,
+            "category": "75",
+            "probability": 7.690052734687924e-05
+          },
+          {
+            "label": 51,
+            "category": "85",
+            "probability": 4.1487408452667296e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          16
+        ]
+      },
+      {
+        "bbox": [
+          1487.69384765625,
+          778.0263061523438,
+          1586.0059814453125,
+          884.7510375976562
+        ],
+        "score": 0.9993144273757935,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 20,
+            "category": "35",
+            "probability": 0.9993144273757935
+          },
+          {
+            "label": 27,
+            "category": "44",
+            "probability": 0.0002858637599274516
+          },
+          {
+            "label": 19,
+            "category": "34",
+            "probability": 8.411010639974847e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          17
+        ]
+      },
+      {
+        "bbox": [
+          1573.800537109375,
+          360.3386535644531,
+          1687.701171875,
+          499.6050720214844
+        ],
+        "score": 0.9992818236351013,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 14,
+            "category": "27",
+            "probability": 0.9992818236351013
+          },
+          {
+            "label": 6,
+            "category": "17",
+            "probability": 8.182224701158702e-05
+          },
+          {
+            "label": 2,
+            "category": "13",
+            "probability": 8.181740122381598e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          18
+        ]
+      },
+      {
+        "bbox": [
+          1171.6202392578125,
+          471.1545104980469,
+          1244.3170166015625,
+          679.9072265625
+        ],
+        "score": 0.9992712140083313,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 0,
+            "category": "11",
+            "probability": 0.9992712140083313
+          },
+          {
+            "label": 1,
+            "category": "12",
+            "probability": 0.0003233790339436382
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 0.0002624228654894978
+          }
+        ],
+        "raw_candidate_indices": [
+          19
+        ]
+      },
+      {
+        "bbox": [
+          1443.3880615234375,
+          497.7226867675781,
+          1548.7557373046875,
+          644.7532958984375
+        ],
+        "score": 0.9992321729660034,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 41,
+            "category": "65",
+            "probability": 0.9992321729660034
+          },
+          {
+            "label": 12,
+            "category": "25",
+            "probability": 0.00016488633991684765
+          },
+          {
+            "label": 40,
+            "category": "64",
+            "probability": 0.00010209954780293629
+          }
+        ],
+        "raw_candidate_indices": [
+          20
+        ]
+      },
+      {
+        "bbox": [
+          986.6082763671875,
+          785.7661743164062,
+          1076.49169921875,
+          907.0297241210938
+        ],
+        "score": 0.9992176294326782,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 27,
+            "category": "44",
+            "probability": 0.9992176294326782
+          },
+          {
+            "label": 20,
+            "category": "35",
+            "probability": 0.00014178075070958585
+          },
+          {
+            "label": 28,
+            "category": "45",
+            "probability": 0.0001033032385748811
+          }
+        ],
+        "raw_candidate_indices": [
+          21
+        ]
+      },
+      {
+        "bbox": [
+          936.747802734375,
+          495.482421875,
+          1038.2935791015625,
+          635.5114135742188
+        ],
+        "score": 0.9991994500160217,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 36,
+            "category": "55",
+            "probability": 0.9991994500160217
+          },
+          {
+            "label": 35,
+            "category": "54",
+            "probability": 0.0001540883386041969
+          },
+          {
+            "label": 4,
+            "category": "15",
+            "probability": 9.665896504884586e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          22
+        ]
+      },
+      {
+        "bbox": [
+          886.646728515625,
+          760.165771484375,
+          973.030029296875,
+          868.5110473632812
+        ],
+        "score": 0.9991955161094666,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 28,
+            "category": "45",
+            "probability": 0.9991955161094666
+          },
+          {
+            "label": 27,
+            "category": "44",
+            "probability": 0.00026076569338329136
+          },
+          {
+            "label": 19,
+            "category": "34",
+            "probability": 7.632619235664606e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          23
+        ]
+      },
+      {
+        "bbox": [
+          1075.0587158203125,
+          330.6053771972656,
+          1158.088134765625,
+          496.575927734375
+        ],
+        "score": 0.9991375207901001,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 2,
+            "category": "13",
+            "probability": 0.9991375207901001
+          },
+          {
+            "label": 10,
+            "category": "23",
+            "probability": 0.0006133407005108893
+          },
+          {
+            "label": 12,
+            "category": "25",
+            "probability": 5.737618630519137e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          24
+        ]
+      },
+      {
+        "bbox": [
+          829.2049560546875,
+          388.75921630859375,
+          967.3436889648438,
+          604.0470581054688
+        ],
+        "score": 0.9991162419319153,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 5,
+            "category": "16",
+            "probability": 0.9991162419319153
+          },
+          {
+            "label": 36,
+            "category": "55",
+            "probability": 0.0002611125528346747
+          },
+          {
+            "label": 13,
+            "category": "26",
+            "probability": 7.533004827564582e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          25
+        ]
+      },
+      {
+        "bbox": [
+          1146.3172607421875,
+          705.6987915039062,
+          1195.4454345703125,
+          892.9988403320312
+        ],
+        "score": 0.9990624785423279,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 25,
+            "category": "42",
+            "probability": 0.9990624785423279
+          },
+          {
+            "label": 24,
+            "category": "41",
+            "probability": 0.00026765657821670175
+          },
+          {
+            "label": 26,
+            "category": "43",
+            "probability": 0.00019137238268740475
+          }
+        ],
+        "raw_candidate_indices": [
+          26
+        ]
+      },
+      {
+        "bbox": [
+          1305.4329833984375,
+          446.5938720703125,
+          1369.4539794921875,
+          628.1470336914062
+        ],
+        "score": 0.9989209175109863,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 9,
+            "category": "22",
+            "probability": 0.9989209175109863
+          },
+          {
+            "label": 8,
+            "category": "21",
+            "probability": 0.00033658419852145016
+          },
+          {
+            "label": 10,
+            "category": "23",
+            "probability": 0.00012121642066631466
+          }
+        ],
+        "raw_candidate_indices": [
+          27
+        ]
+      },
+      {
+        "bbox": [
+          1281.996826171875,
+          708.3753662109375,
+          1331.864501953125,
+          893.2876586914062
+        ],
+        "score": 0.9988621473312378,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 17,
+            "category": "32",
+            "probability": 0.9988621473312378
+          },
+          {
+            "label": 43,
+            "category": "72",
+            "probability": 0.00012498677824623883
+          },
+          {
+            "label": 16,
+            "category": "31",
+            "probability": 0.00011065529542975128
+          }
+        ],
+        "raw_candidate_indices": [
+          28
+        ]
+      },
+      {
+        "bbox": [
+          1094.3902587890625,
+          509.71990966796875,
+          1152.61181640625,
+          668.4393920898438
+        ],
+        "score": 0.9987342953681946,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 34,
+            "category": "53",
+            "probability": 0.9987342953681946
+          },
+          {
+            "label": 33,
+            "category": "52",
+            "probability": 0.0002512266510166228
+          },
+          {
+            "label": 35,
+            "category": "54",
+            "probability": 3.524478597682901e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          29
+        ]
+      },
+      {
+        "bbox": [
+          675.5712890625,
+          631.0369262695312,
+          808.6507568359375,
+          767.3178100585938
+        ],
+        "score": 0.9984397292137146,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 30,
+            "category": "47",
+            "probability": 0.9984397292137146
+          },
+          {
+            "label": 29,
+            "category": "46",
+            "probability": 0.00021662269136868417
+          },
+          {
+            "label": 18,
+            "category": "33",
+            "probability": 0.00020918625523336232
+          }
+        ],
+        "raw_candidate_indices": [
+          30
+        ]
+      },
+      {
+        "bbox": [
+          953.6600952148438,
+          393.49542236328125,
+          1041.227294921875,
+          533.31298828125
+        ],
+        "score": 0.9981297850608826,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 4,
+            "category": "15",
+            "probability": 0.9981297850608826
+          },
+          {
+            "label": 12,
+            "category": "25",
+            "probability": 0.0006057730643078685
+          },
+          {
+            "label": 3,
+            "category": "14",
+            "probability": 0.0004652581119444221
+          }
+        ],
+        "raw_candidate_indices": [
+          31
+        ]
+      },
+      {
+        "bbox": [
+          1243.1678466796875,
+          457.9463806152344,
+          1316.3023681640625,
+          681.8345947265625
+        ],
+        "score": 0.9979615211486816,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 8,
+            "category": "21",
+            "probability": 0.9979615211486816
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 0.0010602906113490462
+          },
+          {
+            "label": 0,
+            "category": "11",
+            "probability": 0.0005029386375099421
+          }
+        ],
+        "raw_candidate_indices": [
+          32
+        ]
+      },
+      {
+        "bbox": [
+          1196.7618408203125,
+          706.4705200195312,
+          1238.0872802734375,
+          890.0809326171875
+        ],
+        "score": 0.9978387951850891,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 24,
+            "category": "41",
+            "probability": 0.9978387951850891
+          },
+          {
+            "label": 25,
+            "category": "42",
+            "probability": 0.0008698785677552223
+          },
+          {
+            "label": 16,
+            "category": "31",
+            "probability": 8.900235843611881e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          33
+        ]
+      },
+      {
+        "bbox": [
+          1059.525390625,
+          795.0975341796875,
+          1145.0577392578125,
+          949.1256713867188
+        ],
+        "score": 0.9969660639762878,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 26,
+            "category": "43",
+            "probability": 0.9969660639762878
+          },
+          {
+            "label": 27,
+            "category": "44",
+            "probability": 0.00196173507720232
+          },
+          {
+            "label": 25,
+            "category": "42",
+            "probability": 0.00048037810483947396
+          }
+        ],
+        "raw_candidate_indices": [
+          34,
+          53
+        ]
+      },
+      {
+        "bbox": [
+          1343.72607421875,
+          488.5557556152344,
+          1407.7174072265625,
+          676.4249267578125
+        ],
+        "score": 0.9962538480758667,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 39,
+            "category": "63",
+            "probability": 0.9962538480758667
+          },
+          {
+            "label": 38,
+            "category": "62",
+            "probability": 0.001679963432252407
+          },
+          {
+            "label": 9,
+            "category": "22",
+            "probability": 0.0005229258676990867
+          }
+        ],
+        "raw_candidate_indices": [
+          35
+        ]
+      },
+      {
+        "bbox": [
+          1325.1864013671875,
+          799.0809936523438,
+          1418.83251953125,
+          949.9384765625
+        ],
+        "score": 0.9960390329360962,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 18,
+            "category": "33",
+            "probability": 0.9960390329360962
+          },
+          {
+            "label": 19,
+            "category": "34",
+            "probability": 0.0016008521197363734
+          },
+          {
+            "label": 17,
+            "category": "32",
+            "probability": 0.0005562093574553728
+          }
+        ],
+        "raw_candidate_indices": [
+          36
+        ]
+      },
+      {
+        "bbox": [
+          1238.0406494140625,
+          713.7015380859375,
+          1285.06396484375,
+          892.2823486328125
+        ],
+        "score": 0.994045615196228,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 16,
+            "category": "31",
+            "probability": 0.994045615196228
+          },
+          {
+            "label": 17,
+            "category": "32",
+            "probability": 0.004245748743414879
+          },
+          {
+            "label": 42,
+            "category": "71",
+            "probability": 0.00015926956257317215
+          }
+        ],
+        "raw_candidate_indices": [
+          37
+        ]
+      },
+      {
+        "bbox": [
+          1322.3458251953125,
+          705.8560180664062,
+          1378.2532958984375,
+          827.5648193359375
+        ],
+        "score": 0.9746331572532654,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 44,
+            "category": "73",
+            "probability": 0.9746331572532654
+          },
+          {
+            "label": 45,
+            "category": "74",
+            "probability": 0.003587533952668309
+          },
+          {
+            "label": 49,
+            "category": "83",
+            "probability": 0.0007477672188542783
+          }
+        ],
+        "raw_candidate_indices": [
+          38
+        ]
+      },
+      {
+        "bbox": [
+          1085.885009765625,
+          703.0634765625,
+          1147.101806640625,
+          825.45947265625
+        ],
+        "score": 0.6427551507949829,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 49,
+            "category": "83",
+            "probability": 0.6427551507949829
+          },
+          {
+            "label": 50,
+            "category": "84",
+            "probability": 0.028315797448158264
+          },
+          {
+            "label": 26,
+            "category": "43",
+            "probability": 0.00020968914031982422
+          }
+        ],
+        "raw_candidate_indices": [
+          39
+        ]
+      },
+      {
+        "bbox": [
+          1333.72216796875,
+          796.6665649414062,
+          1431.2830810546875,
+          934.7655639648438
+        ],
+        "score": 0.08791705220937729,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 18,
+            "category": "33",
+            "probability": 0.2967950403690338
+          },
+          {
+            "label": 19,
+            "category": "34",
+            "probability": 0.08791705220937729
+          },
+          {
+            "label": 28,
+            "category": "45",
+            "probability": 0.00056609814055264
+          }
+        ],
+        "raw_candidate_indices": [
+          40
+        ]
+      },
+      {
+        "bbox": [
+          1254.8016357421875,
+          707.0616455078125,
+          1292.1114501953125,
+          896.6661376953125
+        ],
+        "score": 0.07340878248214722,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 16,
+            "category": "31",
+            "probability": 0.2683317959308624
+          },
+          {
+            "label": 17,
+            "category": "32",
+            "probability": 0.07340878248214722
+          },
+          {
+            "label": 43,
+            "category": "72",
+            "probability": 0.0012395407538861036
+          }
+        ],
+        "raw_candidate_indices": [
+          41
+        ]
+      },
+      {
+        "bbox": [
+          1331.205322265625,
+          703.540771484375,
+          1400.1531982421875,
+          809.0961303710938
+        ],
+        "score": 0.06635630130767822,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 44,
+            "category": "73",
+            "probability": 0.48524972796440125
+          },
+          {
+            "label": 45,
+            "category": "74",
+            "probability": 0.06635630130767822
+          },
+          {
+            "label": 49,
+            "category": "83",
+            "probability": 0.000336877244990319
+          }
+        ],
+        "raw_candidate_indices": [
+          42
+        ]
+      },
+      {
+        "bbox": [
+          1316.8006591796875,
+          453.89678955078125,
+          1390.33544921875,
+          646.047119140625
+        ],
+        "score": 0.03416984900832176,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 9,
+            "category": "22",
+            "probability": 0.03416984900832176
+          },
+          {
+            "label": 39,
+            "category": "63",
+            "probability": 0.006494882982224226
+          },
+          {
+            "label": 38,
+            "category": "62",
+            "probability": 0.0012576320441439748
+          }
+        ],
+        "raw_candidate_indices": [
+          43
+        ]
+      },
+      {
+        "bbox": [
+          1172.1043701171875,
+          558.3063354492188,
+          1243.083251953125,
+          674.2610473632812
+        ],
+        "score": 0.03399479761719704,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 32,
+            "category": "51",
+            "probability": 0.03399479761719704
+          },
+          {
+            "label": 0,
+            "category": "11",
+            "probability": 0.026418954133987427
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 0.0013542042579501867
+          }
+        ],
+        "raw_candidate_indices": [
+          44
+        ]
+      },
+      {
+        "bbox": [
+          1058.3145751953125,
+          703.5462036132812,
+          1142.7200927734375,
+          810.7578125
+        ],
+        "score": 0.030422380194067955,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 49,
+            "category": "83",
+            "probability": 0.41332295536994934
+          },
+          {
+            "label": 50,
+            "category": "84",
+            "probability": 0.030422380194067955
+          },
+          {
+            "label": 26,
+            "category": "43",
+            "probability": 0.0002126743784174323
+          }
+        ],
+        "raw_candidate_indices": [
+          45
+        ]
+      },
+      {
+        "bbox": [
+          1099.251953125,
+          459.83099365234375,
+          1168.1143798828125,
+          657.421630859375
+        ],
+        "score": 0.02564106695353985,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 1,
+            "category": "12",
+            "probability": 0.7404220700263977
+          },
+          {
+            "label": 34,
+            "category": "53",
+            "probability": 0.02564106695353985
+          },
+          {
+            "label": 3,
+            "category": "14",
+            "probability": 0.0017616862896829844
+          }
+        ],
+        "raw_candidate_indices": [
+          46
+        ]
+      },
+      {
+        "bbox": [
+          1247.0531005859375,
+          469.0621337890625,
+          1311.9439697265625,
+          620.1075439453125
+        ],
+        "score": 0.024079138413071632,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 8,
+            "category": "21",
+            "probability": 0.8648734092712402
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 0.024079138413071632
+          },
+          {
+            "label": 0,
+            "category": "11",
+            "probability": 0.0012720916420221329
+          }
+        ],
+        "raw_candidate_indices": [
+          47
+        ]
+      },
+      {
+        "bbox": [
+          1401.3668212890625,
+          784.034912109375,
+          1474.1680908203125,
+          900.5521240234375
+        ],
+        "score": 0.023688435554504395,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 19,
+            "category": "34",
+            "probability": 0.4861360490322113
+          },
+          {
+            "label": 28,
+            "category": "45",
+            "probability": 0.023688435554504395
+          },
+          {
+            "label": 20,
+            "category": "35",
+            "probability": 0.002751722000539303
+          }
+        ],
+        "raw_candidate_indices": [
+          48
+        ]
+      },
+      {
+        "bbox": [
+          792.7379760742188,
+          364.6858215332031,
+          950.3113403320312,
+          519.0009765625
+        ],
+        "score": 0.017393028363585472,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 5,
+            "category": "16",
+            "probability": 0.18713797628879547
+          },
+          {
+            "label": 6,
+            "category": "17",
+            "probability": 0.017393028363585472
+          },
+          {
+            "label": 10,
+            "category": "23",
+            "probability": 0.0004984211991541088
+          }
+        ],
+        "raw_candidate_indices": [
+          49
+        ]
+      },
+      {
+        "bbox": [
+          1391.005615234375,
+          441.7683410644531,
+          1439.9564208984375,
+          559.262939453125
+        ],
+        "score": 0.015309236012399197,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 11,
+            "category": "24",
+            "probability": 0.015309236012399197
+          },
+          {
+            "label": 4,
+            "category": "15",
+            "probability": 3.883944737026468e-05
+          },
+          {
+            "label": 39,
+            "category": "63",
+            "probability": 1.6743424566811882e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          50
+        ]
+      },
+      {
+        "bbox": [
+          1528.27587890625,
+          392.97186279296875,
+          1655.03564453125,
+          564.9967651367188
+        ],
+        "score": 0.01441803015768528,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 13,
+            "category": "26",
+            "probability": 0.01441803015768528
+          },
+          {
+            "label": 14,
+            "category": "27",
+            "probability": 0.007952265441417694
+          },
+          {
+            "label": 21,
+            "category": "36",
+            "probability": 4.567415453493595e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          51
+        ]
+      },
+      {
+        "bbox": [
+          1008.4111938476562,
+          790.9470825195312,
+          1126.8963623046875,
+          928.4843139648438
+        ],
+        "score": 0.012624573893845081,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 26,
+            "category": "43",
+            "probability": 0.041520822793245316
+          },
+          {
+            "label": 27,
+            "category": "44",
+            "probability": 0.012624573893845081
+          },
+          {
+            "label": 20,
+            "category": "35",
+            "probability": 2.5975572498282418e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          52
+        ]
+      },
+      {
+        "bbox": [
+          1227.7650146484375,
+          483.73553466796875,
+          1314.7147216796875,
+          666.6643676757812
+        ],
+        "score": 0.010903265327215195,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 8,
+            "category": "21",
+            "probability": 0.06299914419651031
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 0.010903265327215195
+          },
+          {
+            "label": 0,
+            "category": "11",
+            "probability": 0.003957809880375862
+          }
+        ],
+        "raw_candidate_indices": [
+          54
+        ]
+      }
+    ]
+  },
+  {
+    "experiment": "private_only_baseline",
+    "img_id": 2,
+    "image_size": {
+      "width": 2324,
+      "height": 1292
+    },
+    "coordinates": "original_image_xyxy",
+    "grouping_is_provisional": true,
+    "raw_artifact": "private_only_baseline/eval/val/predictions.pkl",
+    "entities": [
+      {
+        "bbox": [
+          866.1552734375,
+          444.44549560546875,
+          970.723388671875,
+          553.4642944335938
+        ],
+        "score": 0.9999380111694336,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 4,
+            "category": "15",
+            "probability": 0.9999380111694336
+          },
+          {
+            "label": 10,
+            "category": "23",
+            "probability": 1.2729913578368723e-05
+          },
+          {
+            "label": 3,
+            "category": "14",
+            "probability": 9.823143955145497e-06
+          }
+        ],
+        "raw_candidate_indices": [
+          0
+        ]
+      },
+      {
+        "bbox": [
+          1329.388427734375,
+          859.9403076171875,
+          1418.338134765625,
+          957.450439453125
+        ],
+        "score": 0.9997473359107971,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 19,
+            "category": "34",
+            "probability": 0.9997473359107971
+          },
+          {
+            "label": 11,
+            "category": "24",
+            "probability": 6.730952736688778e-05
+          },
+          {
+            "label": 20,
+            "category": "35",
+            "probability": 4.333625111030415e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          1
+        ]
+      },
+      {
+        "bbox": [
+          1303.8323974609375,
+          724.1282958984375,
+          1406.12158203125,
+          881.0601806640625
+        ],
+        "score": 0.9997424483299255,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 45,
+            "category": "74",
+            "probability": 0.9997424483299255
+          },
+          {
+            "label": 46,
+            "category": "75",
+            "probability": 7.94942316133529e-05
+          },
+          {
+            "label": 44,
+            "category": "73",
+            "probability": 3.062225368921645e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          2
+        ]
+      },
+      {
+        "bbox": [
+          1060.23291015625,
+          839.4796142578125,
+          1136.2288818359375,
+          969.094482421875
+        ],
+        "score": 0.9997349381446838,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 25,
+            "category": "42",
+            "probability": 0.9997349381446838
+          },
+          {
+            "label": 24,
+            "category": "41",
+            "probability": 0.00012756888463627547
+          },
+          {
+            "label": 26,
+            "category": "43",
+            "probability": 3.582994031603448e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          3
+        ]
+      },
+      {
+        "bbox": [
+          917.73583984375,
+          454.096923828125,
+          1011.273681640625,
+          588.1201782226562
+        ],
+        "score": 0.9997231364250183,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 3,
+            "category": "14",
+            "probability": 0.9997231364250183
+          },
+          {
+            "label": 4,
+            "category": "15",
+            "probability": 0.0001337950670858845
+          },
+          {
+            "label": 9,
+            "category": "22",
+            "probability": 2.4135917556122877e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          4
+        ]
+      },
+      {
+        "bbox": [
+          1168.662353515625,
+          435.61297607421875,
+          1258.081298828125,
+          604.3145141601562
+        ],
+        "score": 0.9996974468231201,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 8,
+            "category": "21",
+            "probability": 0.9996974468231201
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 0.00017040620150510222
+          },
+          {
+            "label": 9,
+            "category": "22",
+            "probability": 4.8311972932424396e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          5
+        ]
+      },
+      {
+        "bbox": [
+          1377.7532958984375,
+          456.7779846191406,
+          1469.034423828125,
+          550.2307739257812
+        ],
+        "score": 0.9996914863586426,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 12,
+            "category": "25",
+            "probability": 0.9996914863586426
+          },
+          {
+            "label": 46,
+            "category": "75",
+            "probability": 2.5859477318590507e-05
+          },
+          {
+            "label": 41,
+            "category": "65",
+            "probability": 2.511186175979674e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          6
+        ]
+      },
+      {
+        "bbox": [
+          1238.676513671875,
+          459.4187316894531,
+          1314.1927490234375,
+          613.2822265625
+        ],
+        "score": 0.9996559619903564,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 9,
+            "category": "22",
+            "probability": 0.9996559619903564
+          },
+          {
+            "label": 8,
+            "category": "21",
+            "probability": 0.00016171266906894743
+          },
+          {
+            "label": 10,
+            "category": "23",
+            "probability": 3.1986404792405665e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          7
+        ]
+      },
+      {
+        "bbox": [
+          990.689208984375,
+          516.6940307617188,
+          1052.1943359375,
+          712.1741333007812
+        ],
+        "score": 0.9996352195739746,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 34,
+            "category": "53",
+            "probability": 0.9996352195739746
+          },
+          {
+            "label": 35,
+            "category": "54",
+            "probability": 0.00014968353207223117
+          },
+          {
+            "label": 39,
+            "category": "63",
+            "probability": 4.7431003622477874e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          8
+        ]
+      },
+      {
+        "bbox": [
+          1077.94873046875,
+          444.00933837890625,
+          1163.4527587890625,
+          609.737060546875
+        ],
+        "score": 0.9995874762535095,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 0,
+            "category": "11",
+            "probability": 0.9995874762535095
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 0.00010505579120945185
+          },
+          {
+            "label": 8,
+            "category": "21",
+            "probability": 7.191851909738034e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          9
+        ]
+      },
+      {
+        "bbox": [
+          1458.6104736328125,
+          455.3350830078125,
+          1584.402099609375,
+          646.5230712890625
+        ],
+        "score": 0.9995872378349304,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 13,
+            "category": "26",
+            "probability": 0.9995872378349304
+          },
+          {
+            "label": 21,
+            "category": "36",
+            "probability": 5.079384573036805e-05
+          },
+          {
+            "label": 41,
+            "category": "65",
+            "probability": 4.994616756448522e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          10
+        ]
+      },
+      {
+        "bbox": [
+          1320.4986572265625,
+          461.78265380859375,
+          1418.2100830078125,
+          588.1174926757812
+        ],
+        "score": 0.9995853304862976,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 11,
+            "category": "24",
+            "probability": 0.9995853304862976
+          },
+          {
+            "label": 12,
+            "category": "25",
+            "probability": 0.00010595417552394792
+          },
+          {
+            "label": 1,
+            "category": "12",
+            "probability": 8.501300180796534e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          11
+        ]
+      },
+      {
+        "bbox": [
+          918.124755859375,
+          549.5078735351562,
+          1006.7098999023438,
+          695.0961303710938
+        ],
+        "score": 0.9995704293251038,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 35,
+            "category": "54",
+            "probability": 0.9995704293251038
+          },
+          {
+            "label": 36,
+            "category": "55",
+            "probability": 9.79268952505663e-05
+          },
+          {
+            "label": 34,
+            "category": "53",
+            "probability": 6.72062233206816e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          12
+        ]
+      },
+      {
+        "bbox": [
+          1329.347412109375,
+          539.38330078125,
+          1415.2777099609375,
+          695.3399047851562
+        ],
+        "score": 0.9995493292808533,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 40,
+            "category": "64",
+            "probability": 0.9995493292808533
+          },
+          {
+            "label": 11,
+            "category": "24",
+            "probability": 0.00010365070920670405
+          },
+          {
+            "label": 41,
+            "category": "65",
+            "probability": 9.209402924170718e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          13
+        ]
+      },
+      {
+        "bbox": [
+          753.6629028320312,
+          459.43560791015625,
+          875.7128295898438,
+          648.59130859375
+        ],
+        "score": 0.9995437264442444,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 5,
+            "category": "16",
+            "probability": 0.9995437264442444
+          },
+          {
+            "label": 13,
+            "category": "26",
+            "probability": 0.00013204185233917087
+          },
+          {
+            "label": 36,
+            "category": "55",
+            "probability": 6.587831012438983e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          14
+        ]
+      },
+      {
+        "bbox": [
+          723.2760620117188,
+          664.6244506835938,
+          893.2832641601562,
+          858.3912963867188
+        ],
+        "score": 0.9994937181472778,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 29,
+            "category": "46",
+            "probability": 0.9994937181472778
+          },
+          {
+            "label": 21,
+            "category": "36",
+            "probability": 4.195616565993987e-05
+          },
+          {
+            "label": 30,
+            "category": "47",
+            "probability": 3.700285742525011e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          15
+        ]
+      },
+      {
+        "bbox": [
+          692.3201293945312,
+          374.1813659667969,
+          809.6937255859375,
+          515.3519897460938
+        ],
+        "score": 0.9994612336158752,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 6,
+            "category": "17",
+            "probability": 0.9994612336158752
+          },
+          {
+            "label": 18,
+            "category": "33",
+            "probability": 0.00011622157762758434
+          },
+          {
+            "label": 14,
+            "category": "27",
+            "probability": 7.158162770792842e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          16
+        ]
+      },
+      {
+        "bbox": [
+          1287.2667236328125,
+          359.880859375,
+          1371.445068359375,
+          501.58184814453125
+        ],
+        "score": 0.9994315505027771,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 10,
+            "category": "23",
+            "probability": 0.9994315505027771
+          },
+          {
+            "label": 2,
+            "category": "13",
+            "probability": 0.00044321411405690014
+          },
+          {
+            "label": 12,
+            "category": "25",
+            "probability": 3.597716204239987e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          17
+        ]
+      },
+      {
+        "bbox": [
+          1366.5457763671875,
+          694.8240356445312,
+          1495.81396484375,
+          865.122314453125
+        ],
+        "score": 0.9993994235992432,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 46,
+            "category": "75",
+            "probability": 0.9993994235992432
+          },
+          {
+            "label": 21,
+            "category": "36",
+            "probability": 8.514808723703027e-05
+          },
+          {
+            "label": 45,
+            "category": "74",
+            "probability": 7.275987445609644e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          18
+        ]
+      },
+      {
+        "bbox": [
+          1271.3935546875,
+          920.3347778320312,
+          1361.2105712890625,
+          1051.4237060546875
+        ],
+        "score": 0.9993928670883179,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 18,
+            "category": "33",
+            "probability": 0.9993928670883179
+          },
+          {
+            "label": 26,
+            "category": "43",
+            "probability": 0.0003198441118001938
+          },
+          {
+            "label": 19,
+            "category": "34",
+            "probability": 5.152323137735948e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          19
+        ]
+      },
+      {
+        "bbox": [
+          1427.4075927734375,
+          833.7760009765625,
+          1519.8482666015625,
+          926.6221923828125
+        ],
+        "score": 0.9993922710418701,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 20,
+            "category": "35",
+            "probability": 0.9993922710418701
+          },
+          {
+            "label": 27,
+            "category": "44",
+            "probability": 0.0001581555261509493
+          },
+          {
+            "label": 21,
+            "category": "36",
+            "probability": 8.196101407520473e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          20
+        ]
+      },
+      {
+        "bbox": [
+          946.3057861328125,
+          728.9608764648438,
+          1049.0848388671875,
+          884.0130615234375
+        ],
+        "score": 0.9993776679039001,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 50,
+            "category": "84",
+            "probability": 0.9993776679039001
+          },
+          {
+            "label": 46,
+            "category": "75",
+            "probability": 7.26052385289222e-05
+          },
+          {
+            "label": 49,
+            "category": "83",
+            "probability": 5.252966730040498e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          21
+        ]
+      },
+      {
+        "bbox": [
+          855.6891479492188,
+          512.2578125,
+          957.6455688476562,
+          678.6453247070312
+        ],
+        "score": 0.9993439316749573,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 36,
+            "category": "55",
+            "probability": 0.9993439316749573
+          },
+          {
+            "label": 35,
+            "category": "54",
+            "probability": 0.000148433493450284
+          },
+          {
+            "label": 4,
+            "category": "15",
+            "probability": 6.248064892133698e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          22
+        ]
+      },
+      {
+        "bbox": [
+          1031.765380859375,
+          737.737548828125,
+          1087.03125,
+          929.0145874023438
+        ],
+        "score": 0.9993038177490234,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 49,
+            "category": "83",
+            "probability": 0.9993038177490234
+          },
+          {
+            "label": 48,
+            "category": "82",
+            "probability": 0.0001586170110385865
+          },
+          {
+            "label": 44,
+            "category": "73",
+            "probability": 8.603476453572512e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          23
+        ]
+      },
+      {
+        "bbox": [
+          1618.3740234375,
+          694.9417114257812,
+          1733.8658447265625,
+          811.8251342773438
+        ],
+        "score": 0.9992978572845459,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 22,
+            "category": "37",
+            "probability": 0.9992978572845459
+          },
+          {
+            "label": 26,
+            "category": "43",
+            "probability": 6.977999873925e-05
+          },
+          {
+            "label": 14,
+            "category": "27",
+            "probability": 6.563631177414209e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          24
+        ]
+      },
+      {
+        "bbox": [
+          930.2460327148438,
+          867.3272705078125,
+          1021.4642944335938,
+          967.7007446289062
+        ],
+        "score": 0.9992720484733582,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 27,
+            "category": "44",
+            "probability": 0.9992720484733582
+          },
+          {
+            "label": 26,
+            "category": "43",
+            "probability": 0.00019432803674135357
+          },
+          {
+            "label": 3,
+            "category": "14",
+            "probability": 0.0001002710559987463
+          }
+        ],
+        "raw_candidate_indices": [
+          25
+        ]
+      },
+      {
+        "bbox": [
+          1259.8128662109375,
+          735.2482299804688,
+          1318.8724365234375,
+          927.114501953125
+        ],
+        "score": 0.9992671608924866,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 44,
+            "category": "73",
+            "probability": 0.9992671608924866
+          },
+          {
+            "label": 49,
+            "category": "83",
+            "probability": 0.0004110653535462916
+          },
+          {
+            "label": 45,
+            "category": "74",
+            "probability": 6.0397829656722024e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          26
+        ]
+      },
+      {
+        "bbox": [
+          995.7413330078125,
+          927.8767700195312,
+          1079.880615234375,
+          1051.4720458984375
+        ],
+        "score": 0.9992214441299438,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 26,
+            "category": "43",
+            "probability": 0.9992214441299438
+          },
+          {
+            "label": 18,
+            "category": "33",
+            "probability": 0.00028271001065149903
+          },
+          {
+            "label": 27,
+            "category": "44",
+            "probability": 0.00011061003897339106
+          }
+        ],
+        "raw_candidate_indices": [
+          27
+        ]
+      },
+      {
+        "bbox": [
+          602.0023193359375,
+          699.8244018554688,
+          720.796142578125,
+          812.6356811523438
+        ],
+        "score": 0.9991357922554016,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 30,
+            "category": "47",
+            "probability": 0.9991357922554016
+          },
+          {
+            "label": 22,
+            "category": "37",
+            "probability": 9.062216122401878e-05
+          },
+          {
+            "label": 28,
+            "category": "45",
+            "probability": 8.04034061729908e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          28
+        ]
+      },
+      {
+        "bbox": [
+          1209.5975341796875,
+          832.313720703125,
+          1298.5408935546875,
+          974.134765625
+        ],
+        "score": 0.9991291165351868,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 17,
+            "category": "32",
+            "probability": 0.9991291165351868
+          },
+          {
+            "label": 18,
+            "category": "33",
+            "probability": 0.0005518600810319185
+          },
+          {
+            "label": 9,
+            "category": "22",
+            "probability": 5.583357051364146e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          29
+        ]
+      },
+      {
+        "bbox": [
+          1285.258056640625,
+          507.3883056640625,
+          1348.9884033203125,
+          712.80859375
+        ],
+        "score": 0.9991000890731812,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 39,
+            "category": "63",
+            "probability": 0.9991000890731812
+          },
+          {
+            "label": 38,
+            "category": "62",
+            "probability": 0.0003310191386844963
+          },
+          {
+            "label": 34,
+            "category": "53",
+            "probability": 0.00032925792038440704
+          }
+        ],
+        "raw_candidate_indices": [
+          30
+        ]
+      },
+      {
+        "bbox": [
+          1014.5415649414062,
+          454.2263488769531,
+          1092.606201171875,
+          620.964599609375
+        ],
+        "score": 0.9989103078842163,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 1,
+            "category": "12",
+            "probability": 0.9989103078842163
+          },
+          {
+            "label": 0,
+            "category": "11",
+            "probability": 0.00034594678436405957
+          },
+          {
+            "label": 11,
+            "category": "24",
+            "probability": 0.0001175274228444323
+          }
+        ],
+        "raw_candidate_indices": [
+          31
+        ]
+      },
+      {
+        "bbox": [
+          1462.6029052734375,
+          662.4638671875,
+          1618.1590576171875,
+          848.0855712890625
+        ],
+        "score": 0.9988898634910583,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 21,
+            "category": "36",
+            "probability": 0.9988898634910583
+          },
+          {
+            "label": 13,
+            "category": "26",
+            "probability": 0.00016012786363717169
+          },
+          {
+            "label": 46,
+            "category": "75",
+            "probability": 0.00014770292909815907
+          }
+        ],
+        "raw_candidate_indices": [
+          32
+        ]
+      },
+      {
+        "bbox": [
+          960.4756469726562,
+          356.0286560058594,
+          1042.401123046875,
+          493.2115783691406
+        ],
+        "score": 0.9988166093826294,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 2,
+            "category": "13",
+            "probability": 0.9988166093826294
+          },
+          {
+            "label": 10,
+            "category": "23",
+            "probability": 0.0009887013584375381
+          },
+          {
+            "label": 12,
+            "category": "25",
+            "probability": 6.933500844752416e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          33,
+          56
+        ]
+      },
+      {
+        "bbox": [
+          825.6802978515625,
+          843.9124145507812,
+          919.7537841796875,
+          940.4168701171875
+        ],
+        "score": 0.9986692667007446,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 28,
+            "category": "45",
+            "probability": 0.9986692667007446
+          },
+          {
+            "label": 19,
+            "category": "34",
+            "probability": 0.00030294895987026393
+          },
+          {
+            "label": 27,
+            "category": "44",
+            "probability": 0.00019775705004576594
+          }
+        ],
+        "raw_candidate_indices": [
+          34
+        ]
+      },
+      {
+        "bbox": [
+          1384.12646484375,
+          520.02490234375,
+          1483.209716796875,
+          677.7955322265625
+        ],
+        "score": 0.9986321330070496,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 41,
+            "category": "65",
+            "probability": 0.9986321330070496
+          },
+          {
+            "label": 12,
+            "category": "25",
+            "probability": 0.0003301287943031639
+          },
+          {
+            "label": 13,
+            "category": "26",
+            "probability": 0.00020336567831691355
+          }
+        ],
+        "raw_candidate_indices": [
+          35
+        ]
+      },
+      {
+        "bbox": [
+          1524.076904296875,
+          378.82684326171875,
+          1643.2220458984375,
+          520.9677124023438
+        ],
+        "score": 0.9982500672340393,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 14,
+            "category": "27",
+            "probability": 0.9982500672340393
+          },
+          {
+            "label": 6,
+            "category": "17",
+            "probability": 0.00038980701356194913
+          },
+          {
+            "label": 13,
+            "category": "26",
+            "probability": 0.00021351067698560655
+          }
+        ],
+        "raw_candidate_indices": [
+          36
+        ]
+      },
+      {
+        "bbox": [
+          846.7919921875,
+          696.7633666992188,
+          986.76904296875,
+          879.0280151367188
+        ],
+        "score": 0.9981011748313904,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 51,
+            "category": "85",
+            "probability": 0.9981011748313904
+          },
+          {
+            "label": 50,
+            "category": "84",
+            "probability": 0.00038760618190281093
+          },
+          {
+            "label": 46,
+            "category": "75",
+            "probability": 9.472848614677787e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          37
+        ]
+      },
+      {
+        "bbox": [
+          1230.5625,
+          562.83203125,
+          1279.2255859375,
+          710.9423217773438
+        ],
+        "score": 0.9971961975097656,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 38,
+            "category": "62",
+            "probability": 0.9971961975097656
+          },
+          {
+            "label": 37,
+            "category": "61",
+            "probability": 0.0016867966623976827
+          },
+          {
+            "label": 34,
+            "category": "53",
+            "probability": 7.444092625519261e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          38
+        ]
+      },
+      {
+        "bbox": [
+          1123.5499267578125,
+          745.9490356445312,
+          1176.750244140625,
+          906.1988525390625
+        ],
+        "score": 0.9956148862838745,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 24,
+            "category": "41",
+            "probability": 0.9956148862838745
+          },
+          {
+            "label": 16,
+            "category": "31",
+            "probability": 0.0029116752557456493
+          },
+          {
+            "label": 25,
+            "category": "42",
+            "probability": 0.0005466379807330668
+          }
+        ],
+        "raw_candidate_indices": [
+          39
+        ]
+      },
+      {
+        "bbox": [
+          1112.7989501953125,
+          579.8931884765625,
+          1170.6700439453125,
+          718.242431640625
+        ],
+        "score": 0.9954527020454407,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 32,
+            "category": "51",
+            "probability": 0.9954527020454407
+          },
+          {
+            "label": 37,
+            "category": "61",
+            "probability": 0.0007342254393734038
+          },
+          {
+            "label": 33,
+            "category": "52",
+            "probability": 0.0005661901086568832
+          }
+        ],
+        "raw_candidate_indices": [
+          40
+        ]
+      },
+      {
+        "bbox": [
+          1171.3538818359375,
+          589.37890625,
+          1231.1790771484375,
+          716.191162109375
+        ],
+        "score": 0.9954362511634827,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 37,
+            "category": "61",
+            "probability": 0.9954362511634827
+          },
+          {
+            "label": 32,
+            "category": "51",
+            "probability": 0.001366354408673942
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 0.00038462833617813885
+          }
+        ],
+        "raw_candidate_indices": [
+          41,
+          47
+        ]
+      },
+      {
+        "bbox": [
+          1061.7210693359375,
+          585.7822265625,
+          1110.060546875,
+          710.674072265625
+        ],
+        "score": 0.9926972985267639,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 33,
+            "category": "52",
+            "probability": 0.9926972985267639
+          },
+          {
+            "label": 32,
+            "category": "51",
+            "probability": 0.001740964944474399
+          },
+          {
+            "label": 38,
+            "category": "62",
+            "probability": 0.0005972844082862139
+          }
+        ],
+        "raw_candidate_indices": [
+          42,
+          50
+        ]
+      },
+      {
+        "bbox": [
+          1166.418212890625,
+          745.4017333984375,
+          1229.9544677734375,
+          912.204345703125
+        ],
+        "score": 0.9915374517440796,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 16,
+            "category": "31",
+            "probability": 0.9915374517440796
+          },
+          {
+            "label": 17,
+            "category": "32",
+            "probability": 0.005564241204410791
+          },
+          {
+            "label": 24,
+            "category": "41",
+            "probability": 0.0009074892732314765
+          }
+        ],
+        "raw_candidate_indices": [
+          43,
+          49
+        ]
+      },
+      {
+        "bbox": [
+          1218.79638671875,
+          745.79638671875,
+          1260.2525634765625,
+          834.3561401367188
+        ],
+        "score": 0.9913111925125122,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 43,
+            "category": "72",
+            "probability": 0.9913111925125122
+          },
+          {
+            "label": 44,
+            "category": "73",
+            "probability": 0.0027815864887088537
+          },
+          {
+            "label": 48,
+            "category": "82",
+            "probability": 0.0005714484141208231
+          }
+        ],
+        "raw_candidate_indices": [
+          44
+        ]
+      },
+      {
+        "bbox": [
+          1081.116455078125,
+          740.5927124023438,
+          1130.407470703125,
+          869.9324951171875
+        ],
+        "score": 0.950452983379364,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 48,
+            "category": "82",
+            "probability": 0.950452983379364
+          },
+          {
+            "label": 25,
+            "category": "42",
+            "probability": 0.0013595251366496086
+          },
+          {
+            "label": 49,
+            "category": "83",
+            "probability": 0.0009510908275842667
+          }
+        ],
+        "raw_candidate_indices": [
+          45
+        ]
+      },
+      {
+        "bbox": [
+          1219.231201171875,
+          740.7672119140625,
+          1264.000732421875,
+          882.9735107421875
+        ],
+        "score": 0.07461155205965042,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 43,
+            "category": "72",
+            "probability": 0.07461155205965042
+          },
+          {
+            "label": 44,
+            "category": "73",
+            "probability": 0.00010932177247013897
+          },
+          {
+            "label": 42,
+            "category": "71",
+            "probability": 2.467120430083014e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          46
+        ]
+      },
+      {
+        "bbox": [
+          1351.7381591796875,
+          456.3956604003906,
+          1446.6588134765625,
+          557.65576171875
+        ],
+        "score": 0.033018939197063446,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 11,
+            "category": "24",
+            "probability": 0.3556339144706726
+          },
+          {
+            "label": 12,
+            "category": "25",
+            "probability": 0.033018939197063446
+          },
+          {
+            "label": 1,
+            "category": "12",
+            "probability": 0.0003604089724831283
+          }
+        ],
+        "raw_candidate_indices": [
+          48
+        ]
+      },
+      {
+        "bbox": [
+          1232.5460205078125,
+          574.683837890625,
+          1276.7364501953125,
+          712.0906982421875
+        ],
+        "score": 0.0178800318390131,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 38,
+            "category": "62",
+            "probability": 0.702065110206604
+          },
+          {
+            "label": 37,
+            "category": "61",
+            "probability": 0.0178800318390131
+          },
+          {
+            "label": 34,
+            "category": "53",
+            "probability": 0.00012063648318871856
+          }
+        ],
+        "raw_candidate_indices": [
+          51
+        ]
+      },
+      {
+        "bbox": [
+          1132.6639404296875,
+          744.5260620117188,
+          1207.8289794921875,
+          910.3522338867188
+        ],
+        "score": 0.016125552356243134,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 24,
+            "category": "41",
+            "probability": 0.10519232600927353
+          },
+          {
+            "label": 16,
+            "category": "31",
+            "probability": 0.016125552356243134
+          },
+          {
+            "label": 47,
+            "category": "81",
+            "probability": 0.00016788209904916584
+          }
+        ],
+        "raw_candidate_indices": [
+          52
+        ]
+      },
+      {
+        "bbox": [
+          1179.2275390625,
+          749.1187744140625,
+          1218.703369140625,
+          803.1300659179688
+        ],
+        "score": 0.015622982755303383,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 42,
+            "category": "71",
+            "probability": 0.015622982755303383
+          },
+          {
+            "label": 43,
+            "category": "72",
+            "probability": 0.0037716941442340612
+          },
+          {
+            "label": 47,
+            "category": "81",
+            "probability": 0.0028884185012429953
+          }
+        ],
+        "raw_candidate_indices": [
+          53
+        ]
+      },
+      {
+        "bbox": [
+          1301.4256591796875,
+          511.3853454589844,
+          1372.56396484375,
+          698.58984375
+        ],
+        "score": 0.013830412179231644,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 40,
+            "category": "64",
+            "probability": 0.5583916902542114
+          },
+          {
+            "label": 39,
+            "category": "63",
+            "probability": 0.013830412179231644
+          },
+          {
+            "label": 11,
+            "category": "24",
+            "probability": 0.0006409016204997897
+          }
+        ],
+        "raw_candidate_indices": [
+          54
+        ]
+      },
+      {
+        "bbox": [
+          908.0697021484375,
+          715.400146484375,
+          1030.07666015625,
+          882.5870971679688
+        ],
+        "score": 0.011875124648213387,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 51,
+            "category": "85",
+            "probability": 0.4200277626514435
+          },
+          {
+            "label": 50,
+            "category": "84",
+            "probability": 0.011875124648213387
+          },
+          {
+            "label": 36,
+            "category": "55",
+            "probability": 0.00015513654216192663
+          }
+        ],
+        "raw_candidate_indices": [
+          55
+        ]
+      }
+    ]
+  },
+  {
+    "experiment": "private_only_baseline",
+    "img_id": 3,
+    "image_size": {
+      "width": 2864,
+      "height": 1348
+    },
+    "coordinates": "original_image_xyxy",
+    "grouping_is_provisional": true,
+    "raw_artifact": "private_only_baseline/eval/val/predictions.pkl",
+    "entities": [
+      {
+        "bbox": [
+          1522.0911865234375,
+          967.35888671875,
+          1605.8778076171875,
+          1142.60400390625
+        ],
+        "score": 0.9998557567596436,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 17,
+            "category": "32",
+            "probability": 0.9998557567596436
+          },
+          {
+            "label": 18,
+            "category": "33",
+            "probability": 4.692825677921064e-05
+          },
+          {
+            "label": 16,
+            "category": "31",
+            "probability": 2.656270589795895e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          0
+        ]
+      },
+      {
+        "bbox": [
+          1243.9129638671875,
+          547.1168212890625,
+          1344.67236328125,
+          699.7169189453125
+        ],
+        "score": 0.9998167157173157,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 1,
+            "category": "12",
+            "probability": 0.9998167157173157
+          },
+          {
+            "label": 34,
+            "category": "53",
+            "probability": 2.466167279635556e-05
+          },
+          {
+            "label": 3,
+            "category": "14",
+            "probability": 1.9392218746361323e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          1
+        ]
+      },
+      {
+        "bbox": [
+          1694.5887451171875,
+          809.7811279296875,
+          1906.95849609375,
+          1010.3923950195312
+        ],
+        "score": 0.9997571110725403,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 46,
+            "category": "75",
+            "probability": 0.9997571110725403
+          },
+          {
+            "label": 45,
+            "category": "74",
+            "probability": 3.826407191809267e-05
+          },
+          {
+            "label": 12,
+            "category": "25",
+            "probability": 1.6215737559832633e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          2
+        ]
+      },
+      {
+        "bbox": [
+          1852.2166748046875,
+          504.6152038574219,
+          2006.7755126953125,
+          729.6796875
+        ],
+        "score": 0.9997005462646484,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 13,
+            "category": "26",
+            "probability": 0.9997005462646484
+          },
+          {
+            "label": 41,
+            "category": "65",
+            "probability": 5.118284752825275e-05
+          },
+          {
+            "label": 21,
+            "category": "36",
+            "probability": 4.163692574365996e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          3
+        ]
+      },
+      {
+        "bbox": [
+          1819.6864013671875,
+          748.4051513671875,
+          2036.5172119140625,
+          966.85302734375
+        ],
+        "score": 0.999625563621521,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 21,
+            "category": "36",
+            "probability": 0.999625563621521
+          },
+          {
+            "label": 46,
+            "category": "75",
+            "probability": 7.313409150810912e-05
+          },
+          {
+            "label": 29,
+            "category": "46",
+            "probability": 3.902010212186724e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          4
+        ]
+      },
+      {
+        "bbox": [
+          1138.3941650390625,
+          555.337646484375,
+          1239.5018310546875,
+          693.2101440429688
+        ],
+        "score": 0.9996178150177002,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 3,
+            "category": "14",
+            "probability": 0.9996178150177002
+          },
+          {
+            "label": 4,
+            "category": "15",
+            "probability": 8.275109576061368e-05
+          },
+          {
+            "label": 9,
+            "category": "22",
+            "probability": 6.414071685867384e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          5
+        ]
+      },
+      {
+        "bbox": [
+          1368.7119140625,
+          943.4630737304688,
+          1452.48046875,
+          1145.8170166015625
+        ],
+        "score": 0.9995841383934021,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 24,
+            "category": "41",
+            "probability": 0.9995841383934021
+          },
+          {
+            "label": 16,
+            "category": "31",
+            "probability": 0.00025514321168884635
+          },
+          {
+            "label": 25,
+            "category": "42",
+            "probability": 8.027671719901264e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          6
+        ]
+      },
+      {
+        "bbox": [
+          764.415771484375,
+          802.77197265625,
+          902.76953125,
+          943.263671875
+        ],
+        "score": 0.9995819926261902,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 30,
+            "category": "47",
+            "probability": 0.9995819926261902
+          },
+          {
+            "label": 29,
+            "category": "46",
+            "probability": 6.692518945783377e-05
+          },
+          {
+            "label": 28,
+            "category": "45",
+            "probability": 3.102424670942128e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          7
+        ]
+      },
+      {
+        "bbox": [
+          1295.7503662109375,
+          977.60791015625,
+          1397.2593994140625,
+          1145.562744140625
+        ],
+        "score": 0.9995796084403992,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 25,
+            "category": "42",
+            "probability": 0.9995796084403992
+          },
+          {
+            "label": 24,
+            "category": "41",
+            "probability": 0.00025085583911277354
+          },
+          {
+            "label": 26,
+            "category": "43",
+            "probability": 4.178012750344351e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          8
+        ]
+      },
+      {
+        "bbox": [
+          855.4166870117188,
+          444.25653076171875,
+          1029.465576171875,
+          605.9161987304688
+        ],
+        "score": 0.9995530247688293,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 6,
+            "category": "17",
+            "probability": 0.9995530247688293
+          },
+          {
+            "label": 10,
+            "category": "23",
+            "probability": 6.212144216988236e-05
+          },
+          {
+            "label": 30,
+            "category": "47",
+            "probability": 5.2245843107812107e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          9
+        ]
+      },
+      {
+        "bbox": [
+          1587.537841796875,
+          437.83953857421875,
+          1702.2869873046875,
+          584.2587280273438
+        ],
+        "score": 0.9994338154792786,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 10,
+            "category": "23",
+            "probability": 0.9994338154792786
+          },
+          {
+            "label": 2,
+            "category": "13",
+            "probability": 0.00024529077927581966
+          },
+          {
+            "label": 11,
+            "category": "24",
+            "probability": 7.866640225984156e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          10
+        ]
+      },
+      {
+        "bbox": [
+          941.2265625,
+          525.6707153320312,
+          1096.13818359375,
+          769.7268676757812
+        ],
+        "score": 0.9994294047355652,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 5,
+            "category": "16",
+            "probability": 0.9994294047355652
+          },
+          {
+            "label": 36,
+            "category": "55",
+            "probability": 6.945658969925717e-05
+          },
+          {
+            "label": 13,
+            "category": "26",
+            "probability": 5.4807678679935634e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          11
+        ]
+      },
+      {
+        "bbox": [
+          2012.482421875,
+          764.2662353515625,
+          2139.07080078125,
+          892.6101684570312
+        ],
+        "score": 0.999407172203064,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 22,
+            "category": "37",
+            "probability": 0.999407172203064
+          },
+          {
+            "label": 21,
+            "category": "36",
+            "probability": 5.9283087466610596e-05
+          },
+          {
+            "label": 20,
+            "category": "35",
+            "probability": 5.8937639551004395e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          12
+        ]
+      },
+      {
+        "bbox": [
+          1680.1817626953125,
+          620.2786865234375,
+          1800.8658447265625,
+          800.187744140625
+        ],
+        "score": 0.9993818998336792,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 40,
+            "category": "64",
+            "probability": 0.9993818998336792
+          },
+          {
+            "label": 36,
+            "category": "55",
+            "probability": 0.00015625619562342763
+          },
+          {
+            "label": 41,
+            "category": "65",
+            "probability": 0.00011240981984883547
+          }
+        ],
+        "raw_candidate_indices": [
+          13
+        ]
+      },
+      {
+        "bbox": [
+          1449.6324462890625,
+          527.5935668945312,
+          1564.3375244140625,
+          704.5995483398438
+        ],
+        "score": 0.999371349811554,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 8,
+            "category": "21",
+            "probability": 0.999371349811554
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 0.0003317601222079247
+          },
+          {
+            "label": 9,
+            "category": "22",
+            "probability": 0.00010693218791857362
+          }
+        ],
+        "raw_candidate_indices": [
+          14
+        ]
+      },
+      {
+        "bbox": [
+          1613.977783203125,
+          854.84130859375,
+          1745.8892822265625,
+          1024.8406982421875
+        ],
+        "score": 0.9993498921394348,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 45,
+            "category": "74",
+            "probability": 0.9993498921394348
+          },
+          {
+            "label": 46,
+            "category": "75",
+            "probability": 0.00011631053348537534
+          },
+          {
+            "label": 44,
+            "category": "73",
+            "probability": 7.133113103918731e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          15
+        ]
+      },
+      {
+        "bbox": [
+          1651.1597900390625,
+          530.5582885742188,
+          1778.398193359375,
+          669.457275390625
+        ],
+        "score": 0.9992839694023132,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 11,
+            "category": "24",
+            "probability": 0.9992839694023132
+          },
+          {
+            "label": 12,
+            "category": "25",
+            "probability": 0.00020765914814546704
+          },
+          {
+            "label": 19,
+            "category": "34",
+            "probability": 9.83123536570929e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          16
+        ]
+      },
+      {
+        "bbox": [
+          1790.9864501953125,
+          970.6221313476562,
+          1906.6602783203125,
+          1077.7210693359375
+        ],
+        "score": 0.9992621541023254,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 20,
+            "category": "35",
+            "probability": 0.9992621541023254
+          },
+          {
+            "label": 27,
+            "category": "44",
+            "probability": 0.0002772362786345184
+          },
+          {
+            "label": 19,
+            "category": "34",
+            "probability": 0.0001320886512985453
+          }
+        ],
+        "raw_candidate_indices": [
+          17
+        ]
+      },
+      {
+        "bbox": [
+          1585.900634765625,
+          1063.7943115234375,
+          1704.25341796875,
+          1206.99609375
+        ],
+        "score": 0.9992620348930359,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 18,
+            "category": "33",
+            "probability": 0.9992620348930359
+          },
+          {
+            "label": 19,
+            "category": "34",
+            "probability": 0.0003311479522380978
+          },
+          {
+            "label": 26,
+            "category": "43",
+            "probability": 7.352673856075853e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          18
+        ]
+      },
+      {
+        "bbox": [
+          903.2515258789062,
+          774.85205078125,
+          1093.583251953125,
+          997.3838500976562
+        ],
+        "score": 0.9992331266403198,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 29,
+            "category": "46",
+            "probability": 0.9992331266403198
+          },
+          {
+            "label": 30,
+            "category": "47",
+            "probability": 0.0001345659256912768
+          },
+          {
+            "label": 51,
+            "category": "85",
+            "probability": 9.838801634032279e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          19
+        ]
+      },
+      {
+        "bbox": [
+          1652.68701171875,
+          991.03662109375,
+          1785.941162109375,
+          1111.2486572265625
+        ],
+        "score": 0.9992305040359497,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 19,
+            "category": "34",
+            "probability": 0.9992305040359497
+          },
+          {
+            "label": 20,
+            "category": "35",
+            "probability": 0.00028440842288546264
+          },
+          {
+            "label": 11,
+            "category": "24",
+            "probability": 0.00014071236364543438
+          }
+        ],
+        "raw_candidate_indices": [
+          20
+        ]
+      },
+      {
+        "bbox": [
+          1552.32666015625,
+          538.0543212890625,
+          1652.279541015625,
+          694.1657104492188
+        ],
+        "score": 0.9992138147354126,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 9,
+            "category": "22",
+            "probability": 0.9992138147354126
+          },
+          {
+            "label": 3,
+            "category": "14",
+            "probability": 0.0003415204118937254
+          },
+          {
+            "label": 11,
+            "category": "24",
+            "probability": 0.00021517947607208043
+          }
+        ],
+        "raw_candidate_indices": [
+          21
+        ]
+      },
+      {
+        "bbox": [
+          1728.6607666015625,
+          500.1199951171875,
+          1859.47998046875,
+          624.3411865234375
+        ],
+        "score": 0.9991927742958069,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 12,
+            "category": "25",
+            "probability": 0.9991927742958069
+          },
+          {
+            "label": 46,
+            "category": "75",
+            "probability": 0.00015645862731616944
+          },
+          {
+            "label": 2,
+            "category": "13",
+            "probability": 9.704218246042728e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          22
+        ]
+      },
+      {
+        "bbox": [
+          1760.91650390625,
+          578.5656127929688,
+          1901.6795654296875,
+          779.40771484375
+        ],
+        "score": 0.9991132616996765,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 41,
+            "category": "65",
+            "probability": 0.9991132616996765
+          },
+          {
+            "label": 13,
+            "category": "26",
+            "probability": 0.0001397354935761541
+          },
+          {
+            "label": 12,
+            "category": "25",
+            "probability": 0.00010794193804031238
+          }
+        ],
+        "raw_candidate_indices": [
+          23
+        ]
+      },
+      {
+        "bbox": [
+          1221.681396484375,
+          594.1104736328125,
+          1308.37841796875,
+          838.35546875
+        ],
+        "score": 0.9990615248680115,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 34,
+            "category": "53",
+            "probability": 0.9990615248680115
+          },
+          {
+            "label": 35,
+            "category": "54",
+            "probability": 0.00013765657786279917
+          },
+          {
+            "label": 33,
+            "category": "52",
+            "probability": 0.00010865776857826859
+          }
+        ],
+        "raw_candidate_indices": [
+          24
+        ]
+      },
+      {
+        "bbox": [
+          1915.7977294921875,
+          411.55029296875,
+          2070.380615234375,
+          577.628662109375
+        ],
+        "score": 0.9990573525428772,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 14,
+            "category": "27",
+            "probability": 0.9990573525428772
+          },
+          {
+            "label": 13,
+            "category": "26",
+            "probability": 0.00014458579244092107
+          },
+          {
+            "label": 2,
+            "category": "13",
+            "probability": 0.00014114624354988337
+          }
+        ],
+        "raw_candidate_indices": [
+          25
+        ]
+      },
+      {
+        "bbox": [
+          1555.0872802734375,
+          859.0621948242188,
+          1634.8084716796875,
+          1081.54833984375
+        ],
+        "score": 0.9989708662033081,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 44,
+            "category": "73",
+            "probability": 0.9989708662033081
+          },
+          {
+            "label": 45,
+            "category": "74",
+            "probability": 0.00030756500200368464
+          },
+          {
+            "label": 43,
+            "category": "72",
+            "probability": 0.00015638569311704487
+          }
+        ],
+        "raw_candidate_indices": [
+          26
+        ]
+      },
+      {
+        "bbox": [
+          1319.9329833984375,
+          536.9852905273438,
+          1438.657470703125,
+          687.7604370117188
+        ],
+        "score": 0.9987867474555969,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 0,
+            "category": "11",
+            "probability": 0.9987867474555969
+          },
+          {
+            "label": 1,
+            "category": "12",
+            "probability": 0.00034551144926808774
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 0.00032055890187621117
+          }
+        ],
+        "raw_candidate_indices": [
+          27
+        ]
+      },
+      {
+        "bbox": [
+          1185.7015380859375,
+          1075.1500244140625,
+          1326.19189453125,
+          1230.2366943359375
+        ],
+        "score": 0.9987422823905945,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 26,
+            "category": "43",
+            "probability": 0.9987422823905945
+          },
+          {
+            "label": 27,
+            "category": "44",
+            "probability": 0.00029768317472189665
+          },
+          {
+            "label": 18,
+            "category": "33",
+            "probability": 0.0001824877836043015
+          }
+        ],
+        "raw_candidate_indices": [
+          28
+        ]
+      },
+      {
+        "bbox": [
+          1302.5771484375,
+          633.8209838867188,
+          1378.6329345703125,
+          844.5745849609375
+        ],
+        "score": 0.9987164735794067,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 33,
+            "category": "52",
+            "probability": 0.9987164735794067
+          },
+          {
+            "label": 34,
+            "category": "53",
+            "probability": 0.00033337282366119325
+          },
+          {
+            "label": 32,
+            "category": "51",
+            "probability": 0.00028436974389478564
+          }
+        ],
+        "raw_candidate_indices": [
+          29
+        ]
+      },
+      {
+        "bbox": [
+          1134.338134765625,
+          644.2589111328125,
+          1233.2164306640625,
+          829.5873413085938
+        ],
+        "score": 0.9986807703971863,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 35,
+            "category": "54",
+            "probability": 0.9986807703971863
+          },
+          {
+            "label": 36,
+            "category": "55",
+            "probability": 0.0003773088683374226
+          },
+          {
+            "label": 34,
+            "category": "53",
+            "probability": 0.00016867826343514025
+          }
+        ],
+        "raw_candidate_indices": [
+          30
+        ]
+      },
+      {
+        "bbox": [
+          1133.51025390625,
+          1005.261962890625,
+          1253.0364990234375,
+          1128.245361328125
+        ],
+        "score": 0.9986555576324463,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 27,
+            "category": "44",
+            "probability": 0.9986555576324463
+          },
+          {
+            "label": 26,
+            "category": "43",
+            "probability": 8.063715358730406e-05
+          },
+          {
+            "label": 35,
+            "category": "54",
+            "probability": 6.905198824824765e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          31
+        ]
+      },
+      {
+        "bbox": [
+          1184.7001953125,
+          455.9695739746094,
+          1301.172119140625,
+          607.3560791015625
+        ],
+        "score": 0.998473584651947,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 2,
+            "category": "13",
+            "probability": 0.998473584651947
+          },
+          {
+            "label": 10,
+            "category": "23",
+            "probability": 0.0003895699919667095
+          },
+          {
+            "label": 12,
+            "category": "25",
+            "probability": 0.00016685633454471827
+          }
+        ],
+        "raw_candidate_indices": [
+          32
+        ]
+      },
+      {
+        "bbox": [
+          1048.3961181640625,
+          610.1771240234375,
+          1174.031494140625,
+          814.8026123046875
+        ],
+        "score": 0.9982806444168091,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 36,
+            "category": "55",
+            "probability": 0.9982806444168091
+          },
+          {
+            "label": 4,
+            "category": "15",
+            "probability": 0.00028988756821490824
+          },
+          {
+            "label": 35,
+            "category": "54",
+            "probability": 0.00022051861742511392
+          }
+        ],
+        "raw_candidate_indices": [
+          33
+        ]
+      },
+      {
+        "bbox": [
+          1453.71875,
+          947.267822265625,
+          1529.642822265625,
+          1138.5108642578125
+        ],
+        "score": 0.9980788230895996,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 16,
+            "category": "31",
+            "probability": 0.9980788230895996
+          },
+          {
+            "label": 17,
+            "category": "32",
+            "probability": 0.0010362330358475447
+          },
+          {
+            "label": 24,
+            "category": "41",
+            "probability": 0.0002688425884116441
+          }
+        ],
+        "raw_candidate_indices": [
+          34
+        ]
+      },
+      {
+        "bbox": [
+          1150.4334716796875,
+          863.8978271484375,
+          1269.6605224609375,
+          1055.6378173828125
+        ],
+        "score": 0.9980711340904236,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 50,
+            "category": "84",
+            "probability": 0.9980711340904236
+          },
+          {
+            "label": 46,
+            "category": "75",
+            "probability": 0.0003192021686118096
+          },
+          {
+            "label": 49,
+            "category": "83",
+            "probability": 0.00024821440456435084
+          }
+        ],
+        "raw_candidate_indices": [
+          35
+        ]
+      },
+      {
+        "bbox": [
+          1611.1988525390625,
+          592.4358520507812,
+          1696.595703125,
+          822.67236328125
+        ],
+        "score": 0.9979109168052673,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 39,
+            "category": "63",
+            "probability": 0.9979109168052673
+          },
+          {
+            "label": 38,
+            "category": "62",
+            "probability": 0.0004317514249123633
+          },
+          {
+            "label": 34,
+            "category": "53",
+            "probability": 0.0004006100643891841
+          }
+        ],
+        "raw_candidate_indices": [
+          36
+        ]
+      },
+      {
+        "bbox": [
+          1020.1707153320312,
+          996.100341796875,
+          1135.076171875,
+          1100.6947021484375
+        ],
+        "score": 0.9971951246261597,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 28,
+            "category": "45",
+            "probability": 0.9971951246261597
+          },
+          {
+            "label": 27,
+            "category": "44",
+            "probability": 0.0009701442904770374
+          },
+          {
+            "label": 19,
+            "category": "34",
+            "probability": 0.0004669560003094375
+          }
+        ],
+        "raw_candidate_indices": [
+          37
+        ]
+      },
+      {
+        "bbox": [
+          1021.3575439453125,
+          822.3038330078125,
+          1193.8189697265625,
+          1041.07568359375
+        ],
+        "score": 0.9970260262489319,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 51,
+            "category": "85",
+            "probability": 0.9970260262489319
+          },
+          {
+            "label": 50,
+            "category": "84",
+            "probability": 0.0006598412292078137
+          },
+          {
+            "label": 45,
+            "category": "74",
+            "probability": 0.0003071929095312953
+          }
+        ],
+        "raw_candidate_indices": [
+          38
+        ]
+      },
+      {
+        "bbox": [
+          1250.8568115234375,
+          864.6265258789062,
+          1325.83544921875,
+          1093.4500732421875
+        ],
+        "score": 0.9969379901885986,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 49,
+            "category": "83",
+            "probability": 0.9969379901885986
+          },
+          {
+            "label": 44,
+            "category": "73",
+            "probability": 0.0016589632723480463
+          },
+          {
+            "label": 48,
+            "category": "82",
+            "probability": 0.00043410819489508867
+          }
+        ],
+        "raw_candidate_indices": [
+          39
+        ]
+      },
+      {
+        "bbox": [
+          1374.6104736328125,
+          623.2166137695312,
+          1451.9051513671875,
+          847.0057983398438
+        ],
+        "score": 0.9968603849411011,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 32,
+            "category": "51",
+            "probability": 0.9968603849411011
+          },
+          {
+            "label": 0,
+            "category": "11",
+            "probability": 0.000894674682058394
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 0.000646342639811337
+          }
+        ],
+        "raw_candidate_indices": [
+          40
+        ]
+      },
+      {
+        "bbox": [
+          1540.213623046875,
+          648.23095703125,
+          1601.4649658203125,
+          834.8179931640625
+        ],
+        "score": 0.9946655035018921,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 38,
+            "category": "62",
+            "probability": 0.9946655035018921
+          },
+          {
+            "label": 37,
+            "category": "61",
+            "probability": 0.001373658305965364
+          },
+          {
+            "label": 33,
+            "category": "52",
+            "probability": 0.0012717227218672633
+          }
+        ],
+        "raw_candidate_indices": [
+          41
+        ]
+      },
+      {
+        "bbox": [
+          1438.0784912109375,
+          871.0432739257812,
+          1497.529541015625,
+          1031.3629150390625
+        ],
+        "score": 0.9926034808158875,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 42,
+            "category": "71",
+            "probability": 0.9926034808158875
+          },
+          {
+            "label": 47,
+            "category": "81",
+            "probability": 0.002482037525624037
+          },
+          {
+            "label": 16,
+            "category": "31",
+            "probability": 0.0015612917486578226
+          }
+        ],
+        "raw_candidate_indices": [
+          42
+        ]
+      },
+      {
+        "bbox": [
+          1053.532958984375,
+          502.50445556640625,
+          1166.067626953125,
+          630.5340576171875
+        ],
+        "score": 0.9909679293632507,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 4,
+            "category": "15",
+            "probability": 0.9909679293632507
+          },
+          {
+            "label": 10,
+            "category": "23",
+            "probability": 0.0034036398865282536
+          },
+          {
+            "label": 12,
+            "category": "25",
+            "probability": 0.0028789550997316837
+          }
+        ],
+        "raw_candidate_indices": [
+          43,
+          69,
+          79
+        ]
+      },
+      {
+        "bbox": [
+          1326.8779296875,
+          871.9254760742188,
+          1382.900634765625,
+          1075.8043212890625
+        ],
+        "score": 0.9906970262527466,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 48,
+            "category": "82",
+            "probability": 0.9906970262527466
+          },
+          {
+            "label": 47,
+            "category": "81",
+            "probability": 0.003609306877478957
+          },
+          {
+            "label": 49,
+            "category": "83",
+            "probability": 0.00021083311003167182
+          }
+        ],
+        "raw_candidate_indices": [
+          44
+        ]
+      },
+      {
+        "bbox": [
+          1458.4769287109375,
+          606.6185302734375,
+          1536.722412109375,
+          853.3419189453125
+        ],
+        "score": 0.9855989217758179,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 37,
+            "category": "61",
+            "probability": 0.9855989217758179
+          },
+          {
+            "label": 32,
+            "category": "51",
+            "probability": 0.00776198273524642
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 0.002307399408891797
+          }
+        ],
+        "raw_candidate_indices": [
+          45,
+          82
+        ]
+      },
+      {
+        "bbox": [
+          1491.1124267578125,
+          867.9697875976562,
+          1561.29736328125,
+          1039.44677734375
+        ],
+        "score": 0.9830460548400879,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 43,
+            "category": "72",
+            "probability": 0.9830460548400879
+          },
+          {
+            "label": 42,
+            "category": "71",
+            "probability": 0.008448140695691109
+          },
+          {
+            "label": 44,
+            "category": "73",
+            "probability": 0.0008914003265090287
+          }
+        ],
+        "raw_candidate_indices": [
+          46,
+          53,
+          63
+        ]
+      },
+      {
+        "bbox": [
+          1385.0516357421875,
+          869.1375732421875,
+          1443.55859375,
+          1038.49267578125
+        ],
+        "score": 0.9677263498306274,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 47,
+            "category": "81",
+            "probability": 0.9677263498306274
+          },
+          {
+            "label": 42,
+            "category": "71",
+            "probability": 0.02608071081340313
+          },
+          {
+            "label": 48,
+            "category": "82",
+            "probability": 0.0009825604502111673
+          }
+        ],
+        "raw_candidate_indices": [
+          47,
+          49
+        ]
+      },
+      {
+        "bbox": [
+          1492.0716552734375,
+          859.7811889648438,
+          1557.339599609375,
+          1026.1451416015625
+        ],
+        "score": 0.18963854014873505,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 43,
+            "category": "72",
+            "probability": 0.5271028280258179
+          },
+          {
+            "label": 42,
+            "category": "71",
+            "probability": 0.18963854014873505
+          },
+          {
+            "label": 47,
+            "category": "81",
+            "probability": 0.021190626546740532
+          }
+        ],
+        "raw_candidate_indices": [
+          48
+        ]
+      },
+      {
+        "bbox": [
+          1449.1546630859375,
+          563.7355346679688,
+          1546.3289794921875,
+          725.3533325195312
+        ],
+        "score": 0.10475508123636246,
+        "layer": "primary",
+        "class_hypotheses": [
+          {
+            "label": 8,
+            "category": "21",
+            "probability": 0.3735319972038269
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 0.10475508123636246
+          },
+          {
+            "label": 37,
+            "category": "61",
+            "probability": 0.010904877446591854
+          }
+        ],
+        "raw_candidate_indices": [
+          50
+        ]
+      },
+      {
+        "bbox": [
+          1449.35693359375,
+          548.0057373046875,
+          1555.53271484375,
+          776.4529418945312
+        ],
+        "score": 0.07453997433185577,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 37,
+            "category": "61",
+            "probability": 0.7004429697990417
+          },
+          {
+            "label": 8,
+            "category": "21",
+            "probability": 0.07453997433185577
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 0.03682387247681618
+          }
+        ],
+        "raw_candidate_indices": [
+          51
+        ]
+      },
+      {
+        "bbox": [
+          1336.1065673828125,
+          631.247802734375,
+          1517.903076171875,
+          839.947265625
+        ],
+        "score": 0.07327692210674286,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 32,
+            "category": "51",
+            "probability": 0.07327692210674286
+          },
+          {
+            "label": 33,
+            "category": "52",
+            "probability": 0.0024343065451830626
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 0.0007496961043216288
+          }
+        ],
+        "raw_candidate_indices": [
+          52
+        ]
+      },
+      {
+        "bbox": [
+          1448.4771728515625,
+          915.4439697265625,
+          1510.2542724609375,
+          1116.100830078125
+        ],
+        "score": 0.05987653136253357,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 42,
+            "category": "71",
+            "probability": 0.3031018376350403
+          },
+          {
+            "label": 16,
+            "category": "31",
+            "probability": 0.05987653136253357
+          },
+          {
+            "label": 43,
+            "category": "72",
+            "probability": 0.0006281501846387982
+          }
+        ],
+        "raw_candidate_indices": [
+          54
+        ]
+      },
+      {
+        "bbox": [
+          1329.06103515625,
+          869.8812255859375,
+          1392.7447509765625,
+          1084.9383544921875
+        ],
+        "score": 0.05515603348612785,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 48,
+            "category": "82",
+            "probability": 0.6259291172027588
+          },
+          {
+            "label": 25,
+            "category": "42",
+            "probability": 0.0636865645647049
+          },
+          {
+            "label": 47,
+            "category": "81",
+            "probability": 0.05515603348612785
+          }
+        ],
+        "raw_candidate_indices": [
+          55
+        ]
+      },
+      {
+        "bbox": [
+          1331.2760009765625,
+          951.0083618164062,
+          1408.67822265625,
+          1143.771240234375
+        ],
+        "score": 0.05235719308257103,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 25,
+            "category": "42",
+            "probability": 0.4799123704433441
+          },
+          {
+            "label": 24,
+            "category": "41",
+            "probability": 0.05235719308257103
+          },
+          {
+            "label": 48,
+            "category": "82",
+            "probability": 0.0009299470693804324
+          }
+        ],
+        "raw_candidate_indices": [
+          56
+        ]
+      },
+      {
+        "bbox": [
+          1165.968017578125,
+          570.3936157226562,
+          1232.888671875,
+          681.0806884765625
+        ],
+        "score": 0.047142501920461655,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 3,
+            "category": "14",
+            "probability": 0.047142501920461655
+          },
+          {
+            "label": 34,
+            "category": "53",
+            "probability": 0.00027109222719445825
+          },
+          {
+            "label": 9,
+            "category": "22",
+            "probability": 0.0002472967316862196
+          }
+        ],
+        "raw_candidate_indices": [
+          57
+        ]
+      },
+      {
+        "bbox": [
+          1320.9139404296875,
+          623.919921875,
+          1434.31640625,
+          854.1051635742188
+        ],
+        "score": 0.046423040330410004,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 32,
+            "category": "51",
+            "probability": 0.046423040330410004
+          },
+          {
+            "label": 33,
+            "category": "52",
+            "probability": 0.007698436267673969
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 8.494786743540317e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          58
+        ]
+      },
+      {
+        "bbox": [
+          1083.7054443359375,
+          629.6754760742188,
+          1197.586181640625,
+          829.2098999023438
+        ],
+        "score": 0.033859848976135254,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 35,
+            "category": "54",
+            "probability": 0.7341305613517761
+          },
+          {
+            "label": 36,
+            "category": "55",
+            "probability": 0.033859848976135254
+          },
+          {
+            "label": 3,
+            "category": "14",
+            "probability": 0.0004531624144874513
+          }
+        ],
+        "raw_candidate_indices": [
+          59
+        ]
+      },
+      {
+        "bbox": [
+          1455.0968017578125,
+          579.5469970703125,
+          1533.75830078125,
+          772.7105102539062
+        ],
+        "score": 0.027694562450051308,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 37,
+            "category": "61",
+            "probability": 0.26163122057914734
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 0.027694562450051308
+          },
+          {
+            "label": 8,
+            "category": "21",
+            "probability": 0.003127050818875432
+          }
+        ],
+        "raw_candidate_indices": [
+          60
+        ]
+      },
+      {
+        "bbox": [
+          1451.2293701171875,
+          617.7649536132812,
+          1540.5560302734375,
+          851.4794921875
+        ],
+        "score": 0.02615252509713173,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 37,
+            "category": "61",
+            "probability": 0.9537415504455566
+          },
+          {
+            "label": 32,
+            "category": "51",
+            "probability": 0.02615252509713173
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 0.00878328736871481
+          }
+        ],
+        "raw_candidate_indices": [
+          61
+        ]
+      },
+      {
+        "bbox": [
+          1451.29638671875,
+          597.5159912109375,
+          1546.215087890625,
+          862.793701171875
+        ],
+        "score": 0.023994412273168564,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 37,
+            "category": "61",
+            "probability": 0.6676480174064636
+          },
+          {
+            "label": 8,
+            "category": "21",
+            "probability": 0.023994412273168564
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 0.0036469255574047565
+          }
+        ],
+        "raw_candidate_indices": [
+          62
+        ]
+      },
+      {
+        "bbox": [
+          1314.6690673828125,
+          633.9266357421875,
+          1381.4580078125,
+          849.91357421875
+        ],
+        "score": 0.023300563916563988,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 33,
+            "category": "52",
+            "probability": 0.9409907460212708
+          },
+          {
+            "label": 32,
+            "category": "51",
+            "probability": 0.023300563916563988
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 0.0006492466782219708
+          }
+        ],
+        "raw_candidate_indices": [
+          64
+        ]
+      },
+      {
+        "bbox": [
+          1781.613037109375,
+          775.2445068359375,
+          1968.349853515625,
+          983.2346801757812
+        ],
+        "score": 0.02320246957242489,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 21,
+            "category": "36",
+            "probability": 0.19217656552791595
+          },
+          {
+            "label": 46,
+            "category": "75",
+            "probability": 0.02320246957242489
+          },
+          {
+            "label": 20,
+            "category": "35",
+            "probability": 0.0003864514292217791
+          }
+        ],
+        "raw_candidate_indices": [
+          65
+        ]
+      },
+      {
+        "bbox": [
+          1430.1923828125,
+          867.243408203125,
+          1500.3817138671875,
+          1026.6983642578125
+        ],
+        "score": 0.023093486204743385,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 42,
+            "category": "71",
+            "probability": 0.8625423312187195
+          },
+          {
+            "label": 47,
+            "category": "81",
+            "probability": 0.023093486204743385
+          },
+          {
+            "label": 43,
+            "category": "72",
+            "probability": 0.005169391166418791
+          }
+        ],
+        "raw_candidate_indices": [
+          66
+        ]
+      },
+      {
+        "bbox": [
+          1330.55712890625,
+          565.7590942382812,
+          1442.548095703125,
+          693.1215209960938
+        ],
+        "score": 0.019872047007083893,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 0,
+            "category": "11",
+            "probability": 0.9135264158248901
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 0.019872047007083893
+          },
+          {
+            "label": 32,
+            "category": "51",
+            "probability": 0.0038151165936142206
+          }
+        ],
+        "raw_candidate_indices": [
+          67
+        ]
+      },
+      {
+        "bbox": [
+          1530.2318115234375,
+          864.26904296875,
+          1589.637451171875,
+          1051.972900390625
+        ],
+        "score": 0.018607601523399353,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 17,
+            "category": "32",
+            "probability": 0.058943599462509155
+          },
+          {
+            "label": 43,
+            "category": "72",
+            "probability": 0.018607601523399353
+          },
+          {
+            "label": 18,
+            "category": "33",
+            "probability": 0.0014571583596989512
+          }
+        ],
+        "raw_candidate_indices": [
+          68
+        ]
+      },
+      {
+        "bbox": [
+          1374.901611328125,
+          593.4240112304688,
+          1457.6402587890625,
+          819.2691650390625
+        ],
+        "score": 0.016706744208931923,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 32,
+            "category": "51",
+            "probability": 0.8187242746353149
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 0.016706744208931923
+          },
+          {
+            "label": 33,
+            "category": "52",
+            "probability": 0.01078764721751213
+          }
+        ],
+        "raw_candidate_indices": [
+          70
+        ]
+      },
+      {
+        "bbox": [
+          1727.4022216796875,
+          580.849609375,
+          1856.6527099609375,
+          794.900634765625
+        ],
+        "score": 0.014483624137938023,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 40,
+            "category": "64",
+            "probability": 0.17056125402450562
+          },
+          {
+            "label": 41,
+            "category": "65",
+            "probability": 0.014483624137938023
+          },
+          {
+            "label": 11,
+            "category": "24",
+            "probability": 0.00013966740516480058
+          }
+        ],
+        "raw_candidate_indices": [
+          71
+        ]
+      },
+      {
+        "bbox": [
+          938.7400512695312,
+          798.6253662109375,
+          1146.9149169921875,
+          1019.739990234375
+        ],
+        "score": 0.0143618518486619,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 51,
+            "category": "85",
+            "probability": 0.11938724666833878
+          },
+          {
+            "label": 29,
+            "category": "46",
+            "probability": 0.0143618518486619
+          },
+          {
+            "label": 28,
+            "category": "45",
+            "probability": 0.0007668380858376622
+          }
+        ],
+        "raw_candidate_indices": [
+          72
+        ]
+      },
+      {
+        "bbox": [
+          1493.380615234375,
+          876.5454711914062,
+          1554.5562744140625,
+          1071.0771484375
+        ],
+        "score": 0.012899631634354591,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 43,
+            "category": "72",
+            "probability": 0.7973363399505615
+          },
+          {
+            "label": 42,
+            "category": "71",
+            "probability": 0.12432078272104263
+          },
+          {
+            "label": 47,
+            "category": "81",
+            "probability": 0.02980482205748558
+          }
+        ],
+        "raw_candidate_indices": [
+          73
+        ]
+      },
+      {
+        "bbox": [
+          1449.603515625,
+          863.0769653320312,
+          1511.05908203125,
+          1055.1878662109375
+        ],
+        "score": 0.01267998293042183,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 16,
+            "category": "31",
+            "probability": 0.8562793135643005
+          },
+          {
+            "label": 42,
+            "category": "71",
+            "probability": 0.01267998293042183
+          },
+          {
+            "label": 17,
+            "category": "32",
+            "probability": 0.0007141733658500016
+          }
+        ],
+        "raw_candidate_indices": [
+          74
+        ]
+      },
+      {
+        "bbox": [
+          1511.774658203125,
+          866.865478515625,
+          1553.7572021484375,
+          1040.768310546875
+        ],
+        "score": 0.012564677745103836,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 43,
+            "category": "72",
+            "probability": 0.012564677745103836
+          },
+          {
+            "label": 42,
+            "category": "71",
+            "probability": 0.00022847732179798186
+          },
+          {
+            "label": 44,
+            "category": "73",
+            "probability": 3.3570765936019598e-06
+          }
+        ],
+        "raw_candidate_indices": [
+          75
+        ]
+      },
+      {
+        "bbox": [
+          1534.1422119140625,
+          915.0913696289062,
+          1615.6844482421875,
+          1133.711181640625
+        ],
+        "score": 0.012221974320709705,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 44,
+            "category": "73",
+            "probability": 0.5153427720069885
+          },
+          {
+            "label": 17,
+            "category": "32",
+            "probability": 0.012221974320709705
+          },
+          {
+            "label": 43,
+            "category": "72",
+            "probability": 0.002412798348814249
+          }
+        ],
+        "raw_candidate_indices": [
+          76
+        ]
+      },
+      {
+        "bbox": [
+          1438.8712158203125,
+          870.3923950195312,
+          1507.47265625,
+          1038.5390625
+        ],
+        "score": 0.012040975503623486,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 42,
+            "category": "71",
+            "probability": 0.7577256560325623
+          },
+          {
+            "label": 43,
+            "category": "72",
+            "probability": 0.012040975503623486
+          },
+          {
+            "label": 47,
+            "category": "81",
+            "probability": 0.001009783474728465
+          }
+        ],
+        "raw_candidate_indices": [
+          77
+        ]
+      },
+      {
+        "bbox": [
+          1444.2178955078125,
+          638.2893676757812,
+          1587.81103515625,
+          845.3446655273438
+        ],
+        "score": 0.011633383110165596,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 37,
+            "category": "61",
+            "probability": 0.011633383110165596
+          },
+          {
+            "label": 38,
+            "category": "62",
+            "probability": 0.0077048176899552345
+          },
+          {
+            "label": 8,
+            "category": "21",
+            "probability": 0.0002575972175691277
+          }
+        ],
+        "raw_candidate_indices": [
+          78
+        ]
+      },
+      {
+        "bbox": [
+          1311.5443115234375,
+          546.783447265625,
+          1421.056884765625,
+          691.0330810546875
+        ],
+        "score": 0.011193186044692993,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 0,
+            "category": "11",
+            "probability": 0.9522345066070557
+          },
+          {
+            "label": 1,
+            "category": "12",
+            "probability": 0.011193186044692993
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 0.0014958899701014161
+          }
+        ],
+        "raw_candidate_indices": [
+          80
+        ]
+      },
+      {
+        "bbox": [
+          1368.14794921875,
+          598.797607421875,
+          1459.629638671875,
+          844.2555541992188
+        ],
+        "score": 0.01078764721751213,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 32,
+            "category": "51",
+            "probability": 0.8187242746353149
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 0.016706744208931923
+          },
+          {
+            "label": 33,
+            "category": "52",
+            "probability": 0.01078764721751213
+          }
+        ],
+        "raw_candidate_indices": [
+          81
+        ]
+      },
+      {
+        "bbox": [
+          1005.5630493164062,
+          577.9979248046875,
+          1153.6539306640625,
+          791.0551147460938
+        ],
+        "score": 0.01043000165373087,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 5,
+            "category": "16",
+            "probability": 0.24034254252910614
+          },
+          {
+            "label": 36,
+            "category": "55",
+            "probability": 0.01043000165373087
+          },
+          {
+            "label": 4,
+            "category": "15",
+            "probability": 0.00022437417646870017
+          }
+        ],
+        "raw_candidate_indices": [
+          83
+        ]
+      },
+      {
+        "bbox": [
+          1262.9090576171875,
+          546.499267578125,
+          1400.9132080078125,
+          700.496826171875
+        ],
+        "score": 0.010411852039396763,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 0,
+            "category": "11",
+            "probability": 0.033560674637556076
+          },
+          {
+            "label": 1,
+            "category": "12",
+            "probability": 0.010411852039396763
+          },
+          {
+            "label": 52,
+            "category": "extra_tooth",
+            "probability": 5.624695404549129e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          84
+        ]
+      },
+      {
+        "bbox": [
+          1327.0137939453125,
+          878.2462158203125,
+          1361.5816650390625,
+          1060.7564697265625
+        ],
+        "score": 0.01030592992901802,
+        "layer": "review",
+        "class_hypotheses": [
+          {
+            "label": 48,
+            "category": "82",
+            "probability": 0.01030592992901802
+          },
+          {
+            "label": 47,
+            "category": "81",
+            "probability": 3.0307122869999148e-05
+          },
+          {
+            "label": 43,
+            "category": "72",
+            "probability": 1.1377055670891423e-05
+          }
+        ],
+        "raw_candidate_indices": [
+          85
+        ]
+      }
+    ]
+  }
+]
