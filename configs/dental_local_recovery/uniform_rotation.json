@@ -1,0 +1,1 @@
+{"region_policy":"uniform","crop_count":4,"crop_fraction":[0.45,0.6],"rotations":[0,90,180,270],"conf":0.01,"nms_iou":0.85}
