@@ -1,0 +1,8 @@
+{
+  "failures": 0,
+  "successful_jobs": 12,
+  "evaluated_model_settings": 24,
+  "evaluated_subsets": 72,
+  "archive": "/root/autodl-tmp/experiments/yolo_structure_core_20261030_0940/statistics_bundle.tar.gz",
+  "sha256": "7608d1a6161367ef47451f66557d5aa738f8be7740b1fb73af7b2bccc35e6f9a"
+}
