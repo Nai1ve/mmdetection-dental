@@ -1,0 +1,8 @@
+{
+  "failures": 0,
+  "successful_jobs": 5,
+  "images_per_job": 164,
+  "full_frame_identical": true,
+  "sha256": "95104b8f1000fd59caa16f1b26bd67cf1a157605abb6ef3ce1efaa22b72a1a15",
+  "archive": "/root/autodl-tmp/experiments/local_recovery_val_s42_20261031/statistics_bundle.tar.gz"
+}
