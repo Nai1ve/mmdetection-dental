@@ -9,11 +9,18 @@ from scipy.optimize import linear_sum_assignment
 
 
 class ToothROIHead(nn.Module):
-    def __init__(self, channels, slots=4, hidden=128):
+    def __init__(self, channels, slots=4, hidden=128, roi_size=7, conditioned=False, quality=False):
         super().__init__()
         self.slots = slots
         self.project = nn.Conv2d(channels, hidden, 1)
-        self.position = nn.Parameter(torch.randn(1,49,hidden)*.01)
+        self.position = nn.Parameter(torch.randn(1,roi_size*roi_size,hidden)*.01)
+        self.conditioned = conditioned
+        self.use_quality = quality
+        if conditioned:
+            self.context = nn.Sequential(nn.Linear(5,hidden),nn.ReLU(),nn.Linear(hidden,hidden))
+        if quality:
+            self.quality = nn.Linear(hidden,1)
+            self.novelty = nn.Linear(hidden,1)
         self.queries = nn.Parameter(torch.randn(slots,hidden)*.01)
         self.geometry = nn.Linear(4,hidden)
         layer = nn.TransformerDecoderLayer(hidden,4,hidden*2,dropout=0.,batch_first=True)
@@ -22,17 +29,23 @@ class ToothROIHead(nn.Module):
         self.objectness = nn.Linear(hidden,1)
         nn.init.constant_(self.objectness.bias, math.log(.05/.95))
 
-    def forward(self, features, geometry):
+    def forward(self, features, geometry, context=None):
         memory = self.project(features).flatten(2).transpose(1,2)+self.position
         query = self.queries[None]+self.geometry(geometry)[:,None]
+        if self.conditioned:
+            if context is None:raise ValueError('Conditioned head requires predicted-box context')
+            query = query+self.context(context).mean(1)[:,None]
         decoded = self.decoder(query,memory)
         raw = self.box(decoded).sigmoid()
         center,size = raw[...,:2],raw[...,2:]
         boxes = torch.cat([(center-size/2).clamp(0,1),(center+size/2).clamp(0,1)],-1)
-        return dict(boxes=boxes,logits=self.objectness(decoded).squeeze(-1))
+        result=dict(boxes=boxes,logits=self.objectness(decoded).squeeze(-1))
+        if self.use_quality:
+            result.update(quality=self.quality(decoded).squeeze(-1),novelty=self.novelty(decoded).squeeze(-1))
+        return result
 
 
-def set_loss(pred, targets, partial, overflow, mode='multi'):
+def set_loss(pred, targets, partial, overflow, mode='multi', existing=None):
     """Targets are complete instances; partial instances only mask uncertain negatives."""
     losses=[]
     for i,(gt,cut,skip) in enumerate(zip(targets,partial,overflow)):
@@ -47,17 +60,27 @@ def set_loss(pred, targets, partial, overflow, mode='multi'):
         if len(cut):
             keep=box_iou(boxes.detach(),cut).max(1).values<.5
         regression=boxes.sum()*0
+        quality_target=torch.zeros_like(logits)
+        novelty_target=torch.zeros_like(logits)
         if len(gt):
             giou=generalized_box_iou(boxes,gt)
             cost=5*torch.cdist(boxes,gt,p=1)+2*(1-giou)-logits.sigmoid()[:,None]
             rows,cols=linear_sum_assignment(cost.detach().float().cpu().numpy())
             rows=torch.as_tensor(rows,device=boxes.device);cols=torch.as_tensor(cols,device=boxes.device)
             object_target[rows]=1;keep[rows]=True
+            quality_target[rows]=box_iou(boxes[rows].detach(),gt[cols]).diag()
+            if existing is not None and len(existing[i]):
+                novelty_target[rows]=(box_iou(gt[cols],existing[i]).max(1).values<.75).float()
+            else:novelty_target[rows]=1
             regression=5*F.l1_loss(boxes[rows],gt[cols],reduction='sum')/len(gt)
             regression+=2*(1-giou[rows,cols]).mean()
         weight=torch.where(object_target>0,1.,.25)
         classification=(F.binary_cross_entropy_with_logits(logits,object_target,reduction='none')*weight*keep).sum()/keep.sum().clamp(min=1)
-        losses.append(regression+classification)
+        auxiliary=logits.sum()*0
+        if 'quality' in pred:
+            auxiliary=(F.binary_cross_entropy_with_logits(pred['quality'][i],quality_target,reduction='none')*keep).sum()/keep.sum().clamp(min=1)
+            auxiliary+=(F.binary_cross_entropy_with_logits(pred['novelty'][i],novelty_target,reduction='none')*keep).sum()/keep.sum().clamp(min=1)
+        losses.append(regression+classification+auxiliary)
     return torch.stack(losses).mean()
 
 
@@ -98,7 +121,7 @@ def roi_targets(regions,seeds,gt,capacity=4):
     return complete,partial,overflow,len(covered)
 
 
-def extract_rois(features,regions,width,height,imgsz=960):
+def extract_rois(features,regions,width,height,imgsz=960,roi_size=7):
     gain=min(imgsz/width,imgsz/height)
     padx=round((imgsz-round(width*gain))/2-.1)
     pady=round((imgsz-round(height*gain))/2-.1)
@@ -106,6 +129,6 @@ def extract_rois(features,regions,width,height,imgsz=960):
     pooled=[]
     for feat in features[:2]:
         assert feat.shape[-1]==feat.shape[-2], 'rect=False square input required'
-        pooled.append(roi_align(feat,[padded],output_size=7,
+        pooled.append(roi_align(feat,[padded],output_size=roi_size,
                                spatial_scale=feat.shape[-1]/imgsz,aligned=True))
     return torch.cat(pooled,1)
