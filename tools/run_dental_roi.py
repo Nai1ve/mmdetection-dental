@@ -9,6 +9,7 @@ import sys
 import numpy as np
 import torch
 from dental_roi_head import ToothROIHead,extract_rois,make_regions,roi_targets,set_loss
+from dental_roi_sampling import sample_rois,strata
 
 
 def load(path):return torch.load(path,map_location='cpu',weights_only=False)
@@ -92,11 +93,14 @@ def train(a):
     entries=manifest['entries'][:a.limit_images] if a.limit_images else manifest['entries']
     for epoch in range(1,a.epochs+1):
         random.shuffle(entries);model.train();losses=[];skipped=0
+        sampled=dict(hard=0,multi=0,ordinary=0)
         for filename in entries:
             item=load(a.cache/filename)
             valid=[i for i,x in enumerate(item['overflow']) if not x]
             if not valid:skipped+=1;continue
-            indices=random.sample(valid,min(12,len(valid)))
+            indices=sample_rois(item,getattr(a,'sampling','uniform'))
+            pools=strata(item)
+            for key,values in pools.items():sampled[key]+=len(set(indices)&set(values))
             features=item['features'][indices].float().to(a.device)
             targets=[item['targets'][i].to(a.device) for i in indices]
             partial=[item['partial'][i].to(a.device) for i in indices]
@@ -109,11 +113,13 @@ def train(a):
         assert losses,'No eligible ROIs'
         record=dict(epoch=epoch,loss=float(np.mean(losses)),images=len(losses),skipped=skipped)
         with (a.output/'training.jsonl').open('a') as stream:stream.write(json.dumps(record)+'\n')
+        with (a.output/'sampling_audit.jsonl').open('a') as stream:
+            stream.write(json.dumps(dict(epoch=epoch,policy=getattr(a,'sampling','uniform'),selected_rois=sampled))+'\n')
         print(record,flush=True)
         # Fixed final epoch checkpoint, no test-driven or manual best-epoch selection.
         torch.save(dict(state_dict=model.state_dict(),mode=a.mode,channels=manifest['channels'],
             epoch=epoch,seed=a.seed,cache_manifest=manifest,learning_rate=1e-4,
-            head_options=options,parameters=sum(p.numel() for p in model.parameters())),a.output/'last.pt')
+            sampling=getattr(a,'sampling','uniform'),head_options=options,parameters=sum(p.numel() for p in model.parameters())),a.output/'last.pt')
 
 
 def evaluate(a):
@@ -172,6 +178,7 @@ if __name__=='__main__':
     p.add_argument('--device',default='cuda:0');p.add_argument('--limit-images',type=int,default=0)
     p.add_argument('--roi-size',type=int,choices=[7,14],default=7)
     p.add_argument('--conditioned',action='store_true');p.add_argument('--quality',action='store_true')
+    p.add_argument('--sampling',choices=['uniform','stratified'],default='uniform')
     a=p.parse_args();assert a.epochs>0 and a.limit_images>=0 and 0<a.threshold<1
     # Native YOLO device argument accepts numeric CUDA IDs, head training accepts torch devices.
     if a.action=='cache' and a.device=='cuda:0':a.device='0'

@@ -53,7 +53,10 @@ def set_loss(pred, targets, partial, overflow, mode='multi', existing=None):
         if skip:
             losses.append((boxes.sum()+logits.sum())*0)
             continue
-        if mode=='single':gt=gt[:1]  # Cache orders the seed-associated instance first.
+        if mode=='single':
+            # Other complete teeth cannot be represented by one slot; do not label them background.
+            cut=torch.cat([cut,gt[1:]],0)
+            gt=gt[:1]  # Cache orders the seed-associated instance first.
         if len(gt)>len(boxes):raise ValueError('Overflow must be marked, never truncate multi-instance GT')
         object_target=torch.zeros_like(logits)
         keep=torch.ones_like(logits,dtype=torch.bool)

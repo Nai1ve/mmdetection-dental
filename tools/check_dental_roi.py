@@ -46,9 +46,13 @@ def main():
                   boxes=torch.tensor([[10.,10,30,30]]),scores=torch.tensor([.9]),
                   width=100,height=60,targets=gt[:2],partial=[torch.empty(0,4)]*2,overflow=[False]*2)
         torch.save(item,cache/'1.pt')
-        (cache/'manifest.json').write_text(json.dumps(dict(split='train',channels=24,roi_size=7,entries=['1.pt'])))
+        (cache/'manifest.json').write_text(json.dumps(dict(split='train',channels=24,roi_size=7,entries=['1.pt'],partial_dataset=True,detector_sha256='synthetic')))
         train(SimpleNamespace(cache=cache,output=root/'run',seed=42,mode='multi',device='cpu',epochs=2,limit_images=0,conditioned=True,quality=True))
         assert load(root/'run/last.pt')['epoch']==2
+        from audit_roi_supervision import audit
+        summary=audit(cache,root/'run/last.pt')
+        assert summary['images']==1 and summary['partial_dataset']
+        assert summary['sampling_one_epoch_seed42']['stratified']['selected_rois']==2
     print('ROIAlign, partial-GT handling, empty ROI and optimizer loop PASS',flush=True)
     model=ToothROIHead(24,roi_size=14,conditioned=True,quality=True)
     pred=model(torch.randn(3,24,14,14),torch.rand(3,4),torch.rand(3,8,5))
@@ -62,6 +66,17 @@ def main():
     assert len(packed['pred_instances']['scores'])==2 and interface['groups'][0]==[0]
     assert packed['pred_instances']['scores'][0]==.1 and interface['selected_addition_ids']==[1]
     print('14x14 conditioned quality gradients and baseline protection PASS',flush=True)
+    from dental_roi_sampling import sample_rois,strata
+    import random
+    item=dict(regions=torch.tensor([[0.,0,100,100]]*15),
+        boxes=torch.tensor([[10.,10,30,30]]),scores=torch.tensor([.9]),overflow=[False]*14+[True],
+        targets=[torch.tensor([[.1,.1,.3,.3]])]*13+[torch.tensor([[.6,.6,.9,.9]])]*2)
+    assert strata(item)['hard']==[13]
+    for policy in ['uniform','stratified']:
+        selected=sample_rois(item,policy,rng=random.Random(42))
+        assert len(selected)==12 and len(set(selected))==12 and 14 not in selected
+    assert 13 in sample_rois(item,'stratified',rng=random.Random(42))
+    print('Train-only strata, quota fill and overflow exclusion PASS',flush=True)
 
 
 if __name__=='__main__':main()
